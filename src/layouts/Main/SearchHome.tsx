@@ -12,31 +12,20 @@ import Paper from "@material-ui/core/Paper";
 import { createStyles, withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import People from "@material-ui/icons/People";
-import SearchIcon from "@material-ui/icons/Search";
-import classNames from "classnames";
 import { Formik, FormikActions } from "formik";
-import React, { FunctionComponent, useState, memo, useEffect } from "react";
+import React, { FunctionComponent, useState, memo } from "react";
 import Loadable from "react-loadable";
 import { connect } from "react-redux";
 import { RouterProps } from "react-router";
 import { withRouter, RouteProps } from "react-router-dom";
 import { compose } from "recompose";
-import { Dispatch } from "redux";
 import * as Yup from "yup";
 import { RoomUrlParams } from "@/types/Requests/Rooms/RoomRequests";
 import Hidden from "@material-ui/core/Hidden/Hidden";
 import DatePickerHomeXsOnly from "@/views/Homepage/DatePicker/DatePickerHomeXsOnly";
-import { InputActionMeta } from "react-select/lib/types";
 import { StylesConfig } from "react-select/lib/styles";
-import MenuItemSelectWithIcon from "@/components/Custom/MenuItemSelectWithIcon";
-import { searchSuggest } from "@/store/context/searchSuggestion";
-import { SearchSuggestRes } from "@/types/Requests/Search/SearchResponse";
-import axiosBase from "axios";
 import { newRoomLocation } from "@/store/context/Room/RoomIndexContext";
 import Collapse from "@material-ui/core/Collapse";
-import Orange from "@material-ui/core/colors/orange";
-import SelectSearch from "react-select";
-import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import AutoSuggestSearch from "@/components/Utils/AutosuggestSearch";
 
 export const DatePicker = Loadable<any, any>({
@@ -123,8 +112,6 @@ const styles: any = (theme: ThemeCustom) =>
         width: "100%",
         maxWidth: "560px"
       },
-      // height: '30px',
-
       width: "100%",
       border: "none",
       fontSize: "1em",
@@ -136,7 +123,6 @@ const styles: any = (theme: ThemeCustom) =>
       display: "flex",
       justifyContent: "left",
       alignItems: "center",
-      // border: '1px solid #e0e0e0 !important',
       border: "1px solid #EBEBEB !important",
       boxShadow: "none",
       borderRadius: "4px !important",
@@ -166,7 +152,6 @@ const styles: any = (theme: ThemeCustom) =>
     },
     paperCustom: {
       padding: "25px 30px",
-      // boxShadow : 'none',
       borderRadius: 4,
       backgroundColor: "#fffffff0"
     }
@@ -176,7 +161,6 @@ export const searchStylesHome: StylesConfig = {
   control: styles => ({
     ...styles,
     border: "none",
-    // boxShadow: 'none',
     cursor: "pointer"
   }),
   container: styles => ({
@@ -221,7 +205,7 @@ const SearchHome: FunctionComponent<IProps | any> = (props: IProps) => {
   return (
     <Grid className={classes.searchWrapper} item lg={5} md={6} xs={12}>
       <Typography className={classes.searchTitle} variant="h1">
-        Đặt phòng Homestay ngay hôm nay để tận hưởng ưu đãi.
+        Đặt phòng Homestay ngay hôm nay để nhận ngay ưu đãi.
       </Typography>
       <Formik
         initialValues={FormikInit}
@@ -319,30 +303,29 @@ const SearchHome: FunctionComponent<IProps | any> = (props: IProps) => {
                     </Grid>
                   </Paper>
                 </Grid>
-                <Grid item md={4} xs={12} sm={12}>
-                  <Paper elevation={2} className={classes.paperSize}>
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      name="search"
-                      className={classes.searchButton}
-                      disabled={isSubmitting}
-                      type="submit"
-                    >
-                      {isSubmitting ? (
-                        <CircularProgress className={classes.spinner} />
-                      ) : (
-                        "Tìm kiếm"
-                      )}
-                    </Button>
-                  </Paper>
-                </Grid>
+              </Grid>
+              <Grid item md={4} xs={12} sm={12}>
+                <Paper elevation={2} className={classes.paperSize}>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    name="search"
+                    className={classes.searchButton}
+                    disabled={isSubmitting}
+                    type="submit"
+                  >
+                    {isSubmitting ? (
+                      <CircularProgress className={classes.spinner} />
+                    ) : (
+                      "Tìm kiếm"
+                    )}
+                  </Button>
+                </Paper>
               </Grid>
             </form>
           );
         }}
       </Formik>
-      {/* </Paper> */}
       <Grid item md={10} sm={12} xs={12} style={{ marginTop: 10 }}>
         <Collapse in={openGuestSelect}>
           <GuestSelect />
