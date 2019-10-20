@@ -3,7 +3,7 @@ import NavTopHomePage from "@/views/Homepage/NavTopHomePage";
 import GridContainer from "@/layouts/Grid/Container";
 import { compose } from "recompose";
 import { createStyles, Theme, withStyles } from "@material-ui/core/styles";
-import SearchHome from "@/layouts/Main/SearchHome";
+import SearchHomeNew from "@/layouts/Main/SearchHomeNew";
 import Grid from "@material-ui/core/Grid";
 import useFocusTitle from "@/utils/focusState";
 // import BG from '@/assets/bg_1.jpg';
@@ -95,7 +95,7 @@ const Home: FunctionComponent<IProps | any> = props => {
         <GridContainer xs={10}>
           <Grid container spacing={24} className={classes.panelBody}>
             {/* <Paper elevation={4} className={classes.paperCustom} square> */}
-            <SearchHome />
+            <SearchHomeNew />
             {/* </Paper> */}
             {/* <Promotion /> */}
             <Grid item lg={2} md={1} />

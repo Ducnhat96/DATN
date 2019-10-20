@@ -1,21 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+<html lang='en'>
+
+<head>
+  <meta charset='utf-8'>
+  <link rel='shortcut icon' href='%PUBLIC_URL%/logo3.png'>
+  <meta name='google-site-verification' content='o0lJ6DdbarNahJgr9EUbI0fM_S0o5awfGWnOMl5NJZs' />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name='theme-color' content='#000000'>
+  <meta name='title' content='Westay - Homestay dành cho người Việt | Stay happy together'>
+  <meta name='description'
+    content='Đặt Homestay Trực Tuyến An Toàn Ưu Đãi Lớn Nhiều Tiện Ích. Homestay giá rẻ dành cho người Việt' />
+  <meta name="keywords"
+    content="Westay - Stay happy together, homestay, homes, westay, cho thue homestay gia re,  homestay gia re, homestay ha noi, du lich tu tuc, luxstay" />
+  <meta charSet='utf-8' />
+  <meta property="og:type" content="article" />
+  <meta property="og:locale" content="vi_VN" />
+  <meta property="og:url" content="https://westay.vn">
+  <meta property="og:site_name" content="Westay - Stay happy together">
+  <meta property="og:image" content="https://westay.vn/static/media/Bg_home.4023648f.jpg" />
+  <meta property="og:title" content="Westay - Homestay dành cho người Việt" />
+  <meta property="fb:app_id" content="331750437466885" />
+  <meta property="og:description" content="Westay - Đặt phòng Homestay giá rẻ, tiện lợi, nhanh chóng" />
+  <meta name="robots" content="index, follow">
+  <!--
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
+  <link rel='manifest' href='%PUBLIC_URL%/manifest.json'>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:300,400,500'>
+  <!-- <link href = 'https://fonts.googleapis.com/css?family=Sarabun' rel = 'stylesheet'> -->
+  <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+  <!-- <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:300,400,500,700&amp;subset=vietnamese" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800&amp;subset=vietnamese"
+    rel="stylesheet">
+  <style>
+    @media only screen and (max-width: 768px) {
+      .fb_dialog {
+        display: none;
+      }
+    }
+  </style>
+  <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
@@ -24,20 +49,143 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <meta name="google-site-verification" content="Xn4ULuU-MncP7CZoQxH1r7F2DzzID_IolgwbUbQMxtM" />
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-134989606-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+      gtag('config', 'UA-134989606-1');
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+      gtag('set', {'user_id': 'USER_ID'}); // Set the user ID using signed-in user_id.
+
+      // ga('set', 'userId', 'USER_ID'); // Set the user ID using signed-in user_id.
+    </script> -->
+  <!-- Facebook Pixel Code -->
+  <script>
+    ! function (f, b, e, v, n, t, s) {
+      if (f.fbq) return;
+      n = f.fbq = function () {
+        n.callMethod ?
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n;
+      n.push = n;
+      n.loaded = !0;
+      n.version = '2.0';
+      n.queue = [];
+      t = b.createElement(e);
+      t.async = !0;
+      t.src = v;
+      s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '131106300897582');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=131106300897582&ev=PageView&noscript=1" /></noscript>
+  <!-- End Facebook Pixel Code -->
+
+  <!-- Facebook Pixel Code -->
+  <script>
+    ! function (f, b, e, v, n, t, s) {
+      if (f.fbq) return;
+      n = f.fbq = function () {
+        n.callMethod ?
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n;
+      n.push = n;
+      n.loaded = !0;
+      n.version = '2.0';
+      n.queue = [];
+      t = b.createElement(e);
+      t.async = !0;
+      t.src = v;
+      s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '477303799360506');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=477303799360506&ev=PageView&noscript=1" /></noscript>
+  <!-- End Facebook Pixel Code -->
+
+  <!-- Facebook Pixel Code -->
+  <script>
+    ! function (f, b, e, v, n, t, s) {
+      if (f.fbq) return;
+      n = f.fbq = function () {
+        n.callMethod ?
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n;
+      n.push = n;
+      n.loaded = !0;
+      n.version = '2.0';
+      n.queue = [];
+      t = b.createElement(e);
+      t.async = !0;
+      t.src = v;
+      s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '368429757321091');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=368429757321091&ev=PageView&noscript=1" /></noscript>
+  <!-- End Facebook Pixel Code -->
+  <title>Đặt phòng homestay - Westay</title>
+</head>
+
+<body>
+  <!-- Load Facebook SDK for JavaScript -->
+  <div id="fb-root"></div>
+  <script>
+    window.fbAsyncInit = function () {
+      FB.init({
+        xfbml: true,
+        version: 'v3.2'
+      });
+    };
+
+    (function (d, s, id) {
+      if (document.body.clientWidth < 769) return;
+
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
+
+  <!-- Your customer chat code -->
+  <div class="fb-customerchat" attribution=setup_tool size="small" page_id="1242989379083474" theme_color="#F57C00">
+  </div>
+  <noscript>
+    You need to enable JavaScript to run this app.
+  </noscript>
+  <div id='root'></div>
+  <!--
+  This HTML file is a template.
+  If you open it directly in the browser, you will see an empty page.
+
+  You can add webfonts, meta tags, or analytics to this file.
+  The build step will place the bundled scripts into the <body> tag.
+
+  To begin the development, run `npm start` or `yarn start`.
+  To create a production bundle, use `npm run build` or `yarn build`.
+-->
+</body>
+
 </html>
