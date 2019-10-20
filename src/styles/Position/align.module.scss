@@ -1,0 +1,23 @@
+$margin-list: (
+        (ml, margin-left),
+        (mt, margin-top),
+        (mr, margin-right),
+        (mb, margin-bottom),
+        (mg, margin),
+);
+
+$textAlignment: ('Center', 'Right', 'Left');
+
+@for $i from 1 through 6 {
+  @each $className, $prop in $margin-list {
+    .#{$className}-#{$i * 5} {
+      #{$prop}: #{$i * 5}px;
+    }
+  }
+};
+
+@each $item in $textAlignment {
+  .text#{$item} {
+    text-align: #{$item};
+  }
+};

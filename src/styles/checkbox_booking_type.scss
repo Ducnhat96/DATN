@@ -1,0 +1,78 @@
+// The code is a bit of a mess at the moment! Sorry about that.
+
+section {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+section>div {
+    flex: 1;
+    padding: 0.5rem;
+}
+
+input[type="radio"] {
+    display: none;
+
+    &:not(:disabled)~label {
+        cursor: pointer;
+    }
+
+    &:disabled~label {
+        color: hsla(150, 5%, 75%, 1);
+        border-color: hsla(150, 5%, 75%, 1);
+        box-shadow: none;
+        cursor: not-allowed;
+    }
+}
+
+.label-checkbox {
+    // height: 100%;
+    display: block;
+    background: white;
+    border: 2px solid #ff9800;
+    border-radius: 4px;
+    padding: 0.8rem;
+    // margin-bottom: 1rem;
+    //margin: 1rem;
+    text-align: center;
+    box-shadow: 0px 3px 10px -2px hsla(150, 5%, 65%, 0.5);
+    position: relative;
+}
+
+input[type="radio"]:checked+label {
+    background: hsla(150, 75%, 50%, 1);
+    color: hsla(215, 0%, 100%, 1);
+    box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.12);
+    border: 2px solid hsla(150, 75%, 50%, 1);
+    &::after {
+        color: hsla(215, 5%, 25%, 1);
+        border: 1px solid hsla(150, 75%, 45%, 1);
+      content: "\2714";
+      font-weight: 900;
+        font-size: 18px;
+        position: absolute;
+        top: -10px;
+        // left: 50%;
+        transform: translateX(40%);
+        height: 25px;
+        width: 25px;
+        line-height: 25px;
+        text-align: center;
+        border-radius: 50%;
+        background: white;
+        box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.12);
+    }
+}
+
+// input[type="radio"]#control_05:checked+label {
+//     background: #FF9800;
+//     border-color: #FF9800;
+// }
+
+
+
+@media only screen and (max-width: 900px) {
+    section {
+        flex-direction: row;
+    }
+}

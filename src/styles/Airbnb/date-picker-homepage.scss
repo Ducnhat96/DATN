@@ -1,0 +1,30 @@
+.DateInput {
+  padding: 0 27px 0 12px;
+  color: black;
+  
+}
+
+.DateInput_input {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  width: 112%;
+  cursor: pointer;
+}
+
+.DateInput_input__focused {
+  border: none;
+}
+
+.DateRangePicker {
+  margin-left: 0px;
+}
+
+.DayPickerNavigation_nextButton__verticalDefault {
+  position: absolute;
+}
+
+.DayPicker__horizontal {
+  margin: 0 auto;
+  text-align: center;
+}

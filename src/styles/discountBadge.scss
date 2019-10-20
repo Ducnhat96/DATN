@@ -1,0 +1,42 @@
+.badge {
+    position: relative;
+    width: 216px;
+    display: inline-block;
+    margin: 40px;
+
+    .title-badge {
+        font-weight: bold;
+        font-size: 1.7em;
+        position: absolute;
+        top: -28px;
+        border-radius: 8px 8px 0 0;
+        text-align: center;
+        width: 100%;
+        background: red;
+        padding: 20px 0;
+    }
+
+    .subtitle-badge {
+        position: absolute;
+        font-family: "Fjalla One", sans-serif;
+        font-size: 1.8em;
+        width: 100%;
+        text-align: center;
+        color: white;
+        position: absolute;
+        top: 100px;
+
+        &:after {
+            content: "★ ★ ★";
+            display: block;
+            font-size: .4em;
+            position: relative;
+            margin: 15px 0 0;
+            transition: all .3s;
+        }
+    }
+
+    &:hover .subtitle-badge:after {
+        word-spacing: 30px;
+    }
+}
