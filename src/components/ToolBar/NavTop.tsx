@@ -10,7 +10,6 @@ import AppBar from "@material-ui/core/AppBar";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
-import blue from "@material-ui/core/colors/blue";
 import Divider from "@material-ui/core/Divider";
 import Grow from "@material-ui/core/Grow";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -41,20 +40,13 @@ import People from "@material-ui/icons/PersonRounded";
 import PowerSettingsNewRounded from "@material-ui/icons/PowerSettingsNewRounded";
 import AccountCircleOutlined from "@material-ui/icons/AccountCircleOutlined";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
-import Orange from "@material-ui/core/colors/orange";
 import PhoneIcon from "@material-ui/icons/Phone";
 import EmailIcon from "@material-ui/icons/Email";
 import GridContainer from "@/layouts/Grid/Container";
-import { Typography } from "@material-ui/core/es";
 import Popover from "@material-ui/core/Popover";
 import { SearchFilterState } from "@/store/reducers/searchFilter";
 import { SearchNavAction, SearchNavState } from "@/store/reducers/searchNav";
 import * as types from "@/store/actions/types";
-import ListCitySearch, {
-  TransitionCustom
-} from "@/views/Rooms/Filter/ListCitySearch";
-import Dialog from "@material-ui/core/Dialog";
-import { KeyboardArrowDown } from "@material-ui/icons";
 import ForgetPasswordForm from "../Forms/ForgetPasswordForm";
 import IconMenu from "@material-ui/icons/Menu";
 
@@ -100,20 +92,20 @@ const styles: any = (theme: ThemeCustom) =>
       fontWeight: 700,
       textTransform: "capitalize",
       "&:hover": {
-        color: Orange[500],
+        color: "#248489",
         backgroundColor: "transparent",
-        borderTop: `2px solid ${Orange[500]}`
+        borderTop: "2px solid #248489"
       },
       "&:focus": {
-        color: Orange[500],
+        color: "#248489",
         backgroundColor: "transparent",
-        borderTop: `2px solid ${Orange[500]}`
+        borderTop: "2px solid #248489"
       }
     },
     buttonMerchantSite: {
       height: "unset",
       textTransform: "capitalize",
-      color: Orange[500],
+      color: "#248489",
       borderRadius: 10,
       fontWeight: 700,
       boxShadow: "0 1px 5px rgba(0, 0, 0, 0.15)",
@@ -122,7 +114,7 @@ const styles: any = (theme: ThemeCustom) =>
       WebkitTransition: "all 0.5s",
       transition: "all 0.5s",
       "&:hover": {
-        color: Orange[500],
+        color:"#248489",
         backgroundColor: "#f9f9f9",
         boxShadow: "none"
       }
@@ -131,7 +123,7 @@ const styles: any = (theme: ThemeCustom) =>
       textTransform: "inherit",
       "&:hover": {
         backgroundColor: "rgba(0,0,0,0)",
-        color: blue[500]
+        color: "#248489"
       }
     },
     menuButton: {
@@ -274,8 +266,7 @@ const NavTop: FunctionComponent<IProps> = (props: ILocalProps) => {
               <Logo />
               <div className={classes.grow} />
               <Button
-                href="https://merchant.westay.vn"
-                // color = 'inherit'
+                href="#"
                 className={classes.buttonMerchantSite}
                 name="merchant-site"
                 size="large"

@@ -22,6 +22,8 @@ import * as Yup from "yup";
 import Hidden from "@material-ui/core/Hidden/Hidden";
 import { StylesConfig } from "react-select/lib/styles";
 import AutoSuggestSearch from "@/components/Utils/AutosuggestSearch";
+import { RoomUrlParams } from "@/types/Requests/Rooms/RoomRequests";
+import { newRoomLocation } from "@/store/context/Room/RoomIndexContext";
 
 export const DatePicker = Loadable<any, any>({
   loader: (): Promise<any> => import("@/components/Utils/DateRange"),
@@ -202,24 +204,24 @@ const SearchHomeNew: FC<IProps | any> = (props: IProps) => {
     values: FormikValues,
     actions: FormikActions<FormikValues>
   ) => {
-    // const pushQuery: RoomUrlParams = {
-    //   name: city_id === "" && district_id === "" ? searchText : "",
-    //   number_of_rooms: filter.roomsCount,
-    //   check_in: filter.startDate,
-    //   check_out: filter.endDate,
-    //   number_of_guests: filter.guestsCount,
-    //   most_popular: null,
-    //   rent_type: bookingType !== 0 ? bookingType : undefined,
-    //   city_id: city_id ? city_id : "",
-    //   district_id: district_id ? district_id : ""
-    // };
-    // const location = newRoomLocation(pushQuery);
-    // history.push(location);
+    const pushQuery: RoomUrlParams = {
+      name: city_id === "" && district_id === "" ? searchText : "",
+      number_of_rooms: filter.roomsCount,
+      check_in: filter.startDate,
+      check_out: filter.endDate,
+      number_of_guests: filter.guestsCount,
+      most_popular: null,
+      rent_type: bookingType !== 0 ? bookingType : undefined,
+      city_id: city_id ? city_id : "",
+      district_id: district_id ? district_id : ""
+    };
+    const location = newRoomLocation(pushQuery);
+    history.push(location);
   };
   return (
     <Grid className={classes.searchWrapper} item lg={5} md={6} xs={12}>
       <Typography className={classes.searchTitle} variant="h1">
-        Đặt phòng Homestay ngay hôm nay để nhận ngay ưu đãi.
+        Đặt phòng Homestay nhận ngay ưu đãi.
       </Typography>
       <Formik
         initialValues={FormikInit}

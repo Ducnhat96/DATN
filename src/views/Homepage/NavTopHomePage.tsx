@@ -107,21 +107,21 @@ const styles: any = (theme: ThemeCustom) =>
       fontWeight: 700,
       textTransform: "capitalize",
       "&:hover": {
-        color: Orange[500],
+        color: "#248489",
         backgroundColor: "transparent",
-        borderTop: `2px solid ${Orange[500]}`
+        borderTop: `2px solid ${"#248489"}`
       },
       "&:focus": {
-        color: Orange[500],
+        color: "#248489",
         backgroundColor: "transparent",
-        borderTop: `2px solid ${Orange[500]}`
+        borderTop: `2px solid ${"#248489"}`
       }
     },
     link: {
       textTransform: "inherit",
       "&:hover": {
         backgroundColor: "rgba(0,0,0,0)",
-        color: blue[500]
+        color: "#248489"
       }
     },
     menuButton: {
@@ -255,8 +255,7 @@ const NavTopHomePage: FunctionComponent<IProps> = (props: ILocalProps) => {
             <Logo />
             <div className={classes.grow} />
             <Button
-              href="https://merchant.westay.vn"
-              // color = 'inherit'
+              href="#"
               className={classes.button}
               name="merchant-site"
             >

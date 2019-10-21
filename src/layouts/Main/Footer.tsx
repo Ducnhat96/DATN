@@ -139,8 +139,8 @@ const Footer: ComponentType<IProps> = (props: IProps) => {
       history.push(location);
    };
 
-   const facebookUrl = 'https://www.facebook.com/westay.org';
-   const instagramUrl = 'https://www.instagram.com/westay_stayhappytogether/';
+   const facebookUrl = 'https://www.facebook.com';
+   const instagramUrl = 'https://www.instagram.com';
    return (
       <Fragment>
          <div className={classes.firstItem}>
@@ -151,14 +151,13 @@ const Footer: ComponentType<IProps> = (props: IProps) => {
                         Trợ giúp
                      </h5>
                      <ul className={classes.linksListGroupList}>
-                        <p><strong>C&Ocirc;NG TY CỔ PHẦN WESTAY</strong><br /> <strong>Số điện thoại li&ecirc;n
-                                                                                       hệ:</strong> 0941 983 046<br />
+                        <p><strong>Số điện thoại li&ecirc;n
+                                                                                       hệ:</strong> 0396899593<br />
                            <strong>Lĩnh vực kinh doanh:</strong>&nbsp;S&agrave;n giao dịch TMĐT<br /> <strong>Địa chỉ
                                                                                                               t&ecirc;n
-                                                                                                              miền:</strong>&nbsp;https://westay.vn<br />
+                                                                                                              miền:</strong>&nbsp;https://vnhomestay.vn<br />
                            <strong>Loại h&igrave;nh website: </strong>S&agrave;n giao dịch TMĐT</p> <p>&nbsp;</p> <p><a
-                              href='http://online.gov.vn/HomePage/WebsiteDisplay.aspx?DocId=41005'><img alt=''
-                                 src='http://online.gov.vn/seals/dlxOBO9dxLmirYHstOPHmA==.jpgx' /></a>
+                              href='http://online.gov.vn/HomePage/WebsiteDisplay.aspx?DocId=41005'></a>
                         </p>
                      </ul>
                   </Grid>
@@ -167,10 +166,10 @@ const Footer: ComponentType<IProps> = (props: IProps) => {
                         Quy định dành cho sàn GDTMĐT
                      </h5>
                      <ul className={classes.linksListGroupList}>
-                        <Link to='/terms-and-conditions' className={classes.textTerms}>
+                        <Link to='/' className={classes.textTerms}>
                            <li>Điều khoản sử dụng</li>
                         </Link>
-                        <Link to='/privacy-policy' className={classes.textTerms}>
+                        <Link to='/' className={classes.textTerms}>
                            <li>Chính sách quyền riêng tư</li>
                         </Link>
                      </ul>
@@ -179,14 +178,10 @@ const Footer: ComponentType<IProps> = (props: IProps) => {
                         <Link style={{ textDecoration: 'none', color: 'white' }} to='https://blog.westay.vn'>Kênh thông tin</Link>
                      </h5>
                      <ul className={classes.linksListGroupList}>
-                        {/* <li onClick={() => locationRoom(65)}>Ở đâu</li>
-                        <li onClick={() => locationRoom(38)}>Chơi gì</li>
-                        <li onClick={() => locationRoom(2)}>Ăn gì</li>
-                        <li onClick={() => locationRoom(20)}>Cẩm nang du lịch</li> */}
-                        <li><a style={{ textDecoration: 'none', color: 'white' }} href='https://blog.westay.vn/o-dau'>Ở đâu</a></li>
-                        <li><a style={{ textDecoration: 'none', color: 'white' }} href='https://blog.westay.vn/choi-gi'>Chơi gì</a></li>
-                        <li><a style={{ textDecoration: 'none', color: 'white' }} href='https://blog.westay.vn/an-gi'>Ăn gì</a></li>
-                        <li><a style={{ textDecoration: 'none', color: 'white' }} href='https://blog.westay.vn/cam-nang-du-lich'>Cẩm nang du lịch</a></li>
+                        <li><a style={{ textDecoration: 'none', color: 'white' }} href='#'>Ở đâu</a></li>
+                        <li><a style={{ textDecoration: 'none', color: 'white' }} href='#'>Chơi gì</a></li>
+                        <li><a style={{ textDecoration: 'none', color: 'white' }} href='#'>Ăn gì</a></li>
+                        <li><a style={{ textDecoration: 'none', color: 'white' }} href='#'>Cẩm nang du lịch</a></li>
                      </ul>
                   </Grid>
                   <Grid item xs={12} sm={4} md={4} className={classes.linksList}>
@@ -197,19 +192,16 @@ const Footer: ComponentType<IProps> = (props: IProps) => {
                         <li style={{ marginBottom: 8, display: 'flex' }}>
                            <PhoneIcon fontSize='default' className={classes.iconPhone} />
                            <div>
-                              <a href="javascript:void(0)" style={{ textDecoration: 'none', color: 'white', display: 'block' }}>Hotline: 0916 374 057 - 0946 746 417</a>
-                              <a href="javascript:void(0)" style={{ textDecoration: 'none', color: 'white', display: 'block' }}>Dành cho Chủ nhà : 0917 041 849</a>
+                              <a href="javascript:void(0)" style={{ textDecoration: 'none', color: 'white', display: 'block' }}>Hotline: 0396899593</a>
                            </div>
-
-
                         </li>
                         <li style={{ marginBottom: 8 }}>
                            <EmailIcon fontSize='default' className={classes.iconPhone} />
-                           <a style={{ textDecoration: 'none', color: 'white' }} href="mailto:info@westay.org" target="_blank">info@westay.org</a>
+                           <a style={{ textDecoration: 'none', color: 'white' }} href="phamducnhat96bkhn@gmail.com" target="_blank">phamducnhat96bkhn@gmail.com</a>
                         </li>
                         <li style={{ marginBottom: 8 }}>
                            <PlaceIcon fontSize='default' className={classes.iconPhone} />
-                           102 Thái Thịnh, Đống Đa, Hà Nội
+                           Số 1 Đại Cồ Việt, Hai Bà Trưng, Hà Nội
                         </li>
                      </ul>
 
@@ -244,20 +236,9 @@ const Footer: ComponentType<IProps> = (props: IProps) => {
                            classes.textLeft,
                         )}
                      >
-                        © 2017 Công ty Westay giữ toàn quyền
+                        © 2019 VN-Homestay giữ toàn quyền
                      </Paper>
                   </Grid>
-                  {/* <Grid item xs={12} sm={6} className={classes.rowFooter}>
-                     <Paper
-                        elevation={0}
-                        className={classNames(
-                           classes.paper,
-                           classes.textRight,
-                        )}
-                     >
-                        Westay.org là công ty cổ phần của tập doàn VNP.
-                     </Paper>
-                  </Grid> */}
                </Grid>
             </GridContainer>
          </div>

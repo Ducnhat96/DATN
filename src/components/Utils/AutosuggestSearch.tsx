@@ -161,6 +161,7 @@ const AutosuggestSearch: ComponentType<Iprops> = (props: Iprops) => {
         <div className={classes.suggestionText}>
           {parts.map((part: { text: React.ReactNode; highlight: any }, index) => (
             <span key={index}>{part.text}</span>
+              // fontSize="default"
           ))}
         </div>
       </MenuItem>
@@ -238,7 +239,6 @@ const AutosuggestSearch: ComponentType<Iprops> = (props: Iprops) => {
             <InputAdornment position="start">
               <SearchIcon
                 className={classes.marginSearch}
-              // fontSize="default"
               />
             </InputAdornment>
           ),
