@@ -288,37 +288,17 @@ const NavTopHomePage: FunctionComponent<IProps> = (props: ILocalProps) => {
                       <ListItemIcon>
                         <PhoneIcon />
                       </ListItemIcon>
-                      Hotline 1: 0916 374 057
-                    </MenuItem>
-                    <Divider />
-                    <MenuItem
-                      name="contact-phone2"
-                      onClick={() => Hotline("tel:0946746417")}
-                    >
-                      <ListItemIcon>
-                        <PhoneIcon />
-                      </ListItemIcon>
-                      Hotline 2: 0946 746 417
-                    </MenuItem>
-                    <Divider />
-                    <MenuItem
-                      name="contact-phone3"
-                      onClick={() => Hotline("tel:0917041849")}
-                    >
-                      <ListItemIcon>
-                        <PhoneIcon />
-                      </ListItemIcon>
-                      Dành cho Chủ nhà: 0917 041 849
+                      Hotline: 0396899593
                     </MenuItem>
                     <Divider />
                     <MenuItem
                       name="contact-email"
-                      onClick={() => Hotline("mailto:info@westay.org")}
+                      onClick={() => Hotline("mailto:phamducnhat96bkhn@gmail.com")}
                     >
                       <ListItemIcon>
                         <EmailIcon />
                       </ListItemIcon>
-                      Email: info@westay.org
+                      Email: phamducnhat96bkhn@gmail.com
                     </MenuItem>
                   </MenuList>
                 </Paper>
@@ -376,7 +356,6 @@ const NavTopHomePage: FunctionComponent<IProps> = (props: ILocalProps) => {
                               </ListItemIcon>
                               Đăng xuất
                             </MenuItem>
-                            {/*<Divider />*/}
                           </MenuList>
                         </ClickAwayListener>
                       </Paper>

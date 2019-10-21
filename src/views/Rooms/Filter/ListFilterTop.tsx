@@ -19,9 +19,9 @@ interface IProps {
 const styles: any = (theme: ThemeCustom) => createStyles({
     textTab:{
     fontWeight:700,
+    color:'#248489',
     '&:hover': {
-      // color:'#5392f9',
-      color:'#ff9800',
+      color:'#248489',
     },
   },
   paperOutlined: {
@@ -50,8 +50,6 @@ const ListFilterTop: ComponentType<IProps> = (props: IProps) => {
         sort_total_review: (value === MOST_REVIEW) ? null : undefined,
         discount: (value === DISCOUNT) ? null : undefined,
       };
-
-      // console.log(instant)
 
       const newParams  = updateObject(params, instant);
       const locationTo = newRoomLocation(newParams);

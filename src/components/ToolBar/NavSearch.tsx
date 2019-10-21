@@ -72,7 +72,6 @@ const styles: any = (theme: ThemeCustom) =>
       zIndex: 10
     },
     inputSearch: {
-      // height: '30px',
       width: '85%',
       border: 'none',
       fontWeight: 300,

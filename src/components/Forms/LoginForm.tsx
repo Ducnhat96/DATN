@@ -148,6 +148,14 @@ const styles: any = (theme: ThemeCustom) => {
     },
     contentRight: {
       padding: 16
+    },
+    colorBtn: {
+      backgroundColor: "#248489",
+      color: "#ffffff",
+      "&:hover": {
+        backgroundColor: "#248489",
+        color: "#ffffff",
+      },
     }
   });
 };
@@ -214,7 +222,6 @@ const LoginForm: FunctionComponent<IProps> = props => {
                 <Typography variant="h5" className={classes.title}>
                   Đăng nhập
                 </Typography>
-                {/*Error if information incorrect*/}
                 {errors.loginIncorrect && (
                   <Paper className={classes.errorBag} elevation={1}>
                     <Grid
@@ -296,9 +303,8 @@ const LoginForm: FunctionComponent<IProps> = props => {
                   <div>
                     <Button
                       variant="contained"
-                      color="primary"
+                      className={classes.colorBtn}
                       type="submit"
-                      style={{ color: "#fff" }}
                       disabled={isSubmitting}
                       fullWidth
                     >
@@ -311,8 +317,6 @@ const LoginForm: FunctionComponent<IProps> = props => {
                   </div>
                 </form>
 
-                {/*<h5 className = {borderC['text-line-center']}>hoặc đăng nhập với</h5>*/}
-                {/* Forgot password? */}
                 <Typography className={AlignS.textCenter}>
                   <b
                     className={classes.color}

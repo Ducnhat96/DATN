@@ -88,13 +88,6 @@ interface FormikRegisterValues {
 }
 
 const FormValidationSchema = Yup.object().shape({
-  // name: Yup.string()
-  //   .required('Vui lòng nhập tên')
-  //   .min(6, 'Tối thiểu 6 ký tự')
-  //   .max(50, 'Tối da 50 ký tự'),
-  // phone: Yup.string()
-  //   .required('Vui lòng nhập số điện thoại')
-  //   .min(10, 'Số điện thoại không hợp lệ'),
   email: Yup.string()
     .required("Vui lòng nhập email")
     .email("Địa chỉ email không hợp lệ"),
@@ -142,6 +135,15 @@ const styles: any = (theme: ThemeCustom) =>
     },
     spaceTop: {
       marginTop: 10
+    },
+    colorBtn: {
+      marginTop: 10,
+      backgroundColor: "#248489",
+      color: "#ffffff",
+      "&:hover": {
+        backgroundColor: "#248489",
+        color: "#ffffff",
+      },
     },
     spinner: {
       width: "25px !important",
@@ -427,11 +429,11 @@ const RegisterForm: ComponentType<IProps> = (props: RegisterLocalProps) => {
                                     textDecoration: "none",
                                     color: "#1e88e5"
                                   }}
-                                  to="/terms-and-conditions"
+                                  to="/"
                                 >
                                   điều khoản sử dụng
                                 </Link>
-                                <span>&nbsp; của Westay</span>
+                                <span>&nbsp; của chúng tôi</span>
                               </div>
                             }
                           />
@@ -440,11 +442,10 @@ const RegisterForm: ComponentType<IProps> = (props: RegisterLocalProps) => {
                           </FormHelperText>
                         </FormControl>
                         <Button
-                          className={classes.spaceTop}
+                          className={classes.colorBtn}
                           variant="contained"
                           color="primary"
                           type="submit"
-                          style={{ color: "#fff" }}
                           disabled={isSubmitting}
                           fullWidth
                         >

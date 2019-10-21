@@ -19,10 +19,9 @@ interface IProps {
 const styles: any = (theme: ThemeCustom) => createStyles({
   textTab:{
     fontWeight:700,
-    color:'#515b62',
+    color:'#248489',
     '&:hover': {
-      // color:'#5392f9',
-      color:'#ff9800',
+      color:'#248489',
     },
   },
   paperOutlined: {
