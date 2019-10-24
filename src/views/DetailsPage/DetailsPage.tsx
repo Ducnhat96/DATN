@@ -194,12 +194,12 @@ const DetailsPage: ComponentType<IProps> = (props: LocalProps) => {
         <meta property="og:image" content={room ? `https://s3-ap-southeast-1.amazonaws.com/westay-img/lg/${
           room!.media.data[0].image
           }` : 'asdf'} />
-        <meta property="og:title" content={room ? room!.details.data[0].name : 'Westay - Homestay cho người Việt'} />
+        <meta property="og:title" content={room ? room!.details.data[0].name : 'VN-Homestay - Homestay cho người Việt'} />
         <meta property="og:type" content="article" />
         <meta property="og:locale" content="vi_VN" />
         <meta property="og:url" content={`https://westay.vn/room/${room ? room!.id : ''}`} />
-        <meta property="og:site_name" content="Westay - Stay happy together" />
-        <meta property="og:description" content={`Westay - Đặt phòng Homestay giá rẻ, tiện lợi, nhanh chóng`} />
+        <meta property="og:site_name" content="VN-Homestay - Stay happy together" />
+        <meta property="og:description" content={`VN-Homestay - Đặt phòng Homestay giá rẻ, tiện lợi, nhanh chóng`} />
       </Helmet> */}
       {/* <div> */}
       <NavTop />

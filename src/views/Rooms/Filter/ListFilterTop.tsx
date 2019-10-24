@@ -74,6 +74,7 @@ const ListFilterTop: ComponentType<IProps> = (props: IProps) => {
           onChange = {(e, value) => tabFocusChange(value)}
         >
           <Tab label = 'Phù hợp nhất'  className={classes.textTab} />
+          <Tab label = 'Đặt phòng nhanh' className={classes.textTab} />
           <Tab label = 'Giá thấp nhất'  className={classes.textTab} />
           <Tab label = 'Nhiều đánh giá'  className={classes.textTab} />
           <Tab label = 'Khuyến mãi'  className={classes.textTab} />

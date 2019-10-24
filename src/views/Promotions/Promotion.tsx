@@ -118,7 +118,7 @@ const Promotion: ComponentType<IProps> = (props: IProps) => {
           </Typography>
           <Hidden xsDown>
             <Typography component='p'>
-              Cập nhật những ưu đãi mới nhất từ Westay.vn và đặt phòng với giá cực rẻ
+              Cập nhật những ưu đãi mới nhất từ VN-Homestay.vn và đặt phòng với giá cực rẻ
             </Typography>
           </Hidden>
         </div>

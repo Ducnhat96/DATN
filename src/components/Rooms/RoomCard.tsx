@@ -404,7 +404,7 @@ const RoomCard: ComponentType<IProps> = (props: IProps) => {
                         o.image
                         }`}
                       className={classes.imgSize}
-                      alt={`Westay - Homestay cho người việt`}
+                      alt={`VN-Homestay - Homestay cho người việt`}
                     />
                   ))
                 ) : (

@@ -6,7 +6,7 @@ const useFocusTitle = (init: string, lostFocusTitle: string, factor?: any) => {
 
   useEffect(() => {
     if (windowExist) {
-      setTitle(`${init} - Westay.vn`);
+      setTitle(`${init}`);
       document.title = title;
     }
   }, [factor, title]);

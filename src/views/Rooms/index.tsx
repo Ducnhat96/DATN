@@ -49,8 +49,7 @@ const styles: any = (theme: ThemeCustom) => createStyles({
     maxWidth: '1138px',
   },
   BgGradient: {
-    // backgroundImage: 'linear-gradient(-225deg, #FFFEFF 0%, #D7FFFE 100%)',
-    backgroundColor: '#F5F6F7',
+    backgroundColor: '#FFFFFF',
   },
 });
 

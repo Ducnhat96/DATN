@@ -76,7 +76,7 @@ const CardDetail: ComponentType<IProps> = props => {
                 style={{ width: "100%", minHeight: "210px" }}
                 src={url}
                 className={classes.imageCity}
-                alt={`Westay - Homestay cho người việt`}
+                alt={`VN-Homestay - Homestay cho người việt`}
               />
             </LazyLoad>
             <GridListTileBar

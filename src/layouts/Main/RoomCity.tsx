@@ -89,7 +89,7 @@ const RoomCity: ComponentType<IProps> = (props: IProps) => {
             <GridList className={classes.gridList}>
                <GridListTile className={classes.gridListTile} classes={{ tile: classes.borRadius }}>
                   <LazyLoad height={0} offset={windowExist ? window.innerHeight : 0}>
-                     <img style={{ width: '100%', minHeight: '210px' }} src={room.image} className={classes.imageCity} alt={`Westay - Homestay cho người việt`} />
+                     <img style={{ width: '100%', minHeight: '210px' }} src={room.image} className={classes.imageCity} alt={`VN-Homestay - Homestay cho người việt`} />
                   </LazyLoad>
                   <GridListTileBar
                      className={classes.gridListTileBar}

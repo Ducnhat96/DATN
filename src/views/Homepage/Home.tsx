@@ -78,7 +78,7 @@ const Home: FunctionComponent<IProps | any> = props => {
 
   useFocusTitle(
     typeof window !== "undefined" ? document.title : "",
-    "WeStay - Homestay cho người Việt"
+    "VN-Homestay - Homestay cho người Việt"
   );
 
   return (

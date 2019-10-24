@@ -144,7 +144,7 @@ const RoomHot: ComponentType<IProps> = (props: IProps) => {
       <Card className={classes.card} elevation={0}>
         {/* <CardActionArea> */}
         {/* <LazyLoad height={200} offset={windowExist ? window.innerHeight : 0}>
-          <img onClick={cardEvent} src={`https://s3-ap-southeast-1.amazonaws.com/westay-img/sm/${room.media.data[0].image}`} className={classes.media} alt={`Westay - Homestay cho người việt`} />
+          <img onClick={cardEvent} src={`https://s3-ap-southeast-1.amazonaws.com/westay-img/sm/${room.media.data[0].image}`} className={classes.media} alt={`VN-Homestay - Homestay cho người việt`} />
         </LazyLoad> */}
         <CardContent className={classes.cardContent}>
           <Typography component='p' className={classes.nameCity}>

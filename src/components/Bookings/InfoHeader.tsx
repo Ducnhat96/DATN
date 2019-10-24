@@ -50,7 +50,7 @@ const InfoHeader: ComponentType<IProps> = (props: IProps) => {
       </Grid> */}
       <Grid item xs={12}>
         <img src={`https://s3-ap-southeast-1.amazonaws.com/westay-img/lg/${room!.media.data[0].image}`}
-          className={classes.imgSize} alt={`Westay - Homestay cho người việt`} />
+          className={classes.imgSize} alt={`VN-Homestay - Homestay cho người việt`} />
       </Grid>
       <Grid item xs={12}>
         <Link style={{ textDecoration: 'none' }} to={`/room/${room!.id}`}><Typography variant='subtitle2'>{room!.details.data[0].name}</Typography></Link>

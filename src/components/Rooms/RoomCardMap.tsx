@@ -220,7 +220,7 @@ const RoomCardMap: ComponentType<IProps> = (props: IProps) => {
             <Slider {...settings}>
               {roomMemo.media.data.length > 0 ? _.map(roomMemo.media.data, o => (
                 <img key={o.image} src={`https://s3-ap-southeast-1.amazonaws.com/westay-img/lg/${o.image}`}
-                  className={classes.imgSize} alt={`Westay - Homestay cho người việt`} />
+                  className={classes.imgSize} alt={`VN-Homestay - Homestay cho người việt`} />
               )) : (
                   <img src={fakeIMG} className={classes.imgSize} />
                 )}

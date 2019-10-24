@@ -128,13 +128,13 @@ const RoomListing: ComponentType<IProps> = (props: LocalProps) => {
     <Fragment>
       <ScrollTopButton />
       <Maps />
-      <Hidden smDown>
+      {/* <Hidden smDown>
         <Grid container spacing={0} className={classes.root}>
           <Grid item sm={6}>
             <TabFilter />
           </Grid>
         </Grid>
-      </Hidden>
+      </Hidden> */}
       <Grid container spacing={16} className={classes.root}>
         <Hidden smDown>
           <Grid item sm={3}>

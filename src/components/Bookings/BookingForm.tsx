@@ -510,7 +510,7 @@ const BookingForm: ComponentType<IProps> = (props: ILocalProps) => {
               <Typography variant='body2' style={{ padding: '15px' }}>
                 Khi gửi yêu cầu đặt chỗ này, quý khách xác nhận rằng quý khách đã đọc và đồng ý với các
                 <Link to='/terms-and-conditions'> Điều khoản và điều kiện </Link>
-                và Chính sách quyền riêng tư của Westay.vn.
+                và Chính sách quyền riêng tư của VN-Homestay.vn.
               </Typography>
             </Grid>
           </Grid>

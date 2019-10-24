@@ -55,6 +55,7 @@ const ListRoomNew: ComponentType<IProps> = (props: IProps) => {
   );
 
   const { roomsNew } = state;
+  console.log("roomsNew",roomsNew)
 
   const settingRoomHot: Settings = {
     dots: false,
