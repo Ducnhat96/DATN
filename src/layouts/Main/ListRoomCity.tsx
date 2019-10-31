@@ -119,14 +119,6 @@ const ListRoomCity: ComponentType<IProps> = (props: IProps) => {
     <Fragment>
       <h2 className={classes.titleRoom}>Điểm đến nổi bật</h2>
       <Grid container className={classes.listRoomCity} spacing={8}>
-        {/*<Slider {...settingRoomCity}>*/}
-        {/*{_.map(roomsCity, (room) => (*/}
-        {/*<Grid item xs={12} sm={6} md={3} key={room.city_id}>*/}
-        {/*<RoomCity room = {room} />*/}
-        {/*</Grid>*/}
-        {/*))}*/}
-        {/*</Slider>*/}
-
         {width === "lg" ? (
           roomsCity.map((room, index) => {
             return (
