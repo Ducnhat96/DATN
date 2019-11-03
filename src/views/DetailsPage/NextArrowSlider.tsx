@@ -14,40 +14,44 @@ interface IProps extends RouteChildrenProps {
 }
 
 const styles: any = (theme: ThemeCustom) => createStyles({
-  x:{
+  arrow:{
     fontSize: 0,
     lineHeight: 0,
     position: 'absolute',
-    top: '26%',
+    top: '50%',
     display: 'block',
-    width: 20,
-    height: 20,
-    minWidth:20,
+    width: 40,
+    height: 40,
+    minWidth: 40,
     padding: 0,
     WebkitTransform: 'translate(0, -50%)',
     transform: 'translate(0, -50%)',
     cursor:'pointer',
     color: '#273740',
-    border: 'none',
+    border: '1px solid lightgrey',
+    borderRadius: '50%',
+    backgroundColor: '#ffffff',
     outline: 'none',
     background: 'transparent',
     right:'-2.5%',
+    zIndex: 100,
     [theme!.breakpoints!.down!('md')]: {
-      right:'-3%',
+      right:'-5%',
     },
     '&:hover':{
       background: 'transparent',
+      cursor:'pointer',
     }
   }
 });
 
 const NextArrowSlider: ComponentType<IProps> = (props: IProps) => {
-  const { classes ,onClick} = props;
+  const { classes , onClick} = props;
 
   return (
     <Fragment>
       <Button
-        className={classes.x}
+        className={classes.arrow}
         onClick={props.onClick}
         disableRipple={true}
       >

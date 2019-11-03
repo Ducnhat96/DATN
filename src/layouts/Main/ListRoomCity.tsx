@@ -1,14 +1,11 @@
 import { ThemeCustom } from "@/components/Theme/Theme";
 import createStyles from "@material-ui/core/styles/createStyles";
-import withStyles, { WithStyles } from "@material-ui/core/styles/withStyles";
+import withStyles from "@material-ui/core/styles/withStyles";
 import React, {
   ComponentType,
   Fragment,
   useContext,
   useEffect,
-  useState,
-  lazy,
-  Suspense
 } from "react";
 import { compose } from "recompose";
 
@@ -45,7 +42,6 @@ const styles: any = (theme: ThemeCustom) =>
       color: "rgb(72, 72, 72)"
     }
   });
-// const RoomCity = lazy(() => import('@/layouts/Main/RoomCity'));
 
 // @ts-ignore
 const ListRoomCity: ComponentType<IProps> = (props: IProps) => {
@@ -131,10 +127,7 @@ const ListRoomCity: ComponentType<IProps> = (props: IProps) => {
             <Slider {...settingRoomCity}>
               {roomsCity.map((room, index) => (
                 <Fragment key={room.city_id}>
-                  {/* <RoomCity room = {room} /> */}
-                  {/* <Suspense fallback={<div>Loading...</div>}> */}
                   <RoomCity room={room} />
-                  {/* </Suspense> */}
                 </Fragment>
               ))}
             </Slider>

@@ -1,25 +1,18 @@
 import { ThemeCustom } from '@/components/Theme/Theme';
 import createStyles from '@material-ui/core/styles/createStyles';
-import withStyles, { WithStyles } from '@material-ui/core/styles/withStyles';
+import withStyles from '@material-ui/core/styles/withStyles';
 import React, { ComponentType, Fragment, useContext } from 'react';
 import { compose } from 'recompose';
-import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import imgRoomDemo from '@/assets/room_demo.jpeg';
-import imgRoomDemo2 from '@/assets/room_demo2.jpeg';
-import imgRoomDemo3 from '@/assets/room_demo3.jpeg';
-
 import GridList from '@material-ui/core/GridList';
-import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
+import GridListTile from '@material-ui/core/GridListTile';
+import { RoomUrlParams } from '@/types/Requests/Rooms/RoomRequests';
 import { NumberRoomCity } from '@/types/Requests/Rooms/RoomResponses';
 import { formatMoney } from '@/utils/mixins';
-import { Formik, FormikActions } from 'formik';
-import { RoomUrlParams } from '@/types/Requests/Rooms/RoomRequests';
-import { newRoomLocation } from '@/store/context/Room/RoomIndexContext';
 import { IGlobalContext, GlobalContext } from '@/store/context/GlobalContext';
-
+import { newRoomLocation } from '@/store/context/Room/RoomIndexContext';
 import LazyLoad from 'react-lazyload';
 import { windowExist } from '@/index';
 
@@ -34,13 +27,13 @@ const styles: any = (theme: ThemeCustom) => createStyles({
       paddingTop: '0.2em',
       backgroundColor: theme!.palette!.background!.paper!,
    },
-   gridList: {
-      width: '100%',
-      height: 'auto',
-   },
    gridListTile: {
       borderRadius: '8px',
       width: '100% !important',
+   },
+   gridList: {
+      width: '100%',
+      height: 'auto',
    },
    gridListTileBar: {
       textAlign: 'center',
@@ -48,9 +41,6 @@ const styles: any = (theme: ThemeCustom) => createStyles({
    },
    titleListTileBar: {
       fontSize: '1.1em',
-   },
-   subtitleListTileBar: {
-      fontSize: '0.8em',
    },
    imageCity: {
       WebkitTransform: 'scale(1) ',
@@ -62,6 +52,9 @@ const styles: any = (theme: ThemeCustom) => createStyles({
          WebkitTransform: 'scale(1.2) ',
          transform: 'scale(1.2) ',
       },
+   },
+   subtitleListTileBar: {
+      fontSize: '0.8em',
    },
    borRadius: {
       borderRadius: 8,
@@ -88,6 +81,7 @@ const RoomCity: ComponentType<IProps> = (props: IProps) => {
          <div className={classes.root} onClick={() => locationRoom(room)}>
             <GridList className={classes.gridList}>
                <GridListTile className={classes.gridListTile} classes={{ tile: classes.borRadius }}>
+                  {window.innerHeight}
                   <LazyLoad height={0} offset={windowExist ? window.innerHeight : 0}>
                      <img style={{ width: '100%', minHeight: '210px' }} src={room.image} className={classes.imageCity} alt={`VN-Homestay - Homestay cho người việt`} />
                   </LazyLoad>

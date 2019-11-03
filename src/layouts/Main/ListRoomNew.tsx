@@ -1,14 +1,11 @@
 import { ThemeCustom } from "@/components/Theme/Theme";
 import createStyles from "@material-ui/core/styles/createStyles";
-import withStyles, { WithStyles } from "@material-ui/core/styles/withStyles";
+import withStyles from "@material-ui/core/styles/withStyles";
 import React, {
   ComponentType,
   Fragment,
   useContext,
   useEffect,
-  useState,
-  lazy,
-  Suspense
 } from "react";
 import { compose } from "recompose";
 
@@ -27,9 +24,6 @@ import {
   getRoomNew
 } from "@/store/context/Room/RoomHomepageContext";
 import SimpleLoader from "@/components/Loading/SimpleLoader";
-
-import LazyLoad from "react-lazyload";
-import { windowExist } from "@/index";
 interface IProps {
   classes?: any;
 }
@@ -44,8 +38,6 @@ const styles: any = (theme: ThemeCustom) =>
       color: "rgb(72, 72, 72)"
     }
   });
-// const RoomHot = lazy(() => import('@/layouts/Main/RoomHot'));
-
 // @ts-ignore
 const ListRoomNew: ComponentType<IProps> = (props: IProps) => {
   const { classes } = props;
@@ -55,7 +47,7 @@ const ListRoomNew: ComponentType<IProps> = (props: IProps) => {
   );
 
   const { roomsNew } = state;
-  console.log("roomsNew",roomsNew)
+  console.log("roomsNew", roomsNew);
 
   const settingRoomHot: Settings = {
     dots: false,
@@ -106,7 +98,6 @@ const ListRoomNew: ComponentType<IProps> = (props: IProps) => {
     getRoomNew()
       .then(data => {
         const roomData = data.data;
-        // console.log(data.data)
         dispatch({
           type: "setRoomNew",
           rooms: roomData
@@ -125,17 +116,13 @@ const ListRoomNew: ComponentType<IProps> = (props: IProps) => {
           <Slider {...settingRoomHot}>
             {_.map(roomsNew, (room, index) => (
               <div key={index}>
-                {/* <LazyLoad height={200} offset={windowExist ? window.innerHeight : 0}> */}
-                {/* <Suspense fallback={<SimpleLoader />}> */}
                 <RoomHot room={room} />
-                {/* </Suspense> */}
-                {/* </LazyLoad> */}
               </div>
             ))}
           </Slider>
         ) : (
-            <SimpleLoader />
-          )}
+          <SimpleLoader />
+        )}
       </Grid>
     </Fragment>
   );
