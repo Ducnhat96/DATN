@@ -109,7 +109,6 @@ const styles: any = (theme: ThemeCustom) =>
 // @ts-ignore
 const RoomHot: ComponentType<IProps> = (props: IProps) => {
   const { classes, room } = props;
-  console.log('room',room)
   const { history } = useContext<IGlobalContext>(GlobalContext);
 
   const cardEvent = () => {
@@ -161,9 +160,6 @@ const RoomHot: ComponentType<IProps> = (props: IProps) => {
                 starEmptyColor={"#F5A623"}
               />
             </span>
-            {/*<p className={classes.totalReview}>
-					   		{room.total_review}
-					   	</p>*/}
           </div>
           {room.rent_type != 1 ? (
             room.price_day > 100000 ? (

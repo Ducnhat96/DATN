@@ -96,7 +96,6 @@ const SearchProperty: ComponentType<IProps> = (props: IProps) => {
       <Grid item xs={12}>
         <AsyncSelect
           name='search-property'
-          // components = {{Option: MenuItemSelectWithIcon}}
           isClearable
           cacheOptions
           defaultOptions

@@ -394,7 +394,7 @@ const RoomCard: ComponentType<IProps> = (props: IProps) => {
                           .sort((a, b) => a.id - b.id)
                           .map((o, i) => (
                             <Tooltip
-                              title={o.details.data[0].name}
+                              title={o.details.data[0] ? o.details.data[0].name : ''}
                               placement="bottom"
                               classes={{
                                 tooltip: classes.tooltip

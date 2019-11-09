@@ -143,7 +143,7 @@ const AutosuggestSearch: ComponentType<Iprops> = (props: Iprops) => {
   ) => {
     const matches = match(suggestion.name, query);
     const parts = parse(suggestion.name, matches);
-    // console.log(parts, matches);
+    console.log(parts, matches);
     return (
       <MenuItem
         selected={isHighlighted}
@@ -161,7 +161,6 @@ const AutosuggestSearch: ComponentType<Iprops> = (props: Iprops) => {
         <div className={classes.suggestionText}>
           {parts.map((part: { text: React.ReactNode; highlight: any }, index) => (
             <span key={index}>{part.text}</span>
-              // fontSize="default"
           ))}
         </div>
       </MenuItem>

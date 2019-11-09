@@ -7,7 +7,6 @@ import InputBase from "@material-ui/core/InputBase/InputBase";
 import InputLabel from "@material-ui/core/InputLabel/InputLabel";
 import createStyles from "@material-ui/core/styles/createStyles";
 import withStyles from "@material-ui/core/styles/withStyles";
-import Typography from "@material-ui/core/Typography/Typography";
 import React, {
   useState,
   ComponentType,

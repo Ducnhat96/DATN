@@ -158,13 +158,13 @@ const FilterLeftBar: ComponentType<IProps> = (props: IProps) => {
           <SearchProperty />
         </Fragment>
       ) : (
-          <Fragment>
-            <Typography variant="subtitle2" className={classes.filterTitle}>
-              Tìm kiếm phòng
+        <Fragment>
+          <Typography variant="subtitle2" className={classes.filterTitle}>
+            Tìm kiếm phòng
           </Typography>
-            <SimpleLoader />
-          </Fragment>
-        )}
+          <SimpleLoader />
+        </Fragment>
+      )}
       <Divider className={classes.divider} />
       {/* Price Range */}
       {roomTypes.length > 0 ? (
@@ -177,13 +177,13 @@ const FilterLeftBar: ComponentType<IProps> = (props: IProps) => {
           </Grid>
         </Fragment>
       ) : (
-          <Fragment>
-            <Typography variant="subtitle2" className={classes.filterTitle}>
-              Khoảng giá
+        <Fragment>
+          <Typography variant="subtitle2" className={classes.filterTitle}>
+            Khoảng giá
           </Typography>
-            <SimpleLoader />
-          </Fragment>
-        )}
+          <SimpleLoader />
+        </Fragment>
+      )}
       <Divider className={classes.divider} />
       {/* Room Type */}
       <Typography variant="subtitle2">Loại phòng</Typography>
@@ -221,8 +221,8 @@ const FilterLeftBar: ComponentType<IProps> = (props: IProps) => {
           </p>
         </Fragment>
       ) : (
-          <SimpleLoader />
-        )}
+        <SimpleLoader />
+      )}
       <Divider className={classes.divider} />
       {/* Chất lượng */}
 
@@ -234,13 +234,13 @@ const FilterLeftBar: ComponentType<IProps> = (props: IProps) => {
           <StarsRatingRoomIndex />
         </Grid>
       ) : (
-          <Fragment>
-            <Typography variant="subtitle2" className={classes.filterTitle}>
-              Đánh giá
+        <Fragment>
+          <Typography variant="subtitle2" className={classes.filterTitle}>
+            Đánh giá
           </Typography>
-            <SimpleLoader />
-          </Fragment>
-        )}
+          <SimpleLoader />
+        </Fragment>
+      )}
       <Divider className={classes.divider} />
       {/* Comforts Lists */}
       <Typography variant="subtitle2" className={classes.filterTitle}>
@@ -265,9 +265,9 @@ const FilterLeftBar: ComponentType<IProps> = (props: IProps) => {
                     />
                   }
                   label={
-                    <p className={classes.textCheckbox}>{`${o.name_comfort} (${
-                      o.total_rooms
-                      })`}</p>
+                    <p
+                      className={classes.textCheckbox}
+                    >{`${o.name_comfort} (${o.total_rooms})`}</p>
                   }
                 />
               </li>
@@ -283,8 +283,8 @@ const FilterLeftBar: ComponentType<IProps> = (props: IProps) => {
           </p>
         </Fragment>
       ) : (
-          <SimpleLoader />
-        )}
+        <SimpleLoader />
+      )}
     </Fragment>
   );
 };
