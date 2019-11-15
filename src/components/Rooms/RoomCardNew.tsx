@@ -28,21 +28,16 @@ import "slick-carousel/slick/slick-theme.css";
 import "@/styles/PageProfile/StylePageProfile.scss";
 import "@/styles/CustomizeSlick.scss";
 import Tooltip from "@material-ui/core/Tooltip/Tooltip";
-import Button from "@material-ui/core/Button/Button";
 import { RoomIndexRes } from "@/types/Requests/Rooms/RoomResponses";
 import { ThemeStyle } from "@material-ui/core/styles/createTypography";
 import Hidden from "@material-ui/core/Hidden/Hidden";
 import { GlobalContext, IGlobalContext } from "@/store/context/GlobalContext";
 import LazyLoad from "react-lazyload";
-import FavoriteAnimation from "@/components/IntroHomestay/FavoriteAnimation";
-
 import { windowExist } from "@/index";
 
 import StarIcon from "@material-ui/icons/StarRounded";
 import QuickBookIcon from "@material-ui/icons/OfflineBoltRounded";
 import Link from "@material-ui/core/Link";
-import PrevArrowSlider from "@/views/DetailsPage/PrevArrowSlider";
-import NextArrowSlider from "@/views/DetailsPage/NextArrowSlider";
 
 const styles: any = (theme: ThemeCustom) =>
   createStyles({
@@ -448,9 +443,6 @@ const RoomCard: ComponentType<IProps> = (props: IProps) => {
                       <span className={classes.totalReview}>{`(${formatMoney(
                         room.total_review
                       )})`}</span>
-                      {/* <span className={classes.totalReviewText}>{`${
-                          room.avg_rating_txt
-                          }`}</span> */}
                     </Grid>
                   ) : (
                       ""
@@ -470,7 +462,7 @@ const RoomCard: ComponentType<IProps> = (props: IProps) => {
                           {room.is_discount === 1 ? (
                             <span className={classes.discountPriceText}>
                               {`${formatMoney(room.price_day, 0)}`}
-                              ₫/ngày
+                              ₫/ ngày
                             </span>
                           ) : (
                               ""
@@ -480,7 +472,7 @@ const RoomCard: ComponentType<IProps> = (props: IProps) => {
                             variant={typoVariant}
                           >
                             {`${formatMoney(room.is_discount === 1 ? room.price_day_discount : room.price_day, 0)}`}
-                            ₫/ngày
+                            ₫/ ngày
                           </Typography>
                         </Grid>
                       ) : (
@@ -492,7 +484,7 @@ const RoomCard: ComponentType<IProps> = (props: IProps) => {
                           {room.is_discount === 1 ? (
                             <span className={classes.discountPriceText}>
                               {`${formatMoney(room.price_hour, 0)}`}
-                              ₫/4 giờ
+                              ₫/ 4 giờ
                             </span>
                           ) : (
                               ""
@@ -502,7 +494,7 @@ const RoomCard: ComponentType<IProps> = (props: IProps) => {
                             variant={typoVariant}
                           >
                             {`${formatMoney(room.is_discount === 1 ? room.price_hour_discount : room.price_hour, 0)}`}
-                            ₫/4 giờ
+                            ₫/ 4 giờ
                           </Typography>
                         </Grid>
                       ) : (
