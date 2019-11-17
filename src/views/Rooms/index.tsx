@@ -31,6 +31,8 @@ import _ from 'lodash';
 import Banner from '@/assets/banner.jpg';
 import Grid from '@material-ui/core/Grid/Grid';
 import '@/styles/Custom/maxWidthXl.scss';
+import { makeStyles } from '@material-ui/styles';
+import { Theme } from '@material-ui/core';
 
 interface IProps {
   classes?: any;
@@ -51,10 +53,12 @@ const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({
   BgGradient: {
     backgroundColor: '#FFFFFF',
   },
-});
+})
+);
 
 const RoomIndex: ComponentType<IProps> = (props: IProps) => {
-  const {roomStateInit, mapStateInit, classes} = props;
+  const classes = useStyles(props);
+  const {roomStateInit, mapStateInit} = props;
 
   const [state, dispatch] = useReducer<RoomIndexState, RoomIndexAction>(
     RoomIndexReducer,
@@ -103,6 +107,4 @@ const RoomIndex: ComponentType<IProps> = (props: IProps) => {
   );
 };
 
-export default compose<IProps, any>(
-  withStyles(styles),
-)(RoomIndex);
+export default RoomIndex;

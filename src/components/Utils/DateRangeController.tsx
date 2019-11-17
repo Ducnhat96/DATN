@@ -17,6 +17,8 @@ import Button from "@material-ui/core/Button/Button";
 import { RoomUrlParams } from '@/types/Requests/Rooms/RoomRequests';
 import { newRoomLocation } from '@/store/context/Room/RoomIndexContext';
 import { GlobalContext, IGlobalContext } from '@/store/context/GlobalContext';
+import { makeStyles } from '@material-ui/styles';
+import { Theme } from '@material-ui/core';
 
 
 interface IProps {
@@ -38,10 +40,12 @@ const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
       fontSize: '16px',
       padding: '2px 11px'
     }
-  });
+  })
+);
 
 const DateRangeController: ComponentType<IProps> = (props: IProps) => {
-  const { filter, updateDate, classes } = props;
+  const classes = useStyles(props);
+  const { filter, updateDate} = props;
 
   const [focusedInput, setFocusedInput] = useState<FocusedInputShape>('startDate');
   const { history } = useContext<IGlobalContext>(GlobalContext);
@@ -136,5 +140,4 @@ const mapDispatchToProps = (dispatch: Dispatch<SearchFilterAction>) => {
 
 export default compose<IProps, any>(
   connect(mapStateToProps, mapDispatchToProps),
-  withStyles(styles)
 )(DateRangeController);

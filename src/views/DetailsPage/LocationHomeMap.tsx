@@ -14,12 +14,7 @@ interface IProps {
   zoom?: number,
 }
 
-const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({
-
-});
-
 const LocationHomeMap: ComponentType<IProps> = (props: IProps) => {
-  const {classes} = props;
   const {state}   = useContext<IRoomDetailsContext>(RoomDetailsContext);
 
   const {room} = state;
@@ -33,12 +28,10 @@ const LocationHomeMap: ComponentType<IProps> = (props: IProps) => {
         defaultCenter={props.center}
         defaultZoom={props.zoom}
       >
-        <MarkerMap lat={room ? room!.latitude : 0} lng={room ? room!.longitude : 0} text={'Home'}/>
+        <MarkerMap lat={room ? parseFloat(room.latitude) : 0} lng={room ? parseFloat(room.longitude) : 0} text={'Home'}/>
       </GoogleMapReact>
     </Fragment>
   );
 };
 
-export default compose<IProps, any>(
-  withStyles(styles),
-)(LocationHomeMap);
+export default LocationHomeMap;

@@ -1,4 +1,3 @@
-import { ThemeOptions } from '@material-ui/core/es/styles/createMuiTheme';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { PaletteOptions } from '@material-ui/core/styles/createPalette';
 import { FontStyleOptions, TypographyOptions } from '@material-ui/core/styles/createTypography';
@@ -6,6 +5,7 @@ import Blue from '@material-ui/core/colors/blue';
 import Red from '@material-ui/core/colors/red';
 import Orange from '@material-ui/core/colors/orange';
 import { BreakpointsOptions } from '@material-ui/core/styles/createBreakpoints';
+import { ThemeOptions } from '@material-ui/core/styles/createMuiTheme';
 
 interface PaletteExtra extends PaletteOptions {
   button: any;
@@ -24,9 +24,7 @@ const options: ThemeCustom = {
     },
   },
   typography: {
-    useNextVariants: true,
     fontFamily: 'Nunito Sans, sans-serif',
-
   },
   palette: {
     primary: {

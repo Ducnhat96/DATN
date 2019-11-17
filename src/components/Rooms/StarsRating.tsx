@@ -24,6 +24,8 @@ import qs from "query-string";
 import Button from "@material-ui/core/Button/Button";
 import { updateObject } from "@/store/utility";
 import { arrayFilterCheckBoxEvent } from "@/utils/mixins";
+import { makeStyles } from "@material-ui/styles";
+import { Theme } from "@material-ui/core";
 
 interface IProps {
   classes?: any;
@@ -44,10 +46,12 @@ const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
       fontSize: "16px",
       padding: "2px 11px"
     }
-  });
+  })
+);
 
 const StarsRatingRoomIndex: ComponentType<IProps> = (props: IProps) => {
-  const { classes, hasApplyButton } = props;
+  const classes = useStyles(props);
+  const { hasApplyButton } = props;
   const { state, dispatch } = useContext<IRoomIndexContext>(RoomIndexContext);
   const { location, history } = useContext<IGlobalContext>(GlobalContext);
   const [mainRatingList, setMainRatingList] = useState<Array<number>>([]);
@@ -77,13 +81,13 @@ const StarsRatingRoomIndex: ComponentType<IProps> = (props: IProps) => {
       {_.map(rateList, o => {
         return (
           <Grid key={o.id} item sm={12}>
-            <RatingBar
+            {/* <RatingBar
               mainRatingList={mainRatingList}
               setMainRatingList={setMainRatingList}
               id={o.id}
               totalRate={o.value}
               hasApplyButton={hasApplyButton}
-            />
+            /> */}
           </Grid>
         );
       })}
@@ -98,4 +102,4 @@ const StarsRatingRoomIndex: ComponentType<IProps> = (props: IProps) => {
   );
 };
 
-export default compose<IProps, any>(withStyles(styles))(StarsRatingRoomIndex);
+export default StarsRatingRoomIndex;

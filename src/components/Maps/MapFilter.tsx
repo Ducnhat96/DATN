@@ -1,12 +1,9 @@
 import { ThemeCustom } from "@/components/Theme/Theme";
 import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles, Theme } from "@material-ui/core/styles";
 import React, {
   ComponentType,
-  Fragment,
   useContext,
-  useEffect,
-  useState
 } from "react";
 import { compose } from "recompose";
 import StarsRating from "@/components/Rooms/StarsRating";
@@ -22,6 +19,7 @@ import moment, { Moment } from 'moment';
 import { connect } from 'react-redux';
 import { ReducersType } from '@/store/reducers';
 import { IRoomIndexContext, RoomIndexContext } from "@/store/context/Room/RoomIndexContext";
+import { makeStyles } from "@material-ui/styles";
 
 
 interface IProps {
@@ -49,10 +47,12 @@ const useStyles = makeStyles<Theme, IProps>((theme: Theme) => ({
     width: '300px'
   }
 
-});
+})
+);
 
 const MapFilter: ComponentType<IProps> = (props: IProps) => {
-  const { classes, filter } = props;
+  const classes = useStyles(props);
+  const { filter } = props;
   const { state } = useContext<IRoomIndexContext>(RoomIndexContext);
   const { price } = state;
 
@@ -105,5 +105,4 @@ const mapStateToProps = (state: ReducersType) => {
 
 export default compose<IProps, any>(
   connect(mapStateToProps),
-  withStyles(styles)
 )(MapFilter);

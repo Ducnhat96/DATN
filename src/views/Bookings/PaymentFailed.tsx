@@ -8,6 +8,8 @@ import Footer from '@/layouts/Main/Footer';
 import GridContainer from '@/layouts/Grid/Container';
 import Grid from '@material-ui/core/Grid';
 import {Link} from 'react-router-dom';
+import { Theme } from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
 
 interface IProps {
   classes?: any
@@ -22,7 +24,8 @@ const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({
   textContent:{
     width:'100%',
   }
-});
+})
+);
 
 // @ts-ignore
 const PaymentFailed: ComponentType<IProps> = (props: IProps) => {
@@ -47,6 +50,4 @@ const PaymentFailed: ComponentType<IProps> = (props: IProps) => {
   );
 };
 
-export default compose<IProps, any>(
-  withStyles(styles),
-)(PaymentFailed);
+export default PaymentFailed;

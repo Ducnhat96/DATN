@@ -173,16 +173,16 @@ const MenuProfile: ComponentType<IMenuProfile> = (props: IMenuProfile) => {
     setValue(value);
   };
 
-  const VerticalTabs = withStyles(theme => ({
+  const VerticalTabs = withStyles(() => createStyles({
     flexContainer: {
-      flexDirection: "column"
+      flexDirection: 'column'
     },
     indicator: {
       display: "none"
     }
-  }))(Tabs);
-
-  const MyTab = withStyles(theme => ({
+  }))(Tabs);  
+  
+  const MyTab = withStyles((theme: Theme) => createStyles({
     selected: {
       color: "#ff9800",
       borderRight: "1px solid #ff9800",

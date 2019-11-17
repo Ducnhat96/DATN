@@ -14,12 +14,7 @@ interface IProps {
   lng:number,
 }
 
-const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({
-
-});
-
 const MarkerMap: ComponentType<IProps> = (props: IProps) => {
-  const {classes} = props;
 
   return (
     <Fragment>
@@ -39,6 +34,4 @@ const MarkerMap: ComponentType<IProps> = (props: IProps) => {
   );
 };
 
-export default compose<IProps, any>(
-  withStyles(styles),
-)(MarkerMap);
+export default MarkerMap;

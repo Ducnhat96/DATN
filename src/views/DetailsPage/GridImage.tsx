@@ -1,5 +1,5 @@
 import { ThemeCustom } from "@/components/Theme/Theme";
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles, Theme } from "@material-ui/core/styles";
 import createStyles from "@material-ui/core/styles/createStyles";
 import Hidden from "@material-ui/core/Hidden";
 import React, {
@@ -27,6 +27,7 @@ import Icon from "@material-ui/core/Icon";
 import Paper from "@material-ui/core/Paper";
 import { IGlobalContext, GlobalContext } from '@/store/context/GlobalContext';
 import { Link } from 'react-router-dom';
+import { makeStyles } from "@material-ui/styles";
 
 
 interface IProps {
@@ -134,7 +135,8 @@ const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
     iconUpload: {
       fontSize: "3.5rem"
     }
-  });
+  })
+);
 
 const GridImage: ComponentType<IProps> = (props: IProps) => {
   const classes = useStyles(props);
@@ -274,4 +276,4 @@ const GridImage: ComponentType<IProps> = (props: IProps) => {
   );
 };
 
-export default compose<IProps, any>(withStyles(styles))(GridImage);
+export default GridImage;

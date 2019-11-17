@@ -196,7 +196,7 @@ const PageCancelBooking: ComponentType<IProps> = (props: IProps) => {
       .catch(error => {});
   }, []);
 
-  const handleChangeSelect = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChangeSelect = () => (event: ChangeEvent<HTMLInputElement>) => {
     setIdReason(parseInt(event.target.value));
   };
 
@@ -503,7 +503,7 @@ const PageCancelBooking: ComponentType<IProps> = (props: IProps) => {
                             ? infoBooking.cancel.data[0].code
                             : idReason
                         }
-                        onChange={handleChangeSelect}
+                        onChange={() => handleChangeSelect()}
                         input={
                           <OutlinedInput
                             notched={false}

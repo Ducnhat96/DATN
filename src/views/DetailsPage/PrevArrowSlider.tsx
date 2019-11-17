@@ -48,7 +48,8 @@ const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({
 );
 
 const NextArrowSlider: ComponentType<IProps> = (props: IProps) => {
-  const { classes ,onClick} = props;
+  const classes = useStyles(props);
+  const {onClick} = props;
 
   return (
     <Fragment>

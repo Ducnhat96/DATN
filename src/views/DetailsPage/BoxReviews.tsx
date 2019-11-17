@@ -1,5 +1,5 @@
 import { ThemeCustom } from '@/components/Theme/Theme';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles, Theme } from '@material-ui/core/styles';
 import createStyles from '@material-ui/core/styles/createStyles';
 import LocationHomeMap from "@/views/DetailsPage/LocationHomeMap";
 import React, { ComponentType, Fragment, useContext, useState } from 'react';
@@ -17,6 +17,7 @@ import localeInfo from 'rc-pagination/lib/locale/vi_VN';
 import StarRatings from 'react-star-ratings';
 import 'rc-pagination/assets/index.css';
 import moment from 'moment';
+import { makeStyles } from '@material-ui/styles';
 
 interface IProps {
   classes?: any,
@@ -163,7 +164,8 @@ const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({
       margin: '0 auto',
     },
   },
-});
+})
+);
 
 
 const BoxReviews: ComponentType<IProps> = (props: IProps) => {
@@ -343,6 +345,4 @@ const BoxReviews: ComponentType<IProps> = (props: IProps) => {
   );
 };
 
-export default compose<IProps, any>(
-  withStyles(styles),
-)(BoxReviews);
+export default BoxReviews;

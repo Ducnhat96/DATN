@@ -64,8 +64,8 @@ const ListRoomCity: ComponentType<IProps> = (props: IProps) => {
     slidesToShow: 4,
     swipeToSlide: true,
     lazyLoad: "ondemand",
-    nextArrow: <NextArrowSlider />,
-    prevArrow: <PrevArrowSlider />,
+    // nextArrow: <NextArrowSlider />,
+    // prevArrow: <PrevArrowSlider />,
     responsive: [
       {
         breakpoint: 1024,

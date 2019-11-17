@@ -35,8 +35,8 @@ const useStyles = makeStyles<Theme>((theme: Theme) =>
     tabRoot: {
       textTransform: "initial",
       minWidth: 72,
-      fontWeight: theme.typography!.fontWeightRegular,
-      marginRight: theme.spacing.unit * 4,
+      fontWeight: theme.typography.fontWeightRegular,
+      marginRight: 32,
       fontFamily: ["-apple-system", "Roboto"].join(","),
       "&:hover": {
         color: "#ff9800",
@@ -49,7 +49,7 @@ const useStyles = makeStyles<Theme>((theme: Theme) =>
     },
     tabSelected: {
       color: "#ff9800",
-      fontWeight: theme.typography!.fontWeightMedium
+      fontWeight: theme.typography.fontWeightMedium
     },
     myBooking: {
       paddingTop: 20,

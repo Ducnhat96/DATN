@@ -30,6 +30,8 @@ import { TypeSelect } from "@/types/Requests/ResponseTemplate";
 import Button from "@material-ui/core/Button/Button";
 
 import Orange from "@material-ui/core/colors/orange";
+import { makeStyles } from "@material-ui/styles";
+import { Theme } from "@material-ui/core";
 
 interface IProps {
   classes?: any;
@@ -85,7 +87,8 @@ const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
       fontSize: '16px',
       padding: '2px 11px'
     }
-  });
+  })
+);
 
 const RoomTypes: ComponentType<IProps> = (props: IProps) => {
   const classes = useStyles(props);
@@ -184,6 +187,5 @@ const RoomTypes: ComponentType<IProps> = (props: IProps) => {
 };
 
 export default compose<IProps, any>(
-  withStyles(styles),
   memo
 )(RoomTypes);

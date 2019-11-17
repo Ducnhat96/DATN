@@ -1,5 +1,5 @@
 import { ThemeCustom } from "@/components/Theme/Theme";
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles, Theme } from "@material-ui/core/styles";
 import createStyles from "@material-ui/core/styles/createStyles";
 import React, {
   ComponentType,
@@ -64,6 +64,7 @@ import { formatMoney } from "@/utils/mixins";
 import DateRangeSingle from "@/components/Utils/DateRangeSingle";
 import ContentPlaceHolder from "@/components/PlaceHolder/ContentPlaceHolder";
 import classNames from "classnames";
+import { makeStyles } from "@material-ui/styles";
 
 interface IProps {
   classes?: any;
@@ -165,10 +166,12 @@ const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
     btSearch: {
       color: "#fff"
     }
-  });
+  })
+);
 
 const BoxBooking: ComponentType<IProps> = (props: IProps) => {
-  const { classes, filter, updateGuestsCount } = props;
+  const classes = useStyles(props);
+  const { filter, updateGuestsCount } = props;
   const [guest, setGuest] = useState<number>(1);
   const [isDateValid, setIsDateValid] = useState<boolean>(true);
   const [timeError, setTimeError] = useState<string>("");
@@ -312,7 +315,7 @@ const BoxBooking: ComponentType<IProps> = (props: IProps) => {
     });
   };
 
-  const handleChangeSelect = (event: ChangeEvent<HTMLSelectElement>) => {
+  const handleChangeSelect = (event: ChangeEvent<HTMLInputElement>) => {
     updateGuestsCount(parseInt(event.target.value));
   };
 
@@ -544,7 +547,7 @@ const BoxBooking: ComponentType<IProps> = (props: IProps) => {
                       }}
                       displayEmpty
                       value={filter!.guestsCount}
-                      onChange={handleChangeSelect}
+                      // onChange={handleChangeSelect}
                       input={
                         <OutlinedInput
                           notched={false}
@@ -893,7 +896,6 @@ const mapDispatchToProps = (dispatch: Dispatch<SearchFilterAction>) => {
 };
 
 export default compose<IProps, any>(
-  withStyles(styles),
   connect(
     mapStateToProps,
     mapDispatchToProps

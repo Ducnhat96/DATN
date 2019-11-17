@@ -30,6 +30,8 @@ import SimpleLoader from '@/components/Loading/SimpleLoader';
 
 import LazyLoad from 'react-lazyload';
 import { windowExist } from '@/index';
+import { makeStyles } from '@material-ui/styles';
+import { Theme } from '@material-ui/core';
 interface IProps {
   classes?: any;
 }
@@ -45,7 +47,8 @@ const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
     titleRoom: {
       color: 'rgb(72, 72, 72)'
     }
-  });
+  })
+);
 
 // @ts-ignore
 const ListRoomHot: ComponentType<IProps> = (props: IProps) => {
@@ -64,9 +67,9 @@ const ListRoomHot: ComponentType<IProps> = (props: IProps) => {
     slidesToShow: 4,
     swipeToSlide: true,
     lazyLoad: 'ondemand',
-    nextArrow: <NextArrowSlider />,
+    // nextArrow: <NextArrowSlider />,
     touchThreshold: 100,
-    prevArrow: <PrevArrowSlider />,
+    // prevArrow: <PrevArrowSlider />,
     responsive: [
       {
         breakpoint: 1024,
@@ -140,4 +143,4 @@ const ListRoomHot: ComponentType<IProps> = (props: IProps) => {
   );
 };
 
-export default compose<IProps, any>(withStyles(styles))(ListRoomHot);
+export default ListRoomHot;

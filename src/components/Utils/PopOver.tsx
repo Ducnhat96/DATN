@@ -1,6 +1,6 @@
 import { ThemeCustom } from "@/components/Theme/Theme";
 import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles, Theme } from "@material-ui/core/styles";
 import React, {
   ComponentType,
   Fragment,
@@ -12,6 +12,7 @@ import React, {
 import Button from "@material-ui/core/Button";
 
 import Popover from "@material-ui/core/Popover";
+import { makeStyles } from "@material-ui/styles";
 
 interface IProps {
   children?: any;
@@ -21,7 +22,7 @@ interface IProps {
 
 const useStyles = makeStyles<Theme, IProps>((theme: Theme) => ({
   paper: {
-    padding: '15px'
+    padding: "15px"
   },
   lightTooltip: {
     color: "rgba(0, 0, 0, 0.87)",
@@ -33,21 +34,21 @@ const useStyles = makeStyles<Theme, IProps>((theme: Theme) => ({
   button: {
     border: "1px solid #F2F2F2",
     textTransform: "initial",
-    boxShadow: 'none',
-    background: 'transparent',
-    marginRight: '13px',
+    boxShadow: "none",
+    background: "transparent",
+    marginRight: "13px",
     "&:active": {
-      background: '#F2F2F2'
+      background: "#F2F2F2"
     }
   }
-});
+}));
 
 const PopOver: ComponentType<IProps> = (props: IProps) => {
   const [anchorEl, setAnchorEl] = useState<any>(null);
   const open = Boolean(anchorEl);
 
-  const { classes, title, children } = props;
-
+  const { title, children } = props;
+  const classes = useStyles(props);
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
   };
@@ -90,4 +91,4 @@ const PopOver: ComponentType<IProps> = (props: IProps) => {
   );
 };
 
-export default withStyles(styles)(PopOver);
+export default PopOver;

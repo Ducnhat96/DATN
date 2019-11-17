@@ -1,62 +1,77 @@
-import {ThemeCustom} from '@/components/Theme/Theme';
-import createStyles from '@material-ui/core/styles/createStyles';
-import withStyles from '@material-ui/core/styles/withStyles';
-import React, {ComponentType, Fragment, useState, useContext, useEffect, memo} from 'react';
-import {compose} from 'recompose';
-import Tabs from '@material-ui/core/Tabs/Tabs';
-import Tab from '@material-ui/core/Tab/Tab';
-import Paper from '@material-ui/core/Paper/Paper';
-import {RoomUrlParams} from '@/types/Requests/Rooms/RoomRequests';
-import qs from 'query-string';
-import {IRoomIndexContext, RoomIndexContext, newRoomLocation} from '@/store/context/Room/RoomIndexContext';
-import {updateObject} from '@/store/utility';
-import {IGlobalContext, GlobalContext} from '@/store/context/GlobalContext';
+import { ThemeCustom } from "@/components/Theme/Theme";
+import createStyles from "@material-ui/core/styles/createStyles";
+import withStyles from "@material-ui/core/styles/withStyles";
+import React, {
+  ComponentType,
+  Fragment,
+  useState,
+  useContext,
+  useEffect,
+  memo
+} from "react";
+import { compose } from "recompose";
+import Tabs from "@material-ui/core/Tabs/Tabs";
+import Tab from "@material-ui/core/Tab/Tab";
+import Paper from "@material-ui/core/Paper/Paper";
+import { RoomUrlParams } from "@/types/Requests/Rooms/RoomRequests";
+import qs from "query-string";
+import {
+  IRoomIndexContext,
+  RoomIndexContext,
+  newRoomLocation
+} from "@/store/context/Room/RoomIndexContext";
+import { updateObject } from "@/store/utility";
+import { IGlobalContext, GlobalContext } from "@/store/context/GlobalContext";
+import { makeStyles } from "@material-ui/styles";
+import { Theme } from "@material-ui/core";
 
 interface IProps {
-  classes?: any
+  classes?: any;
 }
 
-const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({
-  textTab:{
-    fontWeight:700,
-    color:'#248489',
-    '&:hover': {
-      color:'#248489',
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
+  createStyles({
+    textTab: {
+      fontWeight: 700,
+      color: "#248489",
+      "&:hover": {
+        color: "#248489"
+      }
     },
-  },
-  paperOutlined: {
-    boxShadow: '0 1px 5px rgba(0, 0, 0, 0.15)',
-    borderRadius: 4,
-  },
-});
+    paperOutlined: {
+      boxShadow: "0 1px 5px rgba(0, 0, 0, 0.15)",
+      borderRadius: 4
+    }
+  })
+);
 
 // @ts-ignore
 const TabFilter: ComponentType<IProps> = (props: IProps) => {
-  const {classes}               = props;
+  const classes = useStyles(props);
   const [tabFocus, setTabFocus] = useState<number>(0);
 
-  const {history, location} = useContext<IGlobalContext>(GlobalContext);
-  const {dispatch}          = useContext<IRoomIndexContext>(RoomIndexContext);
+  const { history, location } = useContext<IGlobalContext>(GlobalContext);
+  const { dispatch } = useContext<IRoomIndexContext>(RoomIndexContext);
 
   useEffect(() => {
     const params: RoomUrlParams = qs.parse(location.search!);
-    let focus                   = (params.instant !== undefined) ? 1 : 0;
+    let focus = params.instant !== undefined ? 1 : 0;
     setTabFocus(focus);
   }, []);
 
   const tabFocusChange = (value: number) => {
     if (value !== tabFocus) {
-      const params: RoomUrlParams  = qs.parse(location.search!);
+      const params: RoomUrlParams = qs.parse(location.search!);
       const instant: RoomUrlParams = {
-        instant: (value === 1) ? null : undefined,
+        instant: value === 1 ? null : undefined
       };
 
-      const newParams  = updateObject(params, instant);
+      const newParams = updateObject(params, instant);
       const locationTo = newRoomLocation(newParams);
 
       dispatch({
-        type: 'setRooms',
-        rooms: [],
+        type: "setRooms",
+        rooms: []
       });
 
       setTabFocus(value);
@@ -66,23 +81,20 @@ const TabFilter: ComponentType<IProps> = (props: IProps) => {
 
   return (
     <Fragment>
-      <Paper square elevation = {0} className = {classes.paperOutlined}>
+      <Paper square elevation={0} className={classes.paperOutlined}>
         <Tabs
-          variant='fullWidth'
-          value = {tabFocus}
-          indicatorColor = 'primary'
-          textColor = 'primary'
-          onChange = {(e, value) => tabFocusChange(value)}
+          variant="fullWidth"
+          value={tabFocus}
+          indicatorColor="primary"
+          textColor="primary"
+          onChange={(e, value) => tabFocusChange(value)}
         >
-          <Tab label = 'Tất cả phòng' className={classes.textTab} />
-          <Tab label = 'Đặt phòng nhanh' className={classes.textTab} />
+          <Tab label="Tất cả phòng" className={classes.textTab} />
+          <Tab label="Đặt phòng nhanh" className={classes.textTab} />
         </Tabs>
       </Paper>
     </Fragment>
   );
 };
 
-export default compose<IProps, any>(
-  withStyles(styles),
-  memo
-)(TabFilter);
+export default compose<IProps, any>(memo)(TabFilter);

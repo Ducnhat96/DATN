@@ -47,8 +47,8 @@ const setting: Settings = {
   slidesToShow: 3,
   swipeToSlide: true,
   lazyLoad: "ondemand",
-  nextArrow: <NextArrowSlider />,
-  prevArrow: <PrevArrowSlider />,
+  // nextArrow: <NextArrowSlider />,
+  // prevArrow: <PrevArrowSlider />,
   responsive: [
     {
       breakpoint: 1024,

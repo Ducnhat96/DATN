@@ -27,6 +27,8 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { SearchNavAction } from "@/store/reducers/searchNav";
 import * as types from "@/store/actions/types";
+import { makeStyles } from "@material-ui/styles";
+import { Theme } from "@material-ui/core";
 
 interface IProps {
   classes?: any;
@@ -41,7 +43,8 @@ const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
       bottom: 0,
       height: 60
     }
-  });
+  })
+);
 
 export const FILTER = 0;
 export const TAB_LIST = 1;
@@ -56,7 +59,8 @@ export const TransitionZoom = (props: any) => <Zoom {...props} />;
 
 // @ts-ignore
 const BottomNav: ComponentType<IProps> = (props: IProps) => {
-  const { classes, handleToggleDrawer } = props;
+  const classes = useStyles(props);
+  const { handleToggleDrawer } = props;
   const [index, setIndex] = useState<number>(TAB_LIST);
   const { dispatch: mapDispatch, state: mapState } = useContext<
     IRoomMapContext
@@ -118,7 +122,6 @@ const mapDispatchToProps = (dispatch: Dispatch<SearchNavAction>) => {
 };
 
 export default compose<IProps, any>(
-  withStyles(styles),
   memo,
   connect(
     null,

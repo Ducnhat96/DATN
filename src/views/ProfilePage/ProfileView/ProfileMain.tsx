@@ -20,7 +20,7 @@ import SimpleLoader from '@/components/Loading/SimpleLoader';
 import { makeStyles } from "@material-ui/styles";
 
 interface IProps {
-  classes: any;
+  classes?: any;
 }
 
 const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>

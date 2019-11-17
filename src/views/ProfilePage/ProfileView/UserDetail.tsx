@@ -1,5 +1,5 @@
 import { ThemeCustom } from "@/components/Theme/Theme";
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles, Theme } from "@material-ui/core/styles";
 import createStyles from "@material-ui/core/styles/createStyles";
 import React, {
   ComponentType,
@@ -35,6 +35,7 @@ import totalReview from "@/views/ProfilePage/ProfileView/UserBox";
 import ChatIcon from "@material-ui/icons/ChatRounded";
 import facebookIcon from "@/assets/facebook-logo.svg";
 import WorkIcon from "@material-ui/icons/WorkRounded";
+import { makeStyles } from "@material-ui/styles";
 //src/assets/facebook-logo.svg
 
 interface IProps {
@@ -100,7 +101,8 @@ const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
       display: "flex",
       marginTop: 12
     }
-  });
+  })
+);
 
 const UserDetail: ComponentType<IProps> = (props: IProps) => {
   const classes = useStyles(props);
@@ -119,9 +121,9 @@ const UserDetail: ComponentType<IProps> = (props: IProps) => {
     slidesToShow: 2,
     lazyLoad: "ondemand",
     swipeToSlide: true,
-    nextArrow: <NextArrowSlider />,
+    // nextArrow: <NextArrowSlider />,
     touchThreshold: 100,
-    prevArrow: <PrevArrowSlider />,
+    // prevArrow: <PrevArrowSlider />,
     responsive: [
       {
         breakpoint: 1024,
@@ -274,6 +276,5 @@ const UserDetail: ComponentType<IProps> = (props: IProps) => {
 };
 
 export default compose<IProps, any>(
-  withStyles(styles),
   memo
 )(UserDetail);

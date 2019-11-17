@@ -37,6 +37,8 @@ import {
   IProfileContext,
   ProfileContext
 } from "@/store/context/Profile/ProfileContext";
+import { makeStyles } from "@material-ui/styles";
+import { Theme } from "@material-ui/core";
 
 export interface ISideDrawerProps {
   classes?: any;
@@ -50,7 +52,7 @@ interface ILocalProps extends ISideDrawerProps {
   handleRegisterButton(status: boolean): void;
 }
 
-const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
+const useStyles = makeStyles<Theme>((theme: Theme) =>
   createStyles({
     list: {
       display: "flex",
@@ -103,12 +105,14 @@ const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
       boxShadow: "none",
       fontWeight: 800,
       borderRadius: "100px !important"
-    },
-  });
+    }
+  })
+);
 
 // @ts-ignore
 const SideDrawer: ComponentType<ISideDrawerProps> = (props: ILocalProps) => {
-  const { classes, handleLoginButton, setOpen, cookies, handleRegisterButton } = props;
+  const classes = useStyles(props);
+  const { handleLoginButton, setOpen, cookies, handleRegisterButton } = props;
 
   const isLogin = !!cookies.get("_token");
   const { history } = useContext<IGlobalContext>(GlobalContext);
@@ -129,7 +133,7 @@ const SideDrawer: ComponentType<ISideDrawerProps> = (props: ILocalProps) => {
             classes={{
               gutters: classes.listItemGutters
             }}
-            component="a"
+            // component="a"
             href="#"
             button
             onClick={() => setOpen(false)}
@@ -161,7 +165,7 @@ const SideDrawer: ComponentType<ISideDrawerProps> = (props: ILocalProps) => {
                 classes={{
                   gutters: classes.listItemGutters
                 }}
-                component="a"
+                // component="a"
                 href="/"
                 button
                 onClick={() => setOpen(false)}
@@ -193,56 +197,56 @@ const SideDrawer: ComponentType<ISideDrawerProps> = (props: ILocalProps) => {
               </ListItem>
             </Fragment>
           ) : (
-              <Fragment>
-                <ListItem
-                  classes={{
-                    gutters: classes.listItemGutters
-                  }}
-                  button
-                  onClick={() => {
-                    setOpen(false);
-                    handleLoginButton(true);
-                  }}
-                >
-                  {/* <ListItemIcon>
+            <Fragment>
+              <ListItem
+                classes={{
+                  gutters: classes.listItemGutters
+                }}
+                button
+                onClick={() => {
+                  setOpen(false);
+                  handleLoginButton(true);
+                }}
+              >
+                {/* <ListItemIcon>
               <AccountCircle />
             </ListItemIcon> */}
-                  <ListItemText
-                    primary="Đăng nhập"
-                    classes={{
-                      primary: classes.text
-                    }}
-                  />
-                </ListItem>
-                <ListItem
+                <ListItemText
+                  primary="Đăng nhập"
                   classes={{
-                    gutters: classes.listItemGutters
+                    primary: classes.text
                   }}
-                  button
-                  onClick={() => {
-                    setOpen(false);
-                    handleRegisterButton(true);
-                  }}
-                >
-                  {/* <ListItemIcon>
+                />
+              </ListItem>
+              <ListItem
+                classes={{
+                  gutters: classes.listItemGutters
+                }}
+                button
+                onClick={() => {
+                  setOpen(false);
+                  handleRegisterButton(true);
+                }}
+              >
+                {/* <ListItemIcon>
               <AccountCircle />
             </ListItemIcon> */}
-                  <ListItemText
-                    primary="Đăng ký"
-                    classes={{
-                      primary: classes.text
-                    }}
-                  />
-                </ListItem>
-              </Fragment>
-            )}
+                <ListItemText
+                  primary="Đăng ký"
+                  classes={{
+                    primary: classes.text
+                  }}
+                />
+              </ListItem>
+            </Fragment>
+          )}
         </div>
 
         <div className="bottom">
           <ListItem
             button
             onClick={() => setOpen(false)}
-            component="a"
+            // component="a"
             href="#"
             classes={{
               gutters: classes.listItemGutters
@@ -324,8 +328,8 @@ const SideDrawer: ComponentType<ISideDrawerProps> = (props: ILocalProps) => {
               />
             </ListItem>
           ) : (
-              ""
-            )}
+            ""
+          )}
         </div>
       </List>
     </Fragment>
@@ -359,11 +363,7 @@ const mapDispatchToProps = (dispatch: Dispatch<AnimationAction>) => {
 };
 
 export default compose<ISideDrawerProps, any>(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  ),
+  connect(mapStateToProps, mapDispatchToProps),
   withCookies,
-  withStyles(styles),
   memo
 )(SideDrawer);

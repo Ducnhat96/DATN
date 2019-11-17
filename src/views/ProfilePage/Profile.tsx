@@ -1,8 +1,14 @@
-import React, { ComponentType, useReducer, useEffect, memo, Fragment } from "react";
+import React, {
+  ComponentType,
+  useReducer,
+  useEffect,
+  memo,
+  Fragment
+} from "react";
 import ProfileEdit from "@/views/ProfilePage/ProfileEdit";
 import NavTop from "@/components/ToolBar/NavTop";
 import { compose } from "recompose";
-import { createStyles, withStyles } from "@material-ui/core";
+import { createStyles, withStyles, Theme } from "@material-ui/core";
 import { ThemeCustom } from "@/components/Theme/Theme";
 import {
   ProfileState,
@@ -14,8 +20,9 @@ import {
 } from "@/store/context/Profile/ProfileContext";
 import MenuProfile from "./MenuProfile";
 import Cookies from "universal-cookie";
-import { withCookies } from "react-cookie"
+import { withCookies } from "react-cookie";
 import Footer from "@/layouts/Main/Footer";
+import { makeStyles } from "@material-ui/styles";
 
 export interface IProfileProps {
   classes?: any;
@@ -25,15 +32,17 @@ interface ILocalProps extends IProfileProps {
   cookies?: Cookies;
 }
 
-const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
+const useStyles = makeStyles<Theme>((theme: Theme) =>
   createStyles({
     bgColor: {
       backgroundColor: "#fcfcfc"
     }
-  });
+  })
+);
 
 const Profile: ComponentType<IProfileProps> = (props: ILocalProps) => {
-  const { classes, cookies } = props;
+  const classes = useStyles(props);
+  const { cookies } = props;
   const [state, dispatch] = useReducer<ProfileState, ProfileAction>(
     ProfileReducer,
     ProfileStateInit
@@ -65,8 +74,4 @@ const Profile: ComponentType<IProfileProps> = (props: ILocalProps) => {
   );
 };
 
-export default compose<IProfileProps, any>(
-  withStyles(styles),
-  withCookies,
-  memo
-)(Profile);
+export default compose<IProfileProps, any>(withCookies, memo)(Profile);

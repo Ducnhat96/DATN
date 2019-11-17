@@ -10,6 +10,8 @@ import { OptionProps } from "react-select/lib/components/Option";
 import { SearchSuggestRes } from "@/types/Requests/Search/SearchResponse";
 import classNames from "classnames";
 import { IGlobalContext, GlobalContext } from "@/store/context/GlobalContext";
+import { makeStyles } from "@material-ui/styles";
+import { Theme } from "@material-ui/core";
 
 const { Option } = components;
 
@@ -42,11 +44,13 @@ const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
       fontWeight: 500,
       color: "#ffffff"
     }
-  });
+  })
+);
 
 // @ts-ignore
 const MenuItemSelectMoblie: FunctionComponent<IProps> = (props: IProps) => {
-  const { classes, data, isSelected } = props;
+  const classes = useStyles(props);
+  const { data, isSelected } = props;
   const { history } = useContext<IGlobalContext>(GlobalContext);
 
   const { name, error, hot_txt, hot, city, country, type } = data;
@@ -94,6 +98,5 @@ const MenuItemSelectMoblie: FunctionComponent<IProps> = (props: IProps) => {
 };
 
 export default compose<IProps, any>(
-  withStyles(styles),
   memo
 )(MenuItemSelectMoblie);

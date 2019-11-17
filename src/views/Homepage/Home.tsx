@@ -24,12 +24,13 @@ import _ from "lodash";
 import Hidden from "@material-ui/core/Hidden";
 import BG from "@/assets/Bg_home.jpg";
 import NavTop from "@/components/ToolBar/NavTop";
+import { makeStyles } from "@material-ui/styles";
 
 interface IProps {
   classes?: any;
 }
 
-const styles = (theme: Theme) =>
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
   createStyles({
     panel: {
       height: "100vh",
@@ -61,7 +62,8 @@ const styles = (theme: Theme) =>
       // marginTop: '70px',
       paddingTop: "11%"
     }
-  });
+  })
+);
 
 const Home: FunctionComponent<IProps | any> = props => {
   const classes = useStyles(props);
@@ -115,4 +117,4 @@ const Home: FunctionComponent<IProps | any> = props => {
   );
 };
 
-export default compose<IProps, any>(withStyles(styles))(Home);
+export default Home;

@@ -18,6 +18,8 @@ import {
 } from "@/types/Requests/Search/SearchResponse";
 import classNames from "classnames";
 import Hidden from "@material-ui/core/Hidden/Hidden";
+import { makeStyles } from "@material-ui/styles";
+import { Theme } from "@material-ui/core";
 //import {Menu, MenuItem } from "react-bootstrap-typeahead";
 
 interface IProps extends OptionProps<any> {
@@ -59,11 +61,13 @@ const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
       fontSize: 12,
       fontWeight: 500
     }
-  });
+  })
+);
 
 // @ts-ignore
 const CitiesMenu: FunctionComponent<IProps> = (props: IProps) => {
-  const { classes, options, isSelected } = props;
+  const classes = useStyles(props);
+  const { options, isSelected } = props;
 
   return (
     <Fragment>
@@ -101,6 +105,5 @@ const CitiesMenu: FunctionComponent<IProps> = (props: IProps) => {
 };
 
 export default compose<IProps, any>(
-  withStyles(styles),
   memo
 )(CitiesMenu);

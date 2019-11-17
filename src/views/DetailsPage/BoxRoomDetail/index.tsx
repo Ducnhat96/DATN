@@ -13,8 +13,9 @@ import ContentPlaceHolder from "@/components/PlaceHolder/ContentPlaceHolder";
 import HostInfo from "@/components/HostInfo";
 import RoomBasic from "./RoomBasic";
 import { GlobalContext } from "@/store/context/GlobalContext";
-import { Paper } from "@material-ui/core";
+import { Paper, Theme } from "@material-ui/core";
 import RoomDescription from "./RoomDescription";
+import { makeStyles } from "@material-ui/styles";
 
 interface IProps {
   classes?: any;
@@ -37,7 +38,8 @@ const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
     rowMargin: {
       marginTop: 32
     }
-  });
+  })
+);
 
 const BoxRoomDetail: ComponentType<IProps> = (props: IProps) => {
   const classes = useStyles(props);
@@ -108,4 +110,4 @@ const BoxRoomDetail: ComponentType<IProps> = (props: IProps) => {
   );
 };
 
-export default compose<IProps, any>(withStyles(styles))(BoxRoomDetail);
+export default BoxRoomDetail;

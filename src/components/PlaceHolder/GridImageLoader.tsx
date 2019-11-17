@@ -9,11 +9,8 @@ interface IProps {
   classes?: any
 }
 
-const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({});
-
 // @ts-ignore
 const GridImageLoader: ComponentType<IProps> = (props: IProps) => {
-  const classes = useStyles(props);
 
   return (
     <Fragment>
@@ -35,6 +32,4 @@ const GridImageLoader: ComponentType<IProps> = (props: IProps) => {
   );
 };
 
-export default compose<IProps, any>(
-  withStyles(styles),
-)(GridImageLoader);
+export default GridImageLoader;

@@ -156,7 +156,7 @@ const ProfileEdit: ComponentType<IMenuProfile> = (props: IMenuProfile) => {
     console.log("value", value);
   }, []);
 
-  const VerticalTabs = withStyles(theme => ({
+  const VerticalTabs = withStyles(() => createStyles({
     flexContainer: {
       flexDirection: "column"
     },
@@ -165,7 +165,7 @@ const ProfileEdit: ComponentType<IMenuProfile> = (props: IMenuProfile) => {
     }
   }))(Tabs);
 
-  const MyTab = withStyles(theme => ({
+  const MyTab = withStyles(() => createStyles({
     selected: {
       color: "#ff9800",
       borderRight: "1px solid #ff9800",

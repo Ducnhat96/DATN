@@ -19,10 +19,6 @@ interface IProps {
   classes?: any,
 }
 
-const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({
-  nextArrow: {},
-});
-
 const SliderSuggest: ComponentType<IProps> = (props: IProps) => {
   const {classes} = props;
   const {width}   = useContext<IGlobalContext>(GlobalContext);
@@ -37,8 +33,8 @@ const SliderSuggest: ComponentType<IProps> = (props: IProps) => {
     slidesToShow: 4,
     slidesToScroll: 1,
     arrows: width === 'md' || width === 'lg',
-    nextArrow: <NextArrowSlider />,
-    prevArrow: <PrevArrowSlider />,
+    // nextArrow: <NextArrowSlider />,
+    // prevArrow: <PrevArrowSlider />,
     responsive: [
       {
         breakpoint: 1199,
@@ -93,6 +89,5 @@ const SliderSuggest: ComponentType<IProps> = (props: IProps) => {
 };
 
 export default compose<IProps, any>(
-  withStyles(styles),
   memo,
 )(SliderSuggest);

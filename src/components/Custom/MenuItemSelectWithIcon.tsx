@@ -18,6 +18,8 @@ import {
 } from "@/types/Requests/Search/SearchResponse";
 import classNames from "classnames";
 import Hidden from "@material-ui/core/Hidden/Hidden";
+import { makeStyles } from "@material-ui/styles";
+import { Theme } from "@material-ui/core";
 
 const { Option } = components;
 
@@ -71,7 +73,8 @@ const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
       fontSize: 12,
       fontWeight: 500
     }
-  });
+  })
+);
 
 const detailInfo = (data: SearchSuggestRes): ItemDetail => {
   switch (data.type) {
@@ -124,7 +127,8 @@ const detailInfo = (data: SearchSuggestRes): ItemDetail => {
 
 // @ts-ignore
 const MenuItemSelectWithIcon: FunctionComponent<IProps> = (props: IProps) => {
-  const { classes, data, isSelected } = props;
+  const classes = useStyles(props);
+  const {data, isSelected } = props;
 
   const { name, error, hot_txt, hot, city, country, type } = data;
 
@@ -193,6 +197,5 @@ const MenuItemSelectWithIcon: FunctionComponent<IProps> = (props: IProps) => {
 };
 
 export default compose<IProps, any>(
-  withStyles(styles),
   memo
 )(MenuItemSelectWithIcon);

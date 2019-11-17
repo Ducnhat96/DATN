@@ -12,7 +12,7 @@ interface IProps {
   note: string,
   isPreviewPage?: boolean,
 }
-const useStyles = makeStyles((theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
   createStyles({
     root: {
       lineHeight: '1.8rem'

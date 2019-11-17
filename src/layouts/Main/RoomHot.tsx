@@ -17,6 +17,8 @@ import { windowExist } from "@/index";
 import { RoomUrlParams } from "@/types/Requests/Rooms/RoomRequests";
 import { newRoomLocation } from "@/store/context/Room/RoomIndexContext";
 import { IGlobalContext, GlobalContext } from "@/store/context/GlobalContext";
+import { makeStyles } from "@material-ui/styles";
+import { Theme } from "@material-ui/core";
 
 interface IProps {
   classes?: any;
@@ -104,11 +106,13 @@ const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
       fontWeight: 500,
       color: "#909090"
     }
-  });
+  })
+);
 
 // @ts-ignore
 const RoomHot: ComponentType<IProps> = (props: IProps) => {
-  const { classes, room } = props;
+  const classes = useStyles(props);
+  const { room } = props;
   const { history } = useContext<IGlobalContext>(GlobalContext);
 
   const cardEvent = () => {
@@ -209,4 +213,4 @@ const RoomHot: ComponentType<IProps> = (props: IProps) => {
   );
 };
 
-export default compose<IProps, any>(withStyles(styles))(RoomHot);
+export default RoomHot;

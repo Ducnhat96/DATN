@@ -1,5 +1,5 @@
 import React, {Fragment, useState, useRef, ComponentType, MouseEvent} from 'react';
-import {createStyles, withStyles} from '@material-ui/core/styles';
+import {createStyles, withStyles, Theme} from '@material-ui/core/styles';
 import {compose} from 'recompose';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -23,8 +23,9 @@ import worldRouned from '@/assets/worldRouned.jpg';
 import carTravel from '@/assets/car_travel.png';
 import aroundTheWorld from '@/assets/around_the_world.jpg';
 import {ThemeStyle} from '@material-ui/core/styles/createTypography';
+import { makeStyles } from '@material-ui/styles';
 
-const styles: any = (theme: ThemeStyle) => createStyles({
+const useStyles = makeStyles<Theme>((theme: Theme) => createStyles({
     borderSilver: {
         width: '100px',
         height: '100px',
@@ -113,14 +114,15 @@ const styles: any = (theme: ThemeStyle) => createStyles({
         backgroundPosition: 'center center',
         backgroundSize: 'cover',
     },
-});
+})
+);
 
 interface IRewardsProfile {
     classes?: any;
 }
 
 const RewardsProfile: ComponentType<IRewardsProfile> = (props: IRewardsProfile) => {
-    const {classes} = props;
+    const classes = useStyles(props);
     const [openTooltip, setOpenTooltip] = useState<boolean>(false);
     const [MessageTooltip, setMessageTooltip] = useState<string>('copy link');
     const textLink = useRef<any>(null);
@@ -278,6 +280,4 @@ const RewardsProfile: ComponentType<IRewardsProfile> = (props: IRewardsProfile) 
         </Fragment>
     );
 };
-export default compose<IRewardsProfile,any>(
-    withStyles(styles)
-)(RewardsProfile);
+export default RewardsProfile;

@@ -103,7 +103,7 @@ const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
       padding: "8px 20px",
       fontSize: "0.9375rem",
       color: "#ffffff",
-      height: theme.palette.button.nav,
+      // height: theme.palette.button.nav,
       borderRadius: "0px",
       fontWeight: 700,
       textTransform: "capitalize",
@@ -157,10 +157,10 @@ const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
       textAlign: "center"
     },
     fab: {
-      margin: theme.spacing.unit
+      margin: 8
     },
     rightIcon: {
-      marginLeft: theme.spacing.unit
+      marginLeft: 8
     },
     textSpan: {
       display: "flex",
@@ -250,7 +250,7 @@ const NavTopHomePage: FunctionComponent<IProps> = (props: ILocalProps) => {
         lg={12}
         xl={12}
       >
-        <Toolbar className={hiddenListCitySearch ? classes.centerLogo : null}>
+        <Toolbar className={classes.centerLogo}>
           <Hidden smDown>
             <Logo />
             <div className={classes.grow} />
@@ -272,11 +272,7 @@ const NavTopHomePage: FunctionComponent<IProps> = (props: ILocalProps) => {
               <ClickAwayListener onClickAway={handleClose}>
                 <Paper className={classes.Popper}>
                   <MenuList>
-                    <MenuItem
-                      name="contact-phone1"
-                      // component="li"
-                      onClick={() => Hotline("tel:0916374057")}
-                    >
+                    <MenuItem onClick={() => Hotline("tel:0916374057")}>
                       <ListItemIcon>
                         <PhoneIcon />
                       </ListItemIcon>
@@ -284,7 +280,6 @@ const NavTopHomePage: FunctionComponent<IProps> = (props: ILocalProps) => {
                     </MenuItem>
                     <Divider />
                     <MenuItem
-                      name="contact-email"
                       onClick={() =>
                         Hotline("mailto:phamducnhat96bkhn@gmail.com")
                       }
@@ -344,7 +339,7 @@ const NavTopHomePage: FunctionComponent<IProps> = (props: ILocalProps) => {
                               Thông tin cá nhân
                             </MenuItem>
                             <Divider />
-                            <MenuItem name="sign-out" onClick={logoutTrigger}>
+                            <MenuItem onClick={logoutTrigger}>
                               <ListItemIcon>
                                 <PowerSettingsNewRounded />
                               </ListItemIcon>

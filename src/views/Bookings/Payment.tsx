@@ -20,6 +20,8 @@ import { RouteChildrenProps } from 'react-router';
 import { PaymentRouterParams } from '@/types/Requests/Payment/PaymentResponse';
 import { IGlobalContext, GlobalContext } from '@/store/context/GlobalContext';
 import PaymentInfo from '@/components/Bookings/Payments/PaymentInfo';
+import { makeStyles } from '@material-ui/styles';
+import { Theme } from '@material-ui/core';
 
 interface IProps extends RouteChildrenProps<PaymentRouterParams> {
   classes?: any
@@ -41,11 +43,13 @@ const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({
       order: 1,
     },
   },
-});
+})
+);
 
 // @ts-ignore
 const Payment: ComponentType<IProps> = (props: IProps) => {
-  const { classes, match } = props;
+  const classes = useStyles(props);
+  const { match } = props;
   const [state, dispatch] = useReducer<PaymentState, PaymentAction>(PaymentReducer, PaymentStateInit);
   const { history } = useContext<IGlobalContext>(GlobalContext);
 
@@ -86,6 +90,4 @@ const Payment: ComponentType<IProps> = (props: IProps) => {
   );
 };
 
-export default compose<IProps, any>(
-  withStyles(styles),
-)(Payment);
+export default Payment;

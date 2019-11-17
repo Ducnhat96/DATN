@@ -1,5 +1,5 @@
 import { ThemeCustom } from "@/components/Theme/Theme";
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles, Theme } from "@material-ui/core/styles";
 import createStyles from "@material-ui/core/styles/createStyles";
 import React, { ComponentType, useState, Fragment, useContext } from "react";
 import { compose } from "recompose";
@@ -40,6 +40,7 @@ import Icon from "@material-ui/core/Icon";
 import Fab from "@material-ui/core/Fab";
 import Zoom from "@material-ui/core/Zoom";
 import { windowExist } from "@/index";
+import { makeStyles } from "@material-ui/styles";
 
 interface IProps {
   classes?: any;
@@ -305,7 +306,8 @@ const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
     containerAmenities: {
       justifyContent: "space-around"
     }
-  });
+  })
+);
 
 const BoxDetails: ComponentType<IProps> = (props: IProps) => {
   const classes = useStyles(props);
@@ -698,4 +700,4 @@ const BoxDetails: ComponentType<IProps> = (props: IProps) => {
   );
 };
 
-export default compose<IProps, any>(withStyles(styles))(BoxDetails);
+export default BoxDetails;

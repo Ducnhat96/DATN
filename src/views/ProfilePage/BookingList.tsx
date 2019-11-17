@@ -20,7 +20,6 @@ import gg from "@/assets/google.png";
 import twt from "@/assets/twitter.png";
 import Location from "@material-ui/icons/LocationOnOutlined";
 import StarRatings from "react-star-ratings";
-import { ThemeCustom } from "@/components/Theme/Theme";
 import {
   getUserBookingList,
   IProfileContext,
@@ -41,7 +40,7 @@ import "rc-pagination/assets/index.css";
 import { axios } from "@/utils/axiosInstance";
 import { AxiosRes } from "@/types/Requests/ResponseTemplate";
 import { RoomReviewInfoRes } from "@/types/Requests/ReviewRoom/ReviewResponse";
-import { Tooltip } from "@material-ui/core";
+import { Tooltip, Theme } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 
 const useStyles = makeStyles<Theme>((theme: Theme) =>

@@ -12,6 +12,8 @@ import moment from 'moment';
 import Dialog from '@material-ui/core/Dialog/Dialog';
 import {TransitionCustom} from '@/views/Rooms/BottomNav';
 import DateControllerXsOnly from '@/views/Homepage/DatePicker/DateControllerXsOnly';
+import { makeStyles } from '@material-ui/styles';
+import { Theme } from '@material-ui/core';
 
 interface IProps {
   classes?: any
@@ -33,11 +35,13 @@ const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({
     outline: 'none',
     fontSize: '1rem',
   },
-});
+})
+);
 
 // @ts-ignore
 const DatePickerHomeXsOnly: ComponentType<IProps> = (props: LocalProps) => {
-  const {classes, filter}    = props;
+  const classes = useStyles(props);
+  const {filter}    = props;
   const {startDate, endDate} = filter;
 
   const [open, setOpen] = useState<boolean>(false);
@@ -97,5 +101,4 @@ const mapStateToProps = (state: ReducersType) => {
 
 export default compose<IProps, any>(
   connect(mapStateToProps),
-  withStyles(styles),
 )(DatePickerHomeXsOnly);

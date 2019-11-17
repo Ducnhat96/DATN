@@ -11,6 +11,8 @@ import { RoomIndexRes } from '@/types/Requests/Rooms/RoomResponses';
 import { IRoomMapContext, RoomMapContext } from '@/store/context/Room/RoomMapContext';
 import { MapCoords } from '@/types/Requests/Rooms/RoomRequests';
 import { RoomReviewInfoRes } from '@/types/Requests/ReviewRoom/ReviewResponse';
+import { makeStyles } from '@material-ui/styles';
+import { Theme } from '@material-ui/core';
 
 interface IProps {
   classes?: any
@@ -21,11 +23,9 @@ interface IProps {
   setRooms(rooms: RoomIndexRes[]): void
 }
 
-const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({});
-
 // @ts-ignore
 const MapDetail: ComponentType<IProps> = (props: IProps) => {
-  const { classes, rooms, center, hoverAction, hoverId, setRooms } = props;
+  const { rooms, center, hoverAction, hoverId, setRooms } = props;
   const { width } = useContext<IGlobalContext>(GlobalContext);
   const { dispatch: mapDispatch } = useContext<IRoomMapContext>(RoomMapContext);
   const xsMode = width === 'xs';
@@ -79,7 +79,4 @@ const MapDetail: ComponentType<IProps> = (props: IProps) => {
   );
 };
 
-export default compose<IProps, any>(
-  withStyles(styles),
-  memo,
-)(MapDetail);
+export default MapDetail;

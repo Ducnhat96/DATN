@@ -1,5 +1,5 @@
 import React, {Fragment, useState, useRef, ComponentType, ChangeEvent} from 'react';
-import {createStyles, withStyles} from '@material-ui/core/styles';
+import {createStyles, withStyles, Theme} from '@material-ui/core/styles';
 import {compose} from 'recompose';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -17,8 +17,9 @@ import gg from '@/assets/google.png';
 import twt from '@/assets/twitter.png';
 import houseSweet from '@/assets/house.png';
 import {ThemeCustom} from '@/components/Theme/Theme';
+import { makeStyles } from '@material-ui/styles';
 
-const styles:any        = (theme:ThemeCustom) => createStyles ({
+const useStyles = makeStyles<Theme>((theme: Theme) => createStyles ({
   boxSweetHome: {
     [theme.breakpoints.down('xs')]: {
       paddingBottom: 80,
@@ -123,7 +124,8 @@ const styles:any        = (theme:ThemeCustom) => createStyles ({
     width:'80%',
     padding:'4px 0',
   }
-});
+})
+);
 
 interface IHomeSweetHome {
     classes?:any;
@@ -146,7 +148,7 @@ type ExType = {
 }
 
 const HomeSweetHome:ComponentType<IHomeSweetHome> = (props:IHomeSweetHome) => {
-  const {classes}               = props;
+  const classes = useStyles(props);
   const [ckbox, setCkbox]       = useState<boolean>(false);
   const [checked, setChecked]   = useState<Array<ExType>>([]);
   const [arrowRef, setArrowRef] = useState<any>(null);
@@ -495,6 +497,4 @@ const HomeSweetHome:ComponentType<IHomeSweetHome> = (props:IHomeSweetHome) => {
   );
 };
 
-export default compose<IHomeSweetHome,any>(
-    withStyles(styles)
-)(HomeSweetHome);
+export default HomeSweetHome;

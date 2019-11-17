@@ -9,11 +9,9 @@ interface IProps {
   classes?: any
 }
 
-const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({});
 
 // @ts-ignore
 const ContentPlaceHolder: ComponentType<IProps> = (props: IProps) => {
-  const classes = useStyles(props);
 
   return (
     <Fragment>
@@ -35,6 +33,4 @@ const ContentPlaceHolder: ComponentType<IProps> = (props: IProps) => {
   );
 };
 
-export default compose<IProps, any>(
-  withStyles(styles),
-)(ContentPlaceHolder);
+export default ContentPlaceHolder;

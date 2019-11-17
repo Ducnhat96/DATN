@@ -22,10 +22,6 @@ interface IProps extends RouteChildrenProps {
   match: match<any>
 }
 
-const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
-  createStyles({
-    
-  });
 
 const ProfileView: ComponentType<IProps> = (props: IProps) => {
   const { classes, match } = props;
@@ -57,4 +53,4 @@ const ProfileView: ComponentType<IProps> = (props: IProps) => {
   );
 };
 
-export default compose<IProps, any>(withStyles(styles))(ProfileView);
+export default ProfileView;

@@ -1,11 +1,8 @@
-import { ThemeCustom } from '@/components/Theme/Theme';
 import createStyles from '@material-ui/core/styles/createStyles';
-import withStyles, { WithStyles } from '@material-ui/core/styles/withStyles';
 import React, { ComponentType, Fragment, useState, ChangeEvent, useEffect, useContext } from 'react';
-import { compose } from 'recompose';
 import Paper from '@material-ui/core/Paper';
 import StarRatings from 'react-star-ratings';
-import { SnackbarContent, Snackbar, Theme, CardActionArea, CardContent } from '@material-ui/core';
+import { SnackbarContent, Snackbar, Theme, CardActionArea, CardContent, Card } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import { SentimentVeryDissatisfied, SentimentVerySatisfied } from '@material-ui/icons';
 import Button from '@material-ui/core/Button';
@@ -31,7 +28,6 @@ import Typography from '@material-ui/core/Typography';
 import Grid from "@material-ui/core/Grid";
 import qs from 'query-string'
 import { makeStyles } from '@material-ui/styles';
-import { Card, CardMedia } from 'material-ui';
 
 interface IProps extends RouteChildrenProps {
   classes?: any,
@@ -235,13 +231,13 @@ const ReviewRoom: ComponentType<IProps> = (props: IProps) => {
                 <Typography variant='h6' className={classes.review}>
                   Đánh giá và nhận xét
                 </Typography>
-                <Card className={classes.card} elevation={0}>
+                <Card className={classes.card}>
                   <CardActionArea>
-                    <CardMedia
+                    {/* <CardMedia
                       className={classes.media}
                       image={`https://s3-ap-southeast-1.amazonaws.com/westay-img/lg/${roomReview.image}`}
                       title = 'VN-Homestay-Homestay cho người Việt'
-                    />
+                    /> */}
                     <CardContent className={classes.cardContent}>
                       <Typography component='p' className={classes.nameCity}>
                         {roomReview.room_type_text}

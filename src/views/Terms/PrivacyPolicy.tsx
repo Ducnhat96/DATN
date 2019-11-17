@@ -6,6 +6,8 @@ import { compose } from 'recompose';
 import Grid from '@material-ui/core/Grid';
 import GridContainer from '@/layouts/Grid/Container';
 import Logo from '@/components/ToolBar/Logo';
+import { makeStyles } from '@material-ui/styles';
+import { Theme } from '@material-ui/core';
 interface IProps {
     classes?: any
 }
@@ -17,7 +19,8 @@ const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({
         marginBottom: '40px',
         textAlign: 'center',
     },
-});
+})
+);
 
 // @ts-ignore
 const PrivacyPolicy: ComponentType<IProps> = (props: IProps) => {
@@ -100,6 +103,4 @@ const PrivacyPolicy: ComponentType<IProps> = (props: IProps) => {
     );
 };
 
-export default compose<IProps, any>(
-    withStyles(styles),
-)(PrivacyPolicy);
+export default PrivacyPolicy;

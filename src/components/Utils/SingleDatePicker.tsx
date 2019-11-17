@@ -27,11 +27,9 @@ interface LocalProps extends IProps {
   changeEndDate(date: string | null): void
 }
 
-const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({});
-
 // @ts-ignore
 const SingleDatePicker1: ComponentType<IProps> = (props: LocalProps) => {
-  const { classes, id, filter, type, changeStartDate, changeEndDate } = props;
+  const { id, filter, type, changeStartDate, changeEndDate } = props;
   const isStartDate = type === 'start';
   const { startDate, endDate } = filter;
 
@@ -92,5 +90,4 @@ const mapDispatchToProps = (dispatch: Dispatch<SearchFilterAction>) => {
 
 export default compose<IProps, any>(
   connect(mapStateToProps, mapDispatchToProps),
-  withStyles(styles),
 )(SingleDatePicker1);

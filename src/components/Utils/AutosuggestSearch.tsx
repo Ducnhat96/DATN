@@ -10,7 +10,7 @@ import Input from "@material-ui/core/Input";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
-import { createStyles, withStyles } from "@material-ui/core/styles";
+import { createStyles, withStyles, Theme } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Paper from "@material-ui/core/Paper";
 import { SearchFilterState } from "@/store/reducers/searchFilter";
@@ -45,6 +45,7 @@ import HomeIcon from "@material-ui/icons/HomeRounded";
 import LocationIcon from "@material-ui/icons/LocationOnRounded";
 import Popular from "@material-ui/icons/WhatshotRounded";
 import ErrorBoundary from "react-error-boundary";
+import { makeStyles } from "@material-ui/styles";
 
 interface Iprops extends RouteProps, RouterProps {
   classes?: any;
@@ -58,7 +59,7 @@ interface Iprops extends RouteProps, RouterProps {
   updateSearchDistrict(district_id: number | undefined): void;
 }
 
-const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
+const useStyles = makeStyles<Theme, Iprops>((theme: Theme) =>
   createStyles({
     container: {
       position: "relative",
@@ -119,11 +120,12 @@ const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
     paperShadow: {
       boxShadow: "#1a1a1d 0px 9px 26px -14px"
     }
-  });
+  })
+);
 
 const AutosuggestSearch: ComponentType<Iprops> = (props: Iprops) => {
+  const classes = useStyles(props);
   const {
-    classes,
     searchText,
     setSearchText,
     updateSearchText,
@@ -147,21 +149,23 @@ const AutosuggestSearch: ComponentType<Iprops> = (props: Iprops) => {
     return (
       <MenuItem
         selected={isHighlighted}
-        component="div"
+        // component="div"
         classes={{ gutters: classes.gutters }}
       >
         <div>
           {suggestion.type === IS_SEARCH_CITY ||
-            suggestion.type === IS_SEARCH_DISTRICT ? (
-              <HomeIcon className={classes.searchIcon} />
-            ) : (
-              <LocationIcon className={classes.searchIcon} />
-            )}
+          suggestion.type === IS_SEARCH_DISTRICT ? (
+            <HomeIcon className={classes.searchIcon} />
+          ) : (
+            <LocationIcon className={classes.searchIcon} />
+          )}
         </div>
         <div className={classes.suggestionText}>
-          {parts.map((part: { text: React.ReactNode; highlight: any }, index) => (
-            <span key={index}>{part.text}</span>
-          ))}
+          {parts.map(
+            (part: { text: React.ReactNode; highlight: any }, index) => (
+              <span key={index}>{part.text}</span>
+            )
+          )}
         </div>
       </MenuItem>
     );
@@ -213,7 +217,6 @@ const AutosuggestSearch: ComponentType<Iprops> = (props: Iprops) => {
       updateSearchCity(undefined);
       updateSearchText(suggestion.name);
       setSearchText(suggestion.name);
-
     } else if (suggestion.type === 3) {
       setDistrictId("");
       setCityId("");
@@ -225,7 +228,7 @@ const AutosuggestSearch: ComponentType<Iprops> = (props: Iprops) => {
   };
 
   const renderInputComponent = (inputProps: any) => {
-    const { classes, inputRef = () => { }, ref, ...other } = inputProps;
+    const { classes, inputRef = () => {}, ref, ...other } = inputProps;
     return (
       <TextField
         fullWidth
@@ -236,9 +239,7 @@ const AutosuggestSearch: ComponentType<Iprops> = (props: Iprops) => {
         InputProps={{
           startAdornment: (
             <InputAdornment position="start">
-              <SearchIcon
-                className={classes.marginSearch}
-              />
+              <SearchIcon className={classes.marginSearch} />
             </InputAdornment>
           ),
           inputRef: node => {
@@ -265,8 +266,6 @@ const AutosuggestSearch: ComponentType<Iprops> = (props: Iprops) => {
     renderSuggestion
   };
 
-
-
   return (
     <ErrorBoundary>
       <Autosuggest
@@ -281,7 +280,9 @@ const AutosuggestSearch: ComponentType<Iprops> = (props: Iprops) => {
         }}
         theme={{
           container: classes.container,
-          suggestionsContainerOpen: isNav ? classes.suggestionsContainerOpenNavSearch : classes.suggestionsContainerOpen,
+          suggestionsContainerOpen: isNav
+            ? classes.suggestionsContainerOpenNavSearch
+            : classes.suggestionsContainerOpen,
           suggestionsList: classes.suggestionsList,
           suggestion: classes.suggestion
         }}
@@ -330,10 +331,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
 
 export default compose<Iprops, any>(
   withRouter,
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  ),
-  withStyles(styles),
+  connect(mapStateToProps, mapDispatchToProps),
   memo
 )(AutosuggestSearch);

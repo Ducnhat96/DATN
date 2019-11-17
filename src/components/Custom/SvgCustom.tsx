@@ -5,6 +5,8 @@ import React, {ComponentType, Fragment, useEffect} from 'react';
 import {compose} from 'recompose';
 import wifi from '@/assets/SvgIcon/wifi.svg';
 import classNames from 'classnames';
+import { makeStyles } from '@material-ui/styles';
+import { Theme } from '@material-ui/core';
 
 interface IProps {
   classes?: any
@@ -45,7 +47,8 @@ const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({
     fontWeight: 500,
     color: '#767676'
   },
-});
+})
+);
 
 const Text = (props: TextProps) => {
   const {classes, value} = props;
@@ -56,7 +59,8 @@ const Text = (props: TextProps) => {
 
 // @ts-ignore
 const SvgCustom: ComponentType<IProps> = (props: IProps) => {
-  const {classes, borderClass, icon} = props;
+  const classes = useStyles(props);
+  const {borderClass, icon} = props;
 
   return (
     <Fragment>
@@ -77,6 +81,4 @@ const SvgCustom: ComponentType<IProps> = (props: IProps) => {
   );
 };
 
-export default compose<IProps, any>(
-  withStyles(styles),
-)(SvgCustom);
+export default SvgCustom;
