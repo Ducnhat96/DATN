@@ -10,7 +10,7 @@ interface IProps {
     classes?: any
 }
 
-const styles: any = (theme: ThemeCustom) => createStyles({
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({
     logoWestay: {
         width: '100%',
         marginTop: '25px',
@@ -21,7 +21,7 @@ const styles: any = (theme: ThemeCustom) => createStyles({
 
 // @ts-ignore
 const PrivacyPolicy: ComponentType<IProps> = (props: IProps) => {
-    const { classes } = props;
+    const classes = useStyles(props);
 
     return (
         <Fragment>

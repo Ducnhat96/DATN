@@ -9,11 +9,11 @@ interface IProps {
   classes?: any
 }
 
-const styles: any = (theme: ThemeCustom) => createStyles({});
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({});
 
 // @ts-ignore
 const ContentPlaceHolder: ComponentType<IProps> = (props: IProps) => {
-  const { classes } = props;
+  const classes = useStyles(props);
 
   return (
     <Fragment>

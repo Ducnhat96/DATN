@@ -32,7 +32,7 @@ import {
 import { GlobalContext, IGlobalContext } from "@/store/context/GlobalContext";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
-import { Hidden, Drawer, List, Paper } from "@material-ui/core";
+import { Hidden, Drawer, List, Paper, Theme } from "@material-ui/core";
 import IconMenu from "@material-ui/icons/Menu";
 import * as types from "@/store/actions/types";
 import { Dispatch } from "redux";
@@ -45,6 +45,7 @@ import NotiIcon from "@material-ui/icons/NotificationsNoneRounded";
 import PersonIcon from "@material-ui/icons/PersonOutlineRounded";
 import ReviewIcon from "@material-ui/icons/StarBorderRounded";
 import { Link } from "react-router-dom";
+import { makeStyles } from "@material-ui/styles";
 // const EditProfile = Loadable({
 //   loader: (): Promise<any> => import("@/views/ProfilePage/EditProfile"),
 //   loading: () => null
@@ -54,7 +55,7 @@ import { Link } from "react-router-dom";
 //   loading: () => null
 // });
 
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme>((theme: Theme) =>
   createStyles({
     NaviBottom: {
       position: "fixed",
@@ -68,7 +69,7 @@ const styles: any = (theme: ThemeCustom) =>
 
     wrapper: {
       textAlign: "inherit",
-      [theme!.breakpoints!.up!("md")]: {
+      [theme.breakpoints.up("md")]: {
         maxWidth: "1280px !important",
         marginTop: 0
       },
@@ -81,7 +82,7 @@ const styles: any = (theme: ThemeCustom) =>
     },
     boxPadding: {
       padding: 16,
-      [theme!.breakpoints!.down!("xs")]: {
+      [theme.breakpoints.down("xs")]: {
         padding: "10px 0"
       }
     },
@@ -120,7 +121,7 @@ const styles: any = (theme: ThemeCustom) =>
     },
     content: {
       flexGrow: 1,
-      [theme!.breakpoints!.up!("md")]: {
+      [theme.breakpoints.up("md")]: {
         paddingLeft: 300
       }
     },
@@ -138,7 +139,8 @@ const styles: any = (theme: ThemeCustom) =>
         borderColor: "#ff9800"
       }
     },
-  });
+  })
+);
 
 interface ITabContainer {
   children: any;
@@ -158,7 +160,8 @@ const TabContainer: ComponentType<ITabContainer> = (props: ITabContainer) => {
 };
 
 const MenuProfile: ComponentType<IMenuProfile> = (props: IMenuProfile) => {
-  const { classes, handleToggleDrawer } = props;
+  const classes = useStyles(props);
+  const { handleToggleDrawer } = props;
   const { width } = useContext<IGlobalContext>(GlobalContext);
   const [value, setValue] = useState<number>(0);
   const [show, setShow] = useState<boolean>(false);
@@ -199,7 +202,7 @@ const MenuProfile: ComponentType<IMenuProfile> = (props: IMenuProfile) => {
     label: {
       textTransform: "initial",
       fontSize: 16,
-      [theme!.breakpoints!.down!(1110)]: {
+      [theme.breakpoints.down(1110)]: {
         fontSize: 14
       }
     },
@@ -345,7 +348,6 @@ const mapDispatchToProps = (dispatch: Dispatch<SearchNavAction>) => {
 };
 
 export default compose<IMenuProfile, any>(
-  withStyles(styles),
   connect(
     null,
     mapDispatchToProps

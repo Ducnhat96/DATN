@@ -14,12 +14,14 @@ import { formatMoney } from '@/utils/mixins';
 import { IGlobalContext, GlobalContext } from '@/store/context/GlobalContext';
 import Blue from '@material-ui/core/colors/blue';
 import InfoHeader from '@/components/Bookings/InfoHeader';
+import { makeStyles } from '@material-ui/styles';
+import { Theme } from '@material-ui/core';
 
 interface IProps {
   classes?: any
 }
 
-const styles: any = (theme: ThemeCustom) => createStyles({
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({
   root: {
     padding: '1rem',
   },
@@ -35,11 +37,12 @@ const styles: any = (theme: ThemeCustom) => createStyles({
     textDecoration: 'underline',
     cursor: 'pointer',
   },
-});
+})
+);
 
 // @ts-ignore
 const PaymentInfo: ComponentType<IProps> = (props: IProps) => {
-  const { classes } = props;
+  const classes = useStyles(props);
 
   const { state } = useContext<IPaymentContext>(PaymentContext);
   const { width } = useContext<IGlobalContext>(GlobalContext);
@@ -54,15 +57,15 @@ const PaymentInfo: ComponentType<IProps> = (props: IProps) => {
 
   return (
     <Fragment>
-      <Grid container spacing={16}>
+      <Grid container spacing={2}>
         <Grid item xs={12}>
           <Paper className={classes.root}>
-            <Grid container spacing={16}>
+            <Grid container spacing={2}>
               {room ? (
                 <Fragment>
                   <InfoHeader room={room} />
                   <Grid item xs={12}>
-                    <Grid container spacing={16}>
+                    <Grid container spacing={2}>
                       <Grid container item xs={12}>
                         <Grid item xs={6} className={classes.fontLow}>Ngày nhận phòng</Grid>
                         <Grid container item xs={6} className={classes.fontLow} justify='flex-end'>{
@@ -82,7 +85,7 @@ const PaymentInfo: ComponentType<IProps> = (props: IProps) => {
                       </Grid>
                     </Grid>
                     <Divider className={classes.spaceTop} />
-                    <Grid container spacing={16} className={classes.spaceTop}>
+                    <Grid container spacing={2} className={classes.spaceTop}>
                       <Grid container item xs={12}>
                         <Grid item xs={6} className={classes.fontLow}>Giá</Grid>
                         <Grid container item xs={6} className={classes.fontLow}
@@ -109,7 +112,7 @@ const PaymentInfo: ComponentType<IProps> = (props: IProps) => {
                       ) : ''}
                     </Grid>
                     <Divider className={classes.spaceTop} />
-                    <Grid container spacing={16} className={classes.spaceTop}>
+                    <Grid container spacing={2} className={classes.spaceTop}>
                       <Grid container item xs={12}>
                         <Grid item xs={6} className={classes.fontLow}>
                           <Typography variant='h6'>Tổng cộng:</Typography>
@@ -127,7 +130,7 @@ const PaymentInfo: ComponentType<IProps> = (props: IProps) => {
         </Grid>
         <Grid item xs={12}>
           <Paper className={classes.root}>
-            <Grid container spacing={16}>
+            <Grid container spacing={2}>
               <Grid item xs={12} onClick={() => setInfoStatus(!infoStatus)}>
                 <Typography variant='subtitle2'>
                   THÔNG TIN KHÁCH HÀNG
@@ -136,7 +139,7 @@ const PaymentInfo: ComponentType<IProps> = (props: IProps) => {
                 <Divider />
               </Grid>
               {room && lists ? (
-                <Grid item container spacing={16}>
+                <Grid item container spacing={2}>
                   {infoStatus ? (
                     <Fragment>
                       <Grid container item xs={12}>
@@ -187,6 +190,4 @@ const PaymentInfo: ComponentType<IProps> = (props: IProps) => {
   );
 };
 
-export default compose<IProps, any>(
-  withStyles(styles),
-)(PaymentInfo);
+export default PaymentInfo;

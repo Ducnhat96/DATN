@@ -20,7 +20,7 @@ interface TextProps {
   value: string
 }
 
-const styles: any = (theme: ThemeCustom) => createStyles({
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({
   marker: {
     width: '1rem',
     height: '1rem',

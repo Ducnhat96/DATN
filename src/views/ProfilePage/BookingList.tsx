@@ -42,8 +42,9 @@ import { axios } from "@/utils/axiosInstance";
 import { AxiosRes } from "@/types/Requests/ResponseTemplate";
 import { RoomReviewInfoRes } from "@/types/Requests/ReviewRoom/ReviewResponse";
 import { Tooltip } from "@material-ui/core";
+import { makeStyles } from "@material-ui/styles";
 
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme>((theme: Theme) =>
   createStyles({
     boxBooking: {
       margin: "10px auto",
@@ -62,14 +63,14 @@ const styles: any = (theme: ThemeCustom) =>
       display: "-webkit-box",
       WebkitLineClamp: 2,
       WebkitBoxOrient: "vertical",
-      [theme!.breakpoints!.down!("sm")]: {
+      [theme.breakpoints.down("sm")]: {
         fontSize: 12
       }
     },
     iconLocation: {
       verticalAlign: "bottom",
       fontSize: 20,
-      [theme!.breakpoints!.down!("sm")]: {
+      [theme.breakpoints.down("sm")]: {
         fontSize: 18
       }
     },
@@ -98,7 +99,7 @@ const styles: any = (theme: ThemeCustom) =>
     fontTime: {
 
       fontSize: 13,
-      [theme!.breakpoints!.down!("sm")]: {
+      [theme.breakpoints.down("sm")]: {
         fontSize: 11
       }
     },
@@ -113,10 +114,10 @@ const styles: any = (theme: ThemeCustom) =>
     },
     button: {
       padding: "6px 14px",
-      [theme!.breakpoints!.down!("sm")]: {
+      [theme.breakpoints.down("sm")]: {
         padding: "6px 12px"
       },
-      [theme!.breakpoints!.down!("xs")]: {
+      [theme.breakpoints.down("xs")]: {
         fontSize: "3vw"
       }
     },
@@ -125,18 +126,18 @@ const styles: any = (theme: ThemeCustom) =>
     },
     typoDay: {
       fontSize: "2.5vw",
-      [theme!.breakpoints!.down!("md")]: {
+      [theme.breakpoints.down("md")]: {
         fontSize: "3vw"
       }
     },
     typoName: {
-      [theme!.breakpoints!.down!("sm")]: {
+      [theme.breakpoints.down("sm")]: {
         fontSize: 17,
         lineHeight: 1.2
       }
     },
     typoTotalFee: {
-      [theme!.breakpoints!.down!("sm")]: {
+      [theme.breakpoints.down("sm")]: {
         fontSize: 17
       }
     },
@@ -161,7 +162,8 @@ const styles: any = (theme: ThemeCustom) =>
     boxImg: {
       padding: 0
     }
-  });
+  })
+);
 
 interface IBookingList {
   classes?: any;
@@ -241,7 +243,7 @@ const BookingList: ComponentType<IBookingList> = (props: IBookingList) => {
     return (
       <GridContainer xs={12} sm={12} md={12} lg={11} key={i.id}>
         <Paper elevation={0} classes={{ root: classes.boxBooking }}>
-          <Grid container spacing={16} direction="row" justify="center">
+          <Grid container spacing={2} direction="row" justify="center">
             <Grid item xs={12} sm={4} md={4} lg={3} className={classes.boxImg}>
               <img
                 alt="image room"
@@ -411,7 +413,7 @@ const BookingList: ComponentType<IBookingList> = (props: IBookingList) => {
               </Grid>
             </Grid>
           </Grid>
-          <Grid container spacing={16} direction="row" justify="space-between">
+          <Grid container spacing={2} direction="row" justify="space-between">
             <Grid
               item
               container
@@ -526,4 +528,4 @@ const BookingList: ComponentType<IBookingList> = (props: IBookingList) => {
   );
 };
 
-export default compose<IBookingList, any>(withStyles(styles))(BookingList);
+export default BookingList;

@@ -50,7 +50,7 @@ interface ILocalProps extends ISideDrawerProps {
   handleRegisterButton(status: boolean): void;
 }
 
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
   createStyles({
     list: {
       display: "flex",

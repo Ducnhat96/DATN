@@ -20,7 +20,7 @@ interface IProps {
   avatar_url: string;
   name: string;
 }
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
   createStyles({
     paper: {
       maxWidth: "18rem",
@@ -30,15 +30,15 @@ const styles: any = (theme: ThemeCustom) =>
       overflow: "hidden",
       backgroundColor: "#f7f9ff",
       boxShadow: "none",
-      [theme!.breakpoints!.down!("xs")]: {
+      [theme.breakpoints.down("xs")]: {
         maxWidth: "none !important",
         border: "1px solid #fff !important",
         borderRadius: "0 !important"
       },
-      [theme!.breakpoints!.up!("md")]: {
+      [theme.breakpoints.up("md")]: {
         maxWidth: "15rem"
       },
-      [theme!.breakpoints!.up!("lg")]: {
+      [theme.breakpoints.up("lg")]: {
         maxWidth: "18rem"
       }
     },
@@ -53,7 +53,7 @@ const styles: any = (theme: ThemeCustom) =>
     userName: {
       fontWeight: "bold",
       fontSize: "1rem",
-      [theme!.breakpoints!.up!("md")]: {
+      [theme.breakpoints.up("md")]: {
         fontSize: "0.9rem !important "
       }
     },
@@ -71,37 +71,38 @@ const styles: any = (theme: ThemeCustom) =>
       transform: "translate(-50%,-50%)",
       width: 60,
       height: 60,
-      [theme!.breakpoints!.down!("md")]: {
+      [theme.breakpoints.down("md")]: {
         width: 50,
         height: 50
       },
-      [theme!.breakpoints!.up!("lg")]: {
+      [theme.breakpoints.up("lg")]: {
         width: 47,
         height: 47
       }
     },
     icon: {
       paddingRight: 3,
-      [theme!.breakpoints!.up!("sm")]: {
+      [theme.breakpoints.up("sm")]: {
         fontSize: "0.8rem !important"
       },
-      [theme!.breakpoints!.down!("xs")]: {
+      [theme.breakpoints.down("xs")]: {
         paddingRight: 5
       }
     },
     certificate: {
       color: "#08C299",
-      [theme!.breakpoints!.up!("sm")]: {
+      [theme.breakpoints.up("sm")]: {
         fontSize: "0.8rem !important"
       },
-      [theme!.breakpoints!.down!("xs")]: {
+      [theme.breakpoints.down("xs")]: {
         marginLeft: 15
       }
     }
-  });
+  })
+);
 
 const HostInfo: FC<IProps> = props => {
-  const { classes } = props;
+  const classes = useStyles(props);
   const { id, avatar, avatar_url, name } = props;
 
   return (
@@ -156,4 +157,4 @@ const HostInfo: FC<IProps> = props => {
     </Paper>
   );
 };
-export default compose<IProps, any>(withStyles(styles))(HostInfo);
+export default HostInfo;

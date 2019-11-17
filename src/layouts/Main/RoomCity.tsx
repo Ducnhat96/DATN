@@ -15,17 +15,18 @@ import { IGlobalContext, GlobalContext } from '@/store/context/GlobalContext';
 import { newRoomLocation } from '@/store/context/Room/RoomIndexContext';
 import LazyLoad from 'react-lazyload';
 import { windowExist } from '@/index';
+import { makeStyles } from '@material-ui/styles';
+import { Theme } from '@material-ui/core';
 
 interface IProps {
    classes?: any,
    room: NumberRoomCity,
 }
-
-const styles: any = (theme: ThemeCustom) => createStyles({
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({
    root: {
       textAlign: 'center',
       paddingTop: '0.2em',
-      backgroundColor: theme!.palette!.background!.paper!,
+      backgroundColor: theme.palette.background.paper!,
    },
    gridListTile: {
       borderRadius: '8px',
@@ -60,11 +61,13 @@ const styles: any = (theme: ThemeCustom) => createStyles({
       borderRadius: 8,
       cursor: 'pointer',
    },
-});
+})
+);
 
 // @ts-ignore
 const RoomCity: ComponentType<IProps> = (props: IProps) => {
-   const { classes, room } = props;
+   const classes = useStyles(props);
+   const { room } = props;
    const { history } = useContext<IGlobalContext>(GlobalContext);
 
    const locationRoom = (values: NumberRoomCity) => {
@@ -102,6 +105,4 @@ const RoomCity: ComponentType<IProps> = (props: IProps) => {
    );
 };
 
-export default compose<IProps, any>(
-   withStyles(styles),
-)(RoomCity);
+export default RoomCity;

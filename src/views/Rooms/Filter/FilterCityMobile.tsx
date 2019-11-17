@@ -17,7 +17,8 @@ import {
   ListItemText,
   CircularProgress,
   Typography,
-  InputAdornment
+  InputAdornment,
+  createStyles
 } from "@material-ui/core";
 import SendIcon from "@material-ui/icons/Send";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
@@ -30,11 +31,13 @@ import { Dispatch } from "redux";
 import { connect } from "react-redux";
 import { ReducersType } from "@/store/reducers";
 import { SearchFilterState } from "@/store/reducers/searchFilter";
-import { ThemeCustom } from "@/components/Theme/Theme";
-import { createStyles, withStyles, Paper } from "@material-ui/core/es";
+import theme, { ThemeCustom } from "@/components/Theme/Theme";
 import MuiDialogTitle from "@material-ui/core/DialogTitle";
 import CloseIcon from "@material-ui/icons/Close";
 import SearchIcon from "@material-ui/icons/Search";
+import { makeStyles, withStyles } from "@material-ui/styles";
+import { Theme } from "react-autosuggest";
+import { Paper } from "material-ui";
 
 export const TransitionCustom = (props: any) => (
   <Slide direction="down" {...props} timeout={{ enter: 500, exit: 200 }} />
@@ -48,7 +51,6 @@ interface Props {
 
 const DialogTitle: ComponentType<Props> = withStyles(theme => ({
   root: {
-    // borderBottom: `1px solid ${theme.palette.divider}`,
     margin: 0,
     padding: theme.spacing.unit * 2
   },
@@ -84,10 +86,10 @@ export interface IProps {
   updateSearchText(inputSearch: string): void;
 }
 
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
   createStyles({
     progress: {
-      margin: theme!.spacing!.unit! * 2
+      margin: 16
     },
     center: {
       display: "flex",
@@ -98,17 +100,18 @@ const styles: any = (theme: ThemeCustom) =>
       width: "100%",
       height: "100%",
       //   position: "absolute",
-      //   backgroundColor: theme!.palette!.background!.paper,
-      //   boxShadow: theme!.shadows![5],
-      //   padding: theme!.spacing!.unit! * 4,
+      //   backgroundColor: theme.palette.background.paper,
+      //   boxShadow: theme.shadows[5],
+      //   padding: theme.spacing.unit * 4,
       outline: "none"
     }
-  });
+  })
+);
 
 const FilterCityMobile: ComponentType<IProps> = props => {
   const [data, setData] = useState<SearchSuggestRes[]>([]);
-
-  const { setOpen, updateSearchText, filter, classes, open } = props;
+  const classes = useStyles(props);
+  const { setOpen, updateSearchText, filter, open } = props;
 
   const handleChange = async (e: any) => {
     const data = await searchSuggest(e.target.value);
@@ -153,7 +156,7 @@ const FilterCityMobile: ComponentType<IProps> = props => {
             />
 
             <List
-              component="nav"
+              // component="nav"
               className={classNames({ [classes.center]: !data.length })}
             >
               {!data.length && (
@@ -209,5 +212,4 @@ export default compose<IProps, any>(
     mapStateToProps,
     mapDispatchToProps
   ),
-  withStyles(styles)
 )(FilterCityMobile);

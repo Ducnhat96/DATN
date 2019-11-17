@@ -10,7 +10,7 @@ interface IProps {
   classes?: any
 }
 
-const styles: any = (theme: ThemeCustom) => createStyles({
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({
 	logoWestay: {
 		width:'100%',
 		marginTop:'25px',

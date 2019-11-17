@@ -15,16 +15,17 @@ import {AxiosRes} from '@/types/Requests/ResponseTemplate';
 import {AxiosError} from 'axios';
 import SimpleLoader from '@/components/Loading/SimpleLoader';
 import _ from 'lodash'
-import {Hidden} from '@material-ui/core';
+import {Hidden, Theme} from '@material-ui/core';
 import promotionBaner from '@/assets/promotion-83.png';
 import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/styles';
 
 
 interface IProps {
   classes?: any
 }
 
-const styles: any = (theme: ThemeCustom) => createStyles({
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({
   card: {
     maxWidth: 400,
   },
@@ -47,7 +48,7 @@ const styles: any = (theme: ThemeCustom) => createStyles({
   },
   boxTitle : {
     padding: '10px 20px 20px 20px',
-    [theme!.breakpoints!.down!('xs')]: {
+    [theme.breakpoints.down('xs')]: {
       padding: '0px 25px',
     },
   },
@@ -56,7 +57,7 @@ const styles: any = (theme: ThemeCustom) => createStyles({
     fontFamily: 'Roboto',
     fontWeight: 500,
     fontSize: 34,
-    [theme!.breakpoints!.down!('xs')]: {
+    [theme.breakpoints.down('xs')]: {
       fontSize: 20,
     },
   },
@@ -66,12 +67,12 @@ const styles: any = (theme: ThemeCustom) => createStyles({
 
   boxPadding: {
     padding: '1px 16px',
-    [theme!.breakpoints!.down!('xs')]: {
+    [theme.breakpoints.down('xs')]: {
       padding: '10px 25px',
     },
   },
   westay : {
-    [theme!.breakpoints!.down!('xs')]: {
+    [theme.breakpoints.down('xs')]: {
       paddingLeft: 39,
     },
 
@@ -82,9 +83,10 @@ const styles: any = (theme: ThemeCustom) => createStyles({
     objectFit: 'cover',
   }
 
-});
+})
+);
 const Promotion: ComponentType<IProps> = (props: IProps) => {
-  const {classes} = props;
+  const classes = useStyles(props);
   const [promotion, setPromotion] = useState<PromotionRes[] | null>(null);
 
   useEffect(() => {
@@ -138,8 +140,6 @@ const Promotion: ComponentType<IProps> = (props: IProps) => {
   );
 };
 
-export default compose<IProps, any>(
-  withStyles(styles),
-)(Promotion);
+export default Promotion;
 
 

@@ -30,7 +30,7 @@ interface IProps {
   hasApplyButton?: boolean;
 }
 
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
   createStyles({
     expandedMargin: {
       margin: "20px 0"

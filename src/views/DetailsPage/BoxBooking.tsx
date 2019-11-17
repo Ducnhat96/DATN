@@ -71,7 +71,7 @@ interface IProps {
   updateGuestsCount(type: number): void;
 }
 
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
   createStyles({
     boxPadding: {
       padding: "8px 16px"
@@ -564,7 +564,7 @@ const BoxBooking: ComponentType<IProps> = (props: IProps) => {
                 <Fragment>
                   <Grid item xs={12}>
                     <Divider />
-                    <Grid container spacing={16} className={classes.spaceTop}>
+                    <Grid container spacing={2} className={classes.spaceTop}>
                       {!!priceProcess.error ? (
                         <Grid item xs={12}>
                           <Typography color="error">
@@ -760,7 +760,7 @@ const BoxBooking: ComponentType<IProps> = (props: IProps) => {
                         <Divider className={classes.spaceTop} />
                         <Grid
                           container
-                          spacing={16}
+                          spacing={2}
                           className={classes.spaceTop}
                         >
                           <Grid container item xs={12}>

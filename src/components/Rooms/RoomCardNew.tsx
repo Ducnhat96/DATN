@@ -1,17 +1,11 @@
-import { ThemeCustom } from "@/components/Theme/Theme";
 import fakeIMG from "@/assets/room_demo.jpeg";
-import align from "@/styles/Position/align.module.scss";
-import mapMarker from "@/assets/SvgIcon/map-marker.svg";
-import discount from "@/assets/SvgIcon/discount.svg";
 import createStyles from "@material-ui/core/styles/createStyles";
-import withStyles from "@material-ui/core/styles/withStyles";
 import React, {
   ComponentType,
   Fragment,
   useState,
   useContext,
   memo,
-  useEffect
 } from "react";
 import { compose } from "recompose";
 import Grid from "@material-ui/core/Grid/Grid";
@@ -38,8 +32,10 @@ import { windowExist } from "@/index";
 import StarIcon from "@material-ui/icons/StarRounded";
 import QuickBookIcon from "@material-ui/icons/OfflineBoltRounded";
 import Link from "@material-ui/core/Link";
+import { makeStyles } from "@material-ui/styles";
+import { Theme } from "@material-ui/core";
 
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
   createStyles({
     paper: {
       position: "relative",
@@ -50,7 +46,7 @@ const styles: any = (theme: ThemeCustom) =>
       "&:hover": {
         boxShadow: "rgba(0,0,0,0.12) 0px 0px 12px"
       },
-      [theme!.breakpoints!.only!("xs")]: {
+      [theme.breakpoints.only("xs")]: {
         height: "100%"
       }
     },
@@ -58,7 +54,7 @@ const styles: any = (theme: ThemeCustom) =>
       position: "relative",
       height: "100%",
       padding: 4,
-      [theme!.breakpoints!.only!("xs")]: {
+      [theme.breakpoints.only("xs")]: {
         maxWidth: "calc(93vw - 4px)",
         height: "25vh"
       }
@@ -103,13 +99,12 @@ const styles: any = (theme: ThemeCustom) =>
       overflow: "hidden",
       fontSize: 20,
       fontWeight: 700,
-      // maxHeight: 44,
       overflowWrap: "break-word",
       textOverflow: "ellipsis",
       color: "#484848",
       lineHeight: "24px",
       display: "flex",
-      [theme!.breakpoints!.only!("xs")]: {
+      [theme.breakpoints.only("xs")]: {
         marginBottom: 10
       }
     },
@@ -138,7 +133,7 @@ const styles: any = (theme: ThemeCustom) =>
     },
     address: {
       fontSize: 14,
-      [theme!.breakpoints!.only!("xs")]: {
+      [theme.breakpoints.only("xs")]: {
         display: "block"
       }
     },
@@ -214,25 +209,25 @@ const styles: any = (theme: ThemeCustom) =>
       right: 0,
       bottom: 0,
       textAlign: "right",
-      [theme!.breakpoints!.only!("sm")]: {
+      [theme.breakpoints.only("sm")]: {
         position: "absolute"
       },
-      [theme!.breakpoints!.up!("md")]: {
+      [theme.breakpoints.up("md")]: {
         position: "absolute"
       }
     },
     priceContainer: {
-      [theme!.breakpoints!.up!("md")]: {
+      [theme.breakpoints.up("md")]: {
         display: "flex"
       },
 
-      [theme!.breakpoints!.only!("xs")]: { justifyContent: "flex-end" }
+      [theme.breakpoints.only("xs")]: { justifyContent: "flex-end" }
     },
     hourPrice: {
-      [theme!.breakpoints!.up!(700)]: { display: "inline-block" }
+      [theme.breakpoints.up(700)]: { display: "inline-block" }
     },
     dayPrice: {
-      [theme!.breakpoints!.only!("sm")]: { display: "inline-block" }
+      [theme.breakpoints.only("sm")]: { display: "inline-block" }
     },
     priceText: {
       fontSize: 17,
@@ -270,7 +265,8 @@ const styles: any = (theme: ThemeCustom) =>
       WebkitBoxShadow: "inset 0 -2px #e8930c",
       boxShadow: "inset 0 -2px #e8930c"
     }
-  });
+  })
+);
 
 interface IProps {
   classes?: any;
@@ -279,7 +275,8 @@ interface IProps {
 
 // @ts-ignore
 const RoomCard: ComponentType<IProps> = (props: IProps) => {
-  const { classes, room } = props;
+  const classes = useStyles(props);
+  const { room } = props;
   const [paperHover, setPaperHover] = useState<boolean>(false);
   const { width, history } = useContext<IGlobalContext>(GlobalContext);
 
@@ -516,6 +513,5 @@ const RoomCard: ComponentType<IProps> = (props: IProps) => {
 };
 
 export default compose<IProps, any>(
-  withStyles(styles),
   memo
 )(RoomCard);

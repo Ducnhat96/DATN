@@ -12,6 +12,8 @@ import Blue from '@material-ui/core/colors/blue';
 import { scroller } from 'react-scroll';
 import { ReactScrollLinkProps } from 'react-scroll/modules/components/Link';
 import { IGlobalContext, GlobalContext } from '@/store/context/GlobalContext';
+import { makeStyles } from '@material-ui/styles';
+import { Theme } from '@material-ui/core';
 
 interface IProps extends Required<Coords> {
   classes?: any
@@ -23,47 +25,49 @@ interface LocalProps extends IProps, ChildComponentProps {
 
 }
 
-const styles: any = (theme: ThemeCustom) => createStyles({
-  root: {
-    [theme!.breakpoints!.only!('xs')]: {
-      fontSize: 12,
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
+  createStyles({
+    root: {
+      [theme.breakpoints.only('xs')]: {
+        fontSize: 12,
+      },
+      position: 'absolute',
+      fontSize: '1rem',
+      transform: 'translate(-50%, -135%)',
+      transition: theme.transitions.create(['all'], {
+        duration: 200,
+        easing: 'ease-in-out',
+      }),
     },
-    position: 'absolute',
-    fontSize: '1rem',
-    transform: 'translate(-50%, -135%)',
-    transition: theme!.transitions!.create!(['all'], {
-      duration: 200,
-      easing: 'ease-in-out',
-    }),
-  },
-  hover: {
-    zIndex: 1,
-    backgroundColor: '#ff9800',
-    border: `1px solid #ff9800`,
-    cursor: 'pointer',
-    color: 'white',
-    transition: theme!.transitions!.create!(['all'], {
-      duration: 200,
-      easing: 'ease-in-out',
-    }),
-  },
-  arrowHover: {
-    borderColor: `#ff9800 transparent transparent transparent`,
-    '&:after': {
+    hover: {
+      zIndex: 1,
+      backgroundColor: '#ff9800',
+      border: `1px solid #ff9800`,
+      cursor: 'pointer',
+      color: 'white',
+      transition: theme.transitions.create(['all'], {
+        duration: 200,
+        easing: 'ease-in-out',
+      }),
+    },
+    arrowHover: {
       borderColor: `#ff9800 transparent transparent transparent`,
+      '&:after': {
+        borderColor: `#ff9800 transparent transparent transparent`,
+      },
     },
-  },
-  overBubble: {
-    [theme!.breakpoints!.only!('xs')]: {
-      minWidth: 30,
-    },
-  }
-
-});
+    overBubble: {
+      [theme.breakpoints.only('xs')]: {
+        minWidth: 30,
+      },
+    }
+  })
+);
 
 // @ts-ignore
 const MapMarker: ComponentType<IProps> = (props: LocalProps) => {
-  const { classes, room, isHover } = props;
+  const classes = useStyles(props);
+  const { room, isHover } = props;
   const { width } = useContext<IGlobalContext>(GlobalContext);
 
   const markerEvent = () => {
@@ -107,5 +111,4 @@ const memoCheck = (prevProps: IProps, nextProps: IProps) => {
 };
 
 export default compose<IProps, any>(
-  withStyles(styles),
 )(React.memo(MapMarker, memoCheck));

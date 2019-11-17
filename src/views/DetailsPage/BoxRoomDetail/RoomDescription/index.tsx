@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme: ThemeCustom) =>
     },
     name: {
       fontWeight: 700,
-      [theme!.breakpoints!.down!('xs')]: {
+      [theme.breakpoints.down('xs')]: {
         margin: '1.5rem 0 0.4rem 0'
       }
     },

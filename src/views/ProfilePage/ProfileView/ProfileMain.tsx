@@ -2,7 +2,7 @@ import React, { ComponentType, useReducer, useEffect, useContext } from "react";
 
 import NavTop from "@/components/ToolBar/NavTop";
 import { compose } from "recompose";
-import { createStyles, withStyles, Grid, Paper } from "@material-ui/core";
+import { createStyles, withStyles, Grid, Paper, Theme } from "@material-ui/core";
 import { ThemeCustom } from "@/components/Theme/Theme";
 import {
   ProfileViewStateInit,
@@ -17,21 +17,20 @@ import UserBox from "@/views/ProfilePage/ProfileView/UserBox";
 import UserDetail from "@/views/ProfilePage/ProfileView/UserDetail";
 import Loadable from 'react-loadable';
 import SimpleLoader from '@/components/Loading/SimpleLoader';
+import { makeStyles } from "@material-ui/styles";
 
 interface IProps {
   classes: any;
 }
 
-
-
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
   createStyles({
     wrapper: {
-      [theme!.breakpoints!.up!("md")]: {
+      [theme.breakpoints.up("md")]: {
         maxWidth: "1080px !important",
         marginTop: "120px !important"
       },
-      [theme!.breakpoints!.down!("md")]: {
+      [theme.breakpoints.down("md")]: {
         maxWidth: "960px !important"
       },
 
@@ -43,19 +42,20 @@ const styles: any = (theme: ThemeCustom) =>
     },
     boxPadding: {
       padding: 16,
-      [theme!.breakpoints!.down!("xs")]: {
+      [theme.breakpoints.down("xs")]: {
         padding: "10px 0"
       }
     },
     detailPaper: {
-      [theme!.breakpoints!.up!("md")]: {
+      [theme.breakpoints.up("md")]: {
         marginLeft: 80
       }
     }
-  });
+  })
+);
 
 const ProfileMain: ComponentType<IProps> = (props: IProps) => {
-  const { classes } = props;
+  const classes = useStyles(props);
   const { state, dispatch } = useContext<IProfileViewContext>(
     ProfileViewContext
   );
@@ -102,4 +102,4 @@ const ProfileMain: ComponentType<IProps> = (props: IProps) => {
   );
 };
 
-export default compose<IProps, any>(withStyles(styles))(ProfileMain);
+export default ProfileMain;

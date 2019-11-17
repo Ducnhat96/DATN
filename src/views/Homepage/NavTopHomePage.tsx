@@ -19,7 +19,7 @@ import Paper from "@material-ui/core/Paper";
 import Popper from "@material-ui/core/Popper";
 import Popover from "@material-ui/core/Popover";
 import Typography from "@material-ui/core/Typography";
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles, Theme } from "@material-ui/core/styles";
 import createStyles from "@material-ui/core/styles/createStyles";
 import Toolbar from "@material-ui/core/Toolbar";
 import React, {
@@ -55,6 +55,7 @@ import ListCitySearch, {
 import Dialog from "@material-ui/core/Dialog";
 import { KeyboardArrowDown } from "@material-ui/icons";
 import ForgetPasswordForm from "@/components/Forms/ForgetPasswordForm";
+import { makeStyles } from "@material-ui/styles";
 
 interface IProps {
   classes: any;
@@ -73,7 +74,7 @@ interface ILocalProps extends IProps {
   handleToggleDrawer(openDrawer: boolean): void;
 }
 
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
   createStyles({
     root: {
       flexGrow: 1
@@ -81,7 +82,7 @@ const styles: any = (theme: ThemeCustom) =>
     grow: {
       flexGrow: 1,
       marginLeft: "20px",
-      [theme!.breakpoints!.only!("xs")]: {
+      [theme.breakpoints.only("xs")]: {
         marginLeft: 0
       }
     },
@@ -102,7 +103,7 @@ const styles: any = (theme: ThemeCustom) =>
       padding: "8px 20px",
       fontSize: "0.9375rem",
       color: "#ffffff",
-      height: theme!.palette!.button.nav,
+      height: theme.palette.button.nav,
       borderRadius: "0px",
       fontWeight: 700,
       textTransform: "capitalize",
@@ -129,7 +130,7 @@ const styles: any = (theme: ThemeCustom) =>
       marginRight: 20
     },
     drawer: {
-      [theme!.breakpoints!.only!("xs")]: {
+      [theme.breakpoints.only("xs")]: {
         width: "80%"
       },
       width: "60%"
@@ -156,17 +157,18 @@ const styles: any = (theme: ThemeCustom) =>
       textAlign: "center"
     },
     fab: {
-      margin: theme!.spacing!.unit
+      margin: theme.spacing.unit
     },
     rightIcon: {
-      marginLeft: theme!.spacing!.unit
+      marginLeft: theme.spacing.unit
     },
     textSpan: {
       display: "flex",
       justifyContent: "center",
       alignItems: "center"
     }
-  });
+  })
+);
 
 const LoginForm = Loadable({
   loader: (): Promise<any> => import("@/components/Forms/LoginForm"),
@@ -180,12 +182,10 @@ const SignUpForm = Loadable({
   loading: () => null
 });
 
-
-
 // @ts-ignore
 const NavTopHomePage: FunctionComponent<IProps> = (props: ILocalProps) => {
+  const classes = useStyles(props);
   const {
-    classes,
     cookies,
     filter,
     handleOpenSearchMobile,
@@ -254,11 +254,7 @@ const NavTopHomePage: FunctionComponent<IProps> = (props: ILocalProps) => {
           <Hidden smDown>
             <Logo />
             <div className={classes.grow} />
-            <Button
-              href="#"
-              className={classes.button}
-              name="merchant-site"
-            >
+            <Button href="#" className={classes.button} name="merchant-site">
               Kênh chủ nhà
             </Button>
 
@@ -272,17 +268,13 @@ const NavTopHomePage: FunctionComponent<IProps> = (props: ILocalProps) => {
               Trợ giúp
             </Button>
 
-            <Popper
-              open={open}
-              anchorEl={userRefButton.current}
-              
-            >
+            <Popper open={open} anchorEl={userRefButton.current}>
               <ClickAwayListener onClickAway={handleClose}>
                 <Paper className={classes.Popper}>
                   <MenuList>
                     <MenuItem
                       name="contact-phone1"
-                      component="li"
+                      // component="li"
                       onClick={() => Hotline("tel:0916374057")}
                     >
                       <ListItemIcon>
@@ -293,7 +285,9 @@ const NavTopHomePage: FunctionComponent<IProps> = (props: ILocalProps) => {
                     <Divider />
                     <MenuItem
                       name="contact-email"
-                      onClick={() => Hotline("mailto:phamducnhat96bkhn@gmail.com")}
+                      onClick={() =>
+                        Hotline("mailto:phamducnhat96bkhn@gmail.com")
+                      }
                     >
                       <ListItemIcon>
                         <EmailIcon />
@@ -388,8 +382,6 @@ const NavTopHomePage: FunctionComponent<IProps> = (props: ILocalProps) => {
           </Hidden>
           <Hidden mdUp>
             <Logo />
-
-            
           </Hidden>
         </Toolbar>
 
@@ -433,10 +425,6 @@ const mapDispatchToProps = (
 };
 
 export default compose<IProps, any>(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  ),
-  withCookies,
-  withStyles(styles)
+  connect(mapStateToProps, mapDispatchToProps),
+  withCookies
 )(NavTopHomePage);

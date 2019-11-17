@@ -27,7 +27,7 @@ interface IProps {
 }
 
 
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
   createStyles({
     applyButton: {
       background: 'transparent',

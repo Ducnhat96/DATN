@@ -39,9 +39,11 @@ import { getRoom } from "@/store/context/Room/RoomDetailsContext";
 import Typography from "@material-ui/core/Typography/Typography";
 import moment from "moment";
 import { TransitionCustom } from "./BottomNav";
-import { Dialog } from "@material-ui/core/es";
+import { Dialog } from "@material-ui/core";
 import FilterDrawerM from "./Filter/FilterDrawerM";
 import ChangeFilterMobile from "./Filter/ChangeFilterMobile";
+import { makeStyles } from "@material-ui/styles";
+import { Theme } from "@material-ui/core";
 
 interface IProps {
   classes?: any;
@@ -51,17 +53,17 @@ interface LocalProps extends IProps {
   roomRecently: number[];
 }
 
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
   createStyles({
     root: {
       marginTop: 30,
-      [theme!.breakpoints!.between!("xs", "sm")]: {
+      [theme.breakpoints.between("xs", "sm")]: {
         marginTop: 5
       }
     },
     margin15: {
       marginTop: 15,
-      [theme!.breakpoints!.down!("sm")]: {
+      [theme.breakpoints.down("sm")]: {
         marginTop: 0
       }
     },
@@ -94,11 +96,13 @@ const styles: any = (theme: ThemeCustom) =>
       justifyContent: "center",
       alignItems: "center"
     }
-  });
+  })
+);
 
 // @ts-ignore
 const RoomListing: ComponentType<IProps> = (props: LocalProps) => {
-  const { classes, roomRecently } = props;
+  const classes = useStyles(props);
+  const { roomRecently } = props;
   const { location, history } = useContext<IGlobalContext>(GlobalContext);
   const { dispatch: mapDispatch } = useContext<IRoomMapContext>(RoomMapContext);
   const [roomRecentlyData, setRoomRecently] = useState<RoomIndexRes[]>([]);
@@ -135,7 +139,7 @@ const RoomListing: ComponentType<IProps> = (props: LocalProps) => {
           </Grid>
         </Grid>
       </Hidden> */}
-      <Grid container spacing={16} className={classes.root}>
+      <Grid container spacing={2} className={classes.root}>
         <Hidden smDown>
           <Grid item sm={3}>
             <Paper
@@ -183,7 +187,7 @@ const RoomListing: ComponentType<IProps> = (props: LocalProps) => {
                   className={classes.boxChangeDate}
                   onClick={() => setOpen(true)}
                 >
-                  <Grid container spacing={16}>
+                  <Grid container spacing={2}>
                     <Grid item xs={2} className={classes.flexBox}>
                       <DateRangeOutline
                         color="primary"
@@ -251,5 +255,4 @@ const mapStateToProps = (state: ReducersList) => {
 
 export default compose<IProps, any>(
   connect(mapStateToProps),
-  withStyles(styles)
 )(RoomListing);

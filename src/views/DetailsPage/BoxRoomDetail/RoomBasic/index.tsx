@@ -76,7 +76,7 @@ const RoomBasic: FC<IProps> = (props) => {
   return (
     <Grid container>
       <Grid item xs={12}>
-        <Grid container spacing={8}>
+        <Grid container spacing={1}>
           <Grid item xs={12}>
             <Typography variant="h5" className={classes.roomName}>
               {isPreviewPage && !name ? '[Tên căn hộ/phòng của bạn]' : name}
@@ -88,7 +88,7 @@ const RoomBasic: FC<IProps> = (props) => {
             </Typography>
           </Grid>
         </Grid>
-        <Grid container spacing={8}>
+        <Grid container spacing={1}>
           <Grid item xs={12}>
             <div>
               <span>{arrMenuItem(avg_rating)}</span>
@@ -98,7 +98,7 @@ const RoomBasic: FC<IProps> = (props) => {
             </div>
           </Grid>
         </Grid>
-        <Grid container spacing={8}>
+        <Grid container spacing={1}>
           <Grid item xs={6} sm={6} md={3} lg xl={3}>
             <Grid container alignItems='center'>
               <Grid item xs={2} sm={2}>

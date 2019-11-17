@@ -40,15 +40,16 @@ import {TypeSelect} from '@/types/Requests/ResponseTemplate';
 import {useExpandableList} from '@/store/hooks/filterHooks';
 import {arrayFilterCheckBoxEvent} from '@/utils/mixins';
 import {TrendingDown, TrendingUp} from '@material-ui/icons';
-import {FormControl} from '@material-ui/core';
+import {FormControl, Theme} from '@material-ui/core';
 import {RadioGroup, Radio} from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
 
 interface IProps {
   classes?: any
   setIndex(value: number): void
 }
 
-const styles: any = (theme: ThemeCustom) => createStyles({
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({
   sortMargin: {
     marginTop: 12,
   },
@@ -74,7 +75,7 @@ const styles: any = (theme: ThemeCustom) => createStyles({
     right: 0,
   },
   dialog: {
-    [theme!.breakpoints!.only!('xs')]: {
+    [theme.breakpoints.only('xs')]: {
       padding: '0 20px',
     },
   },
@@ -90,11 +91,13 @@ const styles: any = (theme: ThemeCustom) => createStyles({
   title: {
     fontWeight: 700,
   },
-});
+})
+);
 
 // @ts-ignore
 const FilterDrawerM: ComponentType<IProps> = (props: IProps) => {
-  const {classes, setIndex} = props;
+  const classes = useStyles(props);
+  const {setIndex} = props;
 
   const {location, history} = useContext<IGlobalContext>(GlobalContext);
   const {state, dispatch}   = useContext<IRoomIndexContext>(RoomIndexContext);
@@ -309,6 +312,5 @@ const FilterDrawerM: ComponentType<IProps> = (props: IProps) => {
 };
 
 export default compose<IProps, any>(
-  withStyles(styles),
   memo,
 )(FilterDrawerM);

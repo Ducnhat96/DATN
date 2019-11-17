@@ -27,7 +27,7 @@ interface LocalProps extends IProps {
   changeEndDate(date: string | null): void
 }
 
-const styles: any = (theme: ThemeCustom) => createStyles({});
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({});
 
 // @ts-ignore
 const SingleDatePicker1: ComponentType<IProps> = (props: LocalProps) => {

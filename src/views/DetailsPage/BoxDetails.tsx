@@ -45,7 +45,7 @@ interface IProps {
   classes?: any;
 }
 
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
   createStyles({
     rowMargin: {
       marginBottom: 10,
@@ -68,10 +68,10 @@ const styles: any = (theme: ThemeCustom) =>
     },
     roomName: {
       fontSize: 30,
-      [theme!.breakpoints!.down!("sm")]: {
+      [theme.breakpoints.down("sm")]: {
         fontSize: 22
       },
-      [theme!.breakpoints!.down!("xs")]: {
+      [theme.breakpoints.down("xs")]: {
         fontSize: 20
       },
       fontWeight: 700,
@@ -89,7 +89,7 @@ const styles: any = (theme: ThemeCustom) =>
     boxPaddingXS: {
       flexWrap: "nowrap",
       justifyContent: "space-between",
-      [theme!.breakpoints!.down!("xs")]: {
+      [theme.breakpoints.down("xs")]: {
         padding: "0px 8px"
       }
     },
@@ -97,7 +97,7 @@ const styles: any = (theme: ThemeCustom) =>
       color: "#343434",
       margin: "0 5px",
       fontSize: 13,
-      [theme!.breakpoints!.down!("xs")]: {
+      [theme.breakpoints.down("xs")]: {
         fontSize: 12
       }
     },
@@ -121,7 +121,7 @@ const styles: any = (theme: ThemeCustom) =>
       position: "relative",
       width: 90,
       height: 90,
-      [theme!.breakpoints!.down!("xs")]: {
+      [theme.breakpoints.down("xs")]: {
         width: 70,
         height: 70
       },
@@ -137,7 +137,7 @@ const styles: any = (theme: ThemeCustom) =>
     imgCertified: {
       width: 32,
       height: 32,
-      [theme!.breakpoints!.down!("xs")]: {
+      [theme.breakpoints.down("xs")]: {
         width: 24,
         height: 24
       }
@@ -150,7 +150,7 @@ const styles: any = (theme: ThemeCustom) =>
     },
     lightTooltip: {
       border: "1px solid #e0e0e0",
-      color: theme.palette!.text!.primary,
+      color: theme.palette.text!.primary,
       fontSize: 11,
       backgroundColor: "#fff"
     },
@@ -224,7 +224,7 @@ const styles: any = (theme: ThemeCustom) =>
       boxShadow: "1px 1px 3px 0 rgba(0, 0, 0, 0.1)",
       padding: 24,
       width: "100%",
-      [theme!.breakpoints!.down!("xs")]: {
+      [theme.breakpoints.down("xs")]: {
         padding: 16
       }
     },
@@ -244,13 +244,13 @@ const styles: any = (theme: ThemeCustom) =>
       display: "block"
     },
     convenientExpansionPanelSummary: {
-      [theme!.breakpoints!.down!("xs")]: {
+      [theme.breakpoints.down("xs")]: {
         display: "block"
       }
     },
     RootExpansionPanelSummary: {
       padding: "0 10px",
-      [theme!.breakpoints!.down!("xs")]: {
+      [theme.breakpoints.down("xs")]: {
         padding: "0 10px"
       }
     },
@@ -308,7 +308,7 @@ const styles: any = (theme: ThemeCustom) =>
   });
 
 const BoxDetails: ComponentType<IProps> = (props: IProps) => {
-  const { classes } = props;
+  const classes = useStyles(props);
   const [arrowRef] = useState<any>(null);
   const { state } = useContext<IRoomDetailsContext>(RoomDetailsContext);
   const { room } = state;
@@ -663,7 +663,7 @@ const BoxDetails: ComponentType<IProps> = (props: IProps) => {
           <ExpansionPanelDetails
             classes={{ root: classes.expansionPanelDetails }}
           >
-            <Grid container spacing={8} className={classes.rowMargin}>
+            <Grid container spacing={1} className={classes.rowMargin}>
               {room && room!.comforts.data.length > 0 ? (
                 _.map(room.comforts.data, (o, i) =>
                   i > 3 ? (

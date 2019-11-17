@@ -14,7 +14,7 @@ interface IProps {
 	classes?: any
 }
 
-const styles: any = (theme: ThemeCustom) => createStyles({
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({
 	titleRoom: {
 		color: 'rgb(72, 72, 72)',
 	},
@@ -28,7 +28,7 @@ const styles: any = (theme: ThemeCustom) => createStyles({
 
 // @ts-ignore
 const ListRoomCollection: ComponentType<IProps> = (props: IProps) => {
-	const { classes } = props;
+	const classes = useStyles(props);
 
 	const settingRoomCollection: Settings = {
 		dots: false,

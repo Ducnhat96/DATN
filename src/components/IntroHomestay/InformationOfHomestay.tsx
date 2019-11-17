@@ -28,7 +28,7 @@ import '@/styles/PageProfile/StylePageProfile.scss';
 import FavoriteAnimation from '@/components/IntroHomestay/FavoriteAnimation';
 import {ThemeCustom} from '@/components/Theme/Theme';
 
-const styles: any = (theme: ThemeCustom) => createStyles({
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({
   root: {
     position: 'relative',
     padding: 16,

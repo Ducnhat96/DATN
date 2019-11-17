@@ -64,7 +64,7 @@ const styles = (theme: Theme) =>
   });
 
 const Home: FunctionComponent<IProps | any> = props => {
-  const { classes } = props;
+  const classes = useStyles(props);
   const [promotion, setPromotion] = useState<PromotionRes[] | null>(null);
 
   useEffect(() => {
@@ -93,7 +93,7 @@ const Home: FunctionComponent<IProps | any> = props => {
         </Hidden>
 
         <GridContainer xs={10}>
-          <Grid container spacing={24} className={classes.panelBody}>
+          <Grid container spacing={3} className={classes.panelBody}>
             {/* <Paper elevation={4} className={classes.paperCustom} square> */}
             <SearchHomeNew />
             {/* </Paper> */}

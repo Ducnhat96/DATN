@@ -28,6 +28,8 @@ import { RoomUrlParams } from "@/types/Requests/Rooms/RoomRequests";
 import qs from "query-string";
 import { updateObject } from "@/store/utility";
 import { arrayFilterCheckBoxEvent } from "@/utils/mixins";
+import { makeStyles } from "@material-ui/styles";
+import { Theme } from "@material-ui/core";
 
 interface IProps {
   classes?: any;
@@ -45,7 +47,7 @@ interface IProps {
   
 }
 
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
   createStyles({
     checkboxPadding: {
       padding: 0
@@ -57,10 +59,12 @@ const styles: any = (theme: ThemeCustom) =>
     starMargin: {
       margin: "2px 0 0 10px"
     }
-  });
+  })
+);
 
 const RatingBar: ComponentType<IProps> = (props: IProps) => {
-  const { classes, hasApplyButton } = props;
+  const classes = useStyles(props);
+  const { hasApplyButton } = props;
 
   const [hover, setHover] = useState<boolean>(false);
   const { location, history } = useContext<IGlobalContext>(GlobalContext);
@@ -109,7 +113,7 @@ const RatingBar: ComponentType<IProps> = (props: IProps) => {
         onMouseLeave={() => setHover(false)}
         className={classes.hover}
       >
-        <Grid container spacing={8} alignItems="center">
+        <Grid container spacing={1} alignItems="center">
           <Grid item sm={1}>
             <Checkbox
               id={props.id}
@@ -148,4 +152,4 @@ const RatingBar: ComponentType<IProps> = (props: IProps) => {
   );
 };
 
-export default compose<IProps, any>(withStyles(styles))(RatingBar);
+export default RatingBar;

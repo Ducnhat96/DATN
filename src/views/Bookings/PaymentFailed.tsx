@@ -13,7 +13,7 @@ interface IProps {
   classes?: any
 }
 
-const styles: any = (theme: ThemeCustom) => createStyles({
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({
   content:{
     marginTop: '3em',
     marginBottom: '3em',

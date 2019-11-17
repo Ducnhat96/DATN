@@ -23,7 +23,7 @@ interface IPromotions {
   promotion: PromotionRes
 }
 
-const styles: any = (theme: ThemeCustom) => createStyles({
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({
   card: {
     // maxWidth: 400,
     display: 'block',

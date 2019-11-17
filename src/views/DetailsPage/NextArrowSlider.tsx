@@ -1,11 +1,12 @@
 import {ThemeCustom} from '@/components/Theme/Theme';
-import {withStyles} from '@material-ui/core/styles';
+import {withStyles, Theme} from '@material-ui/core/styles';
 import createStyles from '@material-ui/core/styles/createStyles';
 import Button from '@material-ui/core/Button';
 import React, {ComponentType, Fragment} from 'react';
 import {compose} from 'recompose';
 import {RouteChildrenProps} from 'react-router';
 import ArrowForwardIos from '@material-ui/icons/ArrowForwardIos';
+import { makeStyles } from '@material-ui/styles';
 
 
 interface IProps extends RouteChildrenProps {
@@ -13,7 +14,7 @@ interface IProps extends RouteChildrenProps {
   onClick?:any
 }
 
-const styles: any = (theme: ThemeCustom) => createStyles({
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({
   arrow:{
     fontSize: 0,
     lineHeight: 0,
@@ -35,7 +36,7 @@ const styles: any = (theme: ThemeCustom) => createStyles({
     background: 'transparent',
     right:'-2.5%',
     zIndex: 100,
-    [theme!.breakpoints!.down!('md')]: {
+    [theme.breakpoints.down('md')]: {
       right:'-5%',
     },
     '&:hover':{
@@ -43,7 +44,8 @@ const styles: any = (theme: ThemeCustom) => createStyles({
       cursor:'pointer',
     }
   }
-});
+})
+);
 
 const NextArrowSlider: ComponentType<IProps> = (props: IProps) => {
   const { classes , onClick} = props;
@@ -61,6 +63,4 @@ const NextArrowSlider: ComponentType<IProps> = (props: IProps) => {
   );
 };
 
-export default compose<IProps, any>(
-  withStyles(styles),
-)(NextArrowSlider);
+export default NextArrowSlider;

@@ -35,8 +35,8 @@ import Paper from "@material-ui/core/Paper/Paper";
 import Grey from "@material-ui/core/colors/grey";
 import Blue from "@material-ui/core/colors/blue";
 
-import { Grid, Slide, InputBase } from "@material-ui/core";
-import { Hidden, Modal } from "@material-ui/core/es";
+import { Grid, Slide, InputBase, Theme } from "@material-ui/core";
+import { Hidden, Modal } from "@material-ui/core";
 import { SearchFilterState } from "@/store/reducers/searchFilter";
 import { connect } from "react-redux";
 import { ReducersType } from "@/store/reducers";
@@ -56,6 +56,7 @@ import MenuItemSelectWithIcon from "@/components/Custom/MenuItemSelectWithIcon";
 import { StylesConfig } from "react-select/lib/styles";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import '@/styles/filtersearchmobile.scss'
+import { makeStyles } from "@material-ui/styles";
 
 interface PropsFilterCity {
   setOpen(value: boolean): void;
@@ -88,7 +89,7 @@ const DatePickerHomeXsOnly = Loadable({
   loading: () => null
 });
 
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
   createStyles({
     sortMargin: {
       marginTop: 12
@@ -115,7 +116,7 @@ const styles: any = (theme: ThemeCustom) =>
       right: 0
     },
     dialog: {
-      [theme!.breakpoints!.only!("xs")]: {
+      [theme.breakpoints.only("xs")]: {
         padding: "0 20px"
       }
     },
@@ -189,7 +190,8 @@ const styles: any = (theme: ThemeCustom) =>
     '#react-select-2-input': {
       opacity: 1
     }
-  });
+  })
+);
 
 const searchStylesHome: StylesConfig = {
   control: styles => ({
@@ -427,7 +429,7 @@ const ChangeFilterMobile: ComponentType<IProps> = (props: IProps) => {
         </IconButton>
       </DialogTitle>
       <DialogContent className={classes.dialog}>
-        <Grid container spacing={16} style={{ marginTop: "5px" }}>
+        <Grid container spacing={2} style={{ marginTop: "5px" }}>
           <ClickAwayListener onClickAway={clickAwaySearchSuggest}>
             <Grid item md={12} xs={12} className={classes.boxSearch}>
               {/* <Paper
@@ -540,6 +542,5 @@ export default compose<IProps, any>(
     mapStateToProps,
     mapDispatchToProps
   ),
-  withStyles(styles),
   memo
 )(ChangeFilterMobile);

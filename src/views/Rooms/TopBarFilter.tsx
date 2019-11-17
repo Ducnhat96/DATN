@@ -2,24 +2,25 @@ import PriceRange from '@/components/Rooms/PriceRange';
 import SearchProperty from '@/components/Rooms/SearchProperty';
 import StarsRatingRoomIndex from '@/components/Rooms/StarsRating';
 import {ThemeCustom} from '@/components/Theme/Theme';
-import {createStyles, withStyles} from '@material-ui/core';
+import {createStyles, withStyles, Theme} from '@material-ui/core';
 import Grid from '@material-ui/core/Grid/Grid';
 import Paper from '@material-ui/core/Paper/Paper';
 import classNames from 'classnames';
 import React, {ComponentType, Fragment, useState, MouseEvent, TouchEvent, memo} from 'react';
 import {compose} from 'recompose';
+import { makeStyles } from '@material-ui/styles';
 
 interface IProps {
   classes?: any
 }
 
-const styles: any = (theme: ThemeCustom) => createStyles({
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({
   root: {
     marginTop: 8,
   },
   paperPadding: {
     padding: 20,
-    transition: theme!.transitions!.create!(['max-height', 'box-shadow'], {
+    transition: theme.transitions.create(['max-height', 'box-shadow'], {
       duration: 500,
       easing: 'ease-in-out',
     }),
@@ -38,11 +39,12 @@ const styles: any = (theme: ThemeCustom) => createStyles({
   zDexRating: {
     zIndex: 1,
   },
-});
+})
+);
 
 // @ts-ignore
 const TopBarFilter: ComponentType<IProps> = (props: IProps) => {
-  const {classes} = props;
+  const classes = useStyles(props);
 
   const [ratingSectionStatus, setRatingSectionStatus] = useState<boolean>(false);
 
@@ -85,6 +87,5 @@ const TopBarFilter: ComponentType<IProps> = (props: IProps) => {
 };
 
 export default compose(
-  withStyles(styles),
   memo
 )(TopBarFilter);

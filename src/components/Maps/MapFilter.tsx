@@ -30,7 +30,7 @@ interface IProps {
 }
 
 
-const styles: any = (theme: ThemeCustom) => ({
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) => ({
   lightTooltip: {
     color: "rgba(0, 0, 0, 0.87)",
     fontSize: 11

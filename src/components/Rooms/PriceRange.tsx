@@ -34,6 +34,8 @@ import { GlobalContext, IGlobalContext } from "@/store/context/GlobalContext";
 import _ from "lodash";
 import { LocationDescriptorObject, History } from "history";
 import Button from "@material-ui/core/Button/Button";
+import { makeStyles } from "@material-ui/styles";
+import { Theme } from "@material-ui/core";
 
 interface IProps {
   classes?: any;
@@ -88,23 +90,23 @@ export const priceFilterChange = (
   }
 };
 
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
   createStyles({
     marginPriceRange: {
       marginTop: 0
     },
     bootstrapRoot: {
       "label + &": {
-        marginTop: theme!.spacing!.unit! * 2
+        marginTop: 16
       }
     },
     bootstrapInput: {
       borderRadius: 4,
-      backgroundColor: theme!.palette!.common!.white!,
+      backgroundColor: theme.palette.common.white,
       border: "1px solid #ced4da",
       fontSize: 14,
       padding: "0.25rem 1.35rem",
-      transition: theme!.transitions!.create!(["border-color", "box-shadow"]),
+      transition: theme.transitions.create(["border-color", "box-shadow"]),
       "&:focus": {
         borderColor: "#80bdff"
       }
@@ -123,10 +125,12 @@ const styles: any = (theme: ThemeCustom) =>
       fontSize: "16px",
       padding: "2px 11px"
     }
-  });
+  })
+);
 
 const PriceRange: ComponentType<IProps> = (props: IProps) => {
-  const { classes, hasApplyButton } = props;
+  const classes = useStyles(props);
+  const { hasApplyButton } = props;
 
   const { history, location } = useContext<IGlobalContext>(GlobalContext);
   const { state, dispatch } = useContext<IRoomIndexContext>(RoomIndexContext);
@@ -237,10 +241,10 @@ const PriceRange: ComponentType<IProps> = (props: IProps) => {
           Áp dụng
         </Button>
       ) : (
-          ""
-        )}
+        ""
+      )}
     </Fragment>
   );
 };
 
-export default compose<IProps, any>(withStyles(styles))(PriceRange);
+export default PriceRange;

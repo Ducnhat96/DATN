@@ -25,11 +25,11 @@ interface IProps {
   review: any
 }
 
-const styles: any = (theme: ThemeCustom) => createStyles({
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({
   rowMargin: {
     margin: '10px 0',
     padding: '12px 10px',
-    [theme!.breakpoints!.down!('xs')]: {
+    [theme.breakpoints.down('xs')]: {
       padding: '10px 0px',
     },
     borderTop: '1px solid #e0e0e0',
@@ -86,13 +86,13 @@ const styles: any = (theme: ThemeCustom) => createStyles({
     WebkitTransform: 'translateX(-50%) translateY(-50%)',
     MozTransform: 'translateX(-50%) translateY(-50%)',
     transform: 'translateX(-50%) translateY(-50%)',
-    [theme!.breakpoints!.down!('md')]: {
+    [theme.breakpoints.down('md')]: {
       fontSize: '3.5vw',
     },
-    [theme!.breakpoints!.down!('sm')]: {
+    [theme.breakpoints.down('sm')]: {
       fontSize: '4.5vw',
     },
-    [theme!.breakpoints!.down!('xs')]: {
+    [theme.breakpoints.down('xs')]: {
       fontSize: '8vw',
     },
   },
@@ -101,21 +101,21 @@ const styles: any = (theme: ThemeCustom) => createStyles({
     fontWeight: 500,
     textAlign: 'center',
     fontSize: '1.5vw',
-    [theme!.breakpoints!.down!('md')]: {
+    [theme.breakpoints.down('md')]: {
       fontSize: '2vw',
     },
-    [theme!.breakpoints!.down!('sm')]: {
+    [theme.breakpoints.down('sm')]: {
       fontSize: '2.5vw',
       paddingTop: 5,
     },
-    [theme!.breakpoints!.down!('xs')]: {
+    [theme.breakpoints.down('xs')]: {
       fontSize: '4.5vw',
       paddingTop: 5,
     },
   },
   titleRating: {
     textAlign: 'right',
-    [theme!.breakpoints!.down!('xs')]: {
+    [theme.breakpoints.down('xs')]: {
       textAlign: 'left',
     },
   },
@@ -124,7 +124,7 @@ const styles: any = (theme: ThemeCustom) => createStyles({
   },
   titleReview: {
     fontSize: 18,
-    [theme!.breakpoints!.down!('xs')]: {
+    [theme.breakpoints.down('xs')]: {
       fontSize: 16.5,
     },
     fontWeight: 500,
@@ -158,7 +158,7 @@ const styles: any = (theme: ThemeCustom) => createStyles({
     border: '1px solid #e0e0e0',
   },
   paddingXS: {
-    [theme!.breakpoints!.down!('xs')]: {
+    [theme.breakpoints.down('xs')]: {
       width: '95%',
       margin: '0 auto',
     },
@@ -167,7 +167,7 @@ const styles: any = (theme: ThemeCustom) => createStyles({
 
 
 const BoxReviews: ComponentType<IProps> = (props: IProps) => {
-  const { classes } = props;
+  const classes = useStyles(props);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [pageSize] = useState<number>(5);
   const [data] = useState<any[]>(props.review);

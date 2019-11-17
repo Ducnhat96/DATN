@@ -37,7 +37,7 @@ interface ItemDetail {
   type: number;
 }
 
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
   createStyles({
     grow: {
       flexGrow: 1

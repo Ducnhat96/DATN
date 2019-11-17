@@ -17,7 +17,7 @@ interface IProps {
 	classes?: any
 }
 
-const styles: any = (theme: ThemeCustom) => createStyles({
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({
 	card: {
 		width: '96%',
 	},
@@ -28,7 +28,7 @@ const styles: any = (theme: ThemeCustom) => createStyles({
 
 // @ts-ignore
 const RoomCollection: ComponentType<IProps> = (props: IProps) => {
-	const { classes } = props;
+	const classes = useStyles(props);
 
 	return (
 		<Fragment>

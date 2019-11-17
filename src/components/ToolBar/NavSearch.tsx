@@ -1,6 +1,6 @@
 import { ThemeCustom } from '@/components/Theme/Theme';
 import AppBar from '@material-ui/core/AppBar';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles, Theme } from '@material-ui/core/styles';
 import createStyles from '@material-ui/core/styles/createStyles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Hidden from '@material-ui/core/Hidden';
@@ -48,6 +48,7 @@ import Orange from '@material-ui/core/colors/orange';
 import { Dispatch } from 'redux';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import AutoSuggestSearch from "@/components/Utils/AutosuggestSearch";
+import { makeStyles } from '@material-ui/styles';
 
 interface IProps {
   classes?: any;
@@ -64,8 +65,7 @@ const DatePicker = Loadable({
   loading: () => null
 });
 
-
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
   createStyles({
     barSearch: {
       backgroundColor: '#455A64',
@@ -107,17 +107,18 @@ const styles: any = (theme: ThemeCustom) =>
       height: '28px'
     },
     toolbar: {
-      [theme!.breakpoints!.up!('md')]: {
+      [theme.breakpoints.up('md')]: {
         padding: 0,
         minHeight: 50
       },
-      [theme!.breakpoints!.only!('sm')]: {
+      [theme.breakpoints.only('sm')]: {
         paddingLeft: 32,
         paddingRight: 32,
         minHeight: 48
       }
     }
-  });
+  })
+);
 
 const searchStylesHome: StylesConfig = {
   control: styles => ({
@@ -165,12 +166,12 @@ const NavSearch: ComponentType<IProps> = (props: LocalProps) => {
   const [isOpen, setMenuOpen] = useState<boolean>(false);
 
 
-  const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
+  const handleChange = () => (event: ChangeEvent<HTMLInputElement>) => {
     updateBookingType(parseInt(event.target.value));
   };
 
 
-  const setGuestCountValue = (event: ChangeEvent<HTMLSelectElement>) => {
+  const setGuestCountValue = () => (event: ChangeEvent<HTMLInputElement>) => {
     updateGuestsCount(parseInt(event.target.value));
   };
 
@@ -207,7 +208,7 @@ const NavSearch: ComponentType<IProps> = (props: LocalProps) => {
           }}
         >
           <GridContainer xs={12} sm={12} md={11} lg={10} xl={9}>
-            <Grid container spacing={8}>
+            <Grid container spacing={1}>
               <Grid item xs={3} sm={3} md={4}>
                 <Paper
                   elevation={4}
@@ -222,7 +223,7 @@ const NavSearch: ComponentType<IProps> = (props: LocalProps) => {
                     setDistrictId={setDistrictId} />
                 </Paper>
               </Grid>
-              <Grid item container xs spacing={8}>
+              <Grid item container xs spacing={1}>
                 <Grid item xs={6} sm={6} md={6}>
                   <FormControl
                     variant="outlined"
@@ -342,6 +343,5 @@ export default compose<IProps, any>(
     mapStateToProps,
     mapDispatchToProps
   ),
-  withStyles(styles),
   memo
 )(NavSearch);

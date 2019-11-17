@@ -39,7 +39,8 @@ import {
   SnackbarContent,
   Grow,
   Divider,
-  OutlinedInput
+  OutlinedInput,
+  Theme
 } from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
@@ -55,14 +56,15 @@ import parse from "autosuggest-highlight/parse";
 import MenuItem from "@material-ui/core/MenuItem";
 import { IGlobalContext, GlobalContext } from "@/store/context/GlobalContext";
 import classNames from "classnames";
+import { makeStyles } from "@material-ui/styles";
 // import CitiesMenu from "./CitiesMenu";
 
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme>((theme: Theme) =>
   createStyles({
     boxEditProfile: {
       position: "relative",
       justifyContent: "center",
-      [theme!.breakpoints!.down!("xs")]: {
+      [theme.breakpoints.down("xs")]: {
         paddingBottom: 50
       }
     },
@@ -76,7 +78,7 @@ const styles: any = (theme: ThemeCustom) =>
     },
     rowInputs: {
       margin: "5px 0 5px",
-      [theme!.breakpoints!.down!("sm")]: {
+      [theme.breakpoints.down("sm")]: {
         width: "100%"
       }
     },
@@ -90,7 +92,7 @@ const styles: any = (theme: ThemeCustom) =>
       fontSize: 16,
       paddingRight: 5,
       color: "#484848",
-      [theme!.breakpoints!.down!("xs")]: {
+      [theme.breakpoints.down("xs")]: {
         fontSize: 14
       }
     },
@@ -100,10 +102,10 @@ const styles: any = (theme: ThemeCustom) =>
     typoBigTitle: {
       padding: "12px 0",
       color: "#484848",
-      [theme!.breakpoints!.down!("sm")]: {
+      [theme.breakpoints.down("sm")]: {
         padding: 2
       },
-      [theme!.breakpoints!.down!("xs")]: {
+      [theme.breakpoints.down("xs")]: {
         fontSize: 20
       }
     },
@@ -117,20 +119,20 @@ const styles: any = (theme: ThemeCustom) =>
       verticalAlign: "sub"
     },
     lightTooltip: {
-      background: theme.palette!.common!.white,
-      color: theme.palette!.text!.primary,
-      boxShadow: theme.shadows![1],
+      background: theme.palette.common.white,
+      color: theme.palette.text!.primary,
+      boxShadow: theme.shadows[1],
       fontSize: 11
     },
     boxPadding: {
       padding: "30px 50px",
-      [theme!.breakpoints!.down!("md")]: {
+      [theme.breakpoints.down("md")]: {
         padding: 8
       }
     },
     lockIcon: {
       padding: "25px 0 0 10px",
-      [theme!.breakpoints!.down!("md")]: {
+      [theme.breakpoints.down("md")]: {
         padding: "25px 0 0 0"
       }
     },
@@ -139,7 +141,7 @@ const styles: any = (theme: ThemeCustom) =>
     },
     iconSnackContent: {
       opacity: 0.9,
-      marginRight: theme!.spacing!.unit,
+      marginRight: 8,
       fontSize: 20
     },
     message: {
@@ -161,7 +163,7 @@ const styles: any = (theme: ThemeCustom) =>
     imgAvatar: {
       width: "150px",
       height: "150px",
-      [theme!.breakpoints!.down!("xs")]: {
+      [theme.breakpoints.down("xs")]: {
         width: "125px",
         height: "125px"
       },
@@ -239,7 +241,7 @@ const styles: any = (theme: ThemeCustom) =>
     formCountryCode: {
       minWidth: "fit-content",
 
-      [theme!.breakpoints!.up!("md")]: {
+      [theme.breakpoints.up("md")]: {
         width: "100%"
       }
     },
@@ -249,7 +251,8 @@ const styles: any = (theme: ThemeCustom) =>
     boxCountryCode: {
       marginRight: 10
     }
-  });
+  })
+);
 
 interface FormikProfileValues {
   gender: number;
@@ -274,7 +277,7 @@ interface IEditProfile {
 }
 
 const EditProfile: ComponentType<IEditProfile> = (props: IEditProfile) => {
-  const { classes } = props;
+  const classes = useStyles(props);
   const { state, dispatch } = useContext<IProfileContext>(ProfileContext);
   const { history } = useContext<IGlobalContext>(GlobalContext);
   const { profile } = state;
@@ -328,7 +331,7 @@ const EditProfile: ComponentType<IEditProfile> = (props: IEditProfile) => {
     const parts = parse(suggestion.name, matches);
 
     return (
-      <MenuItem selected={isHighlighted} component="div">
+      <MenuItem selected={isHighlighted}>
         <div>
           {parts.map((part: { text: React.ReactNode; highlight: any }) => (
             <span>{part.text}</span>
@@ -566,7 +569,7 @@ const EditProfile: ComponentType<IEditProfile> = (props: IEditProfile) => {
                   {/* Tên */}
                   <Grid
                     container
-                    spacing={16}
+                    spacing={2}
                     direction="row"
                     justify="center"
                     className={classes.rowInputs}
@@ -614,7 +617,7 @@ const EditProfile: ComponentType<IEditProfile> = (props: IEditProfile) => {
                   {/* Giới tính */}
                   <Grid
                     container
-                    spacing={16}
+                    spacing={2}
                     direction="row"
                     justify="center"
                     className={classes.rowInputs}
@@ -678,7 +681,7 @@ const EditProfile: ComponentType<IEditProfile> = (props: IEditProfile) => {
                   {/* Số điện thoại */}
                   <Grid
                     container
-                    spacing={16}
+                    spacing={2}
                     direction="row"
                     justify="center"
                     className={classes.rowInputs}
@@ -790,7 +793,7 @@ const EditProfile: ComponentType<IEditProfile> = (props: IEditProfile) => {
 
                   <Grid
                     container
-                    spacing={16}
+                    spacing={2}
                     direction="row"
                     justify="center"
                     className={classes.rowInputs}
@@ -860,7 +863,7 @@ const EditProfile: ComponentType<IEditProfile> = (props: IEditProfile) => {
                   </Grid>
                   <Grid
                     container
-                    spacing={16}
+                    spacing={2}
                     direction="row"
                     justify="center"
                     className={classes.rowInputs}
@@ -939,7 +942,7 @@ const EditProfile: ComponentType<IEditProfile> = (props: IEditProfile) => {
                         <Grid
                           container
                           direction="row"
-                          spacing={8}
+                          spacing={1}
                           justify="space-between"
                         >
                           <Grid item>
@@ -981,7 +984,7 @@ const EditProfile: ComponentType<IEditProfile> = (props: IEditProfile) => {
                   {/* Địa chỉ */}
                   <Grid
                     container
-                    spacing={16}
+                    spacing={2}
                     direction="row"
                     justify="center"
                     className={classes.rowInputs}
@@ -1024,7 +1027,7 @@ const EditProfile: ComponentType<IEditProfile> = (props: IEditProfile) => {
                   </Grid>
                   {/* <Grid
                     container
-                    spacing={16}
+                    spacing={2}
                     direction="row"
                     justify="center"
                     className={classes.rowInputs}
@@ -1098,7 +1101,7 @@ const EditProfile: ComponentType<IEditProfile> = (props: IEditProfile) => {
                   </Grid> */}
                   <Grid
                     container
-                    spacing={16}
+                    spacing={2}
                     direction="row"
                     justify="center"
                     className={classes.rowInputs}
@@ -1162,7 +1165,7 @@ const EditProfile: ComponentType<IEditProfile> = (props: IEditProfile) => {
                   <Divider />
                   <Grid
                     container
-                    spacing={16}
+                    spacing={2}
                     direction="row"
                     justify="center"
                     className={classes.rowInputs}
@@ -1206,7 +1209,7 @@ const EditProfile: ComponentType<IEditProfile> = (props: IEditProfile) => {
                   </Grid>
                   <Grid
                     container
-                    spacing={16}
+                    spacing={2}
                     direction="row"
                     justify="center"
                     className={classes.rowInputs}
@@ -1357,4 +1360,4 @@ const EditProfile: ComponentType<IEditProfile> = (props: IEditProfile) => {
   );
 };
 
-export default compose<IEditProfile, any>(withStyles(styles))(EditProfile);
+export default EditProfile;

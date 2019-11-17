@@ -19,7 +19,7 @@ interface IProps {
   title?: string;
 }
 
-const styles: any = (theme: ThemeCustom) => ({
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) => ({
   paper: {
     padding: '15px'
   },

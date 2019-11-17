@@ -16,7 +16,8 @@ import {
   List,
   ListItem,
   ListItemText,
-  CircularProgress
+  CircularProgress,
+  Theme
 } from "@material-ui/core";
 import SendIcon from "@material-ui/icons/Send";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
@@ -30,7 +31,8 @@ import { connect } from "react-redux";
 import { ReducersType } from "@/store/reducers";
 import { SearchFilterState } from "@/store/reducers/searchFilter";
 import { ThemeCustom } from "@/components/Theme/Theme";
-import { createStyles, withStyles } from "@material-ui/core/es";
+import { createStyles, withStyles } from "@material-ui/core";
+import { makeStyles } from "@material-ui/styles";
 
 export const TransitionCustom = (props: any) => (
   <Slide direction="down" {...props} timeout={{ enter: 500, exit: 200 }} />
@@ -43,24 +45,26 @@ interface IProps {
   updateSearchText(inputSearch: string): void;
 }
 
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
   createStyles({
     progress: {
-      margin: theme!.spacing!.unit! * 2
+      margin: 16
     },
     center: {
       display: "flex",
       justifyContent: "center",
       alignItems: "center"
     }
-  });
+  })
+);
 
 const ListCitySearch: ComponentType<IProps> = props => {
+  const classes = useStyles(props);
   const [data, setData] = useState<SearchSuggestRes[]>([]);
   const { history } = useContext<IGlobalContext>(GlobalContext);
   const [inputSearch, setInputSearch] = useState<string>("");
 
-  const { setOpen, updateSearchText, filter, classes } = props;
+  const { setOpen, updateSearchText, filter} = props;
 
   const handleChange = async (e: any) => {
     const data = await searchSuggest(e.target.value);
@@ -98,7 +102,7 @@ const ListCitySearch: ComponentType<IProps> = props => {
         />
 
         <List
-          component="nav"
+          // component="nav"
           className={classNames({ [classes.center]: !data.length })}
         >
           {!data.length && <CircularProgress className={classes.progress} />}
@@ -152,5 +156,4 @@ export default compose<IProps, any>(
     mapStateToProps,
     mapDispatchToProps
   ),
-  withStyles(styles)
 )(ListCitySearch);

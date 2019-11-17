@@ -17,7 +17,7 @@ interface IProps {
   room: RoomIndexRes
 }
 
-const styles: any = (theme: ThemeCustom) => createStyles({
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({
   mapMarker: {
     width: '0.8rem',
   },

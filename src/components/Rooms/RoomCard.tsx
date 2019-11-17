@@ -41,8 +41,9 @@ import MeetingRoom from "@material-ui/icons/MeetingRoomRounded";
 import Orange from "@material-ui/core/colors/orange";
 import RoomCardReviewMobile from "./RoomCardReviewMobile";
 import { FlashOn } from "@material-ui/icons";
-
-const styles: any = (theme: ThemeCustom) =>
+import { makeStyles } from "@material-ui/styles";
+import { Theme } from "@material-ui/core";
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
   createStyles({
     imgSize: {
       backgroundRepeat: "no-repeat",
@@ -51,16 +52,16 @@ const styles: any = (theme: ThemeCustom) =>
       maxWidth: 300,
       minWidth: 50,
       verticalAlign: "middle",
-      [theme!.breakpoints!.down!("lg")]: {
+      [theme.breakpoints.down("lg")]: {
         height: 225
       },
-      [theme!.breakpoints!.only!("xl")]: {
+      [theme.breakpoints.only("xl")]: {
         height: 260
       },
-      [theme!.breakpoints!.only!("sm")]: {
+      [theme.breakpoints.only("sm")]: {
         height: 240
       },
-      [theme!.breakpoints!.only!("xs")]: {
+      [theme.breakpoints.only("xs")]: {
         maxWidth: "calc(93vw - 4px)",
         height: "25vh"
       }
@@ -112,10 +113,10 @@ const styles: any = (theme: ThemeCustom) =>
       height: 50,
       transform: "translateY(-2px)",
       borderRadius: "7px 2px 4px 4px",
-      [theme!.breakpoints!.between!("sm", "md")]: {
+      [theme.breakpoints.between("sm", "md")]: {
         padding: 7
       },
-      [theme!.breakpoints!.down!("sm")]: {
+      [theme.breakpoints.down("sm")]: {
         height: 35
       }
     },
@@ -124,7 +125,7 @@ const styles: any = (theme: ThemeCustom) =>
     },
     reviewSizeSM: {
       fontWeight: 500,
-      [theme!.breakpoints!.down!("md")]: {
+      [theme.breakpoints.down("md")]: {
         fontSize: "0.6rem"
       }
     },
@@ -177,7 +178,7 @@ const styles: any = (theme: ThemeCustom) =>
       padding: "4px 16px 4px 8px",
       borderRight: "none",
       marginTop: 8,
-      [theme!.breakpoints!.only!("xs")]: {
+      [theme.breakpoints.only("xs")]: {
         marginTop: 0,
         fontSize: "0.73rem"
       },
@@ -215,7 +216,7 @@ const styles: any = (theme: ThemeCustom) =>
       padding: 5,
       paddingLeft: 0,
       textTransform: "none",
-      [theme!.breakpoints!.only!("md")]: {
+      [theme.breakpoints.only("md")]: {
         fontSize: 12,
         padding: 4,
         paddingLeft: 0
@@ -233,7 +234,7 @@ const styles: any = (theme: ThemeCustom) =>
       MozBoxShadow: "0 10px 6px -11px #777",
       boxShadow: "0 10px 6px -11px #777",
       cursor: "pointer",
-      transition: theme!.transitions!.create!(["box-shadow"], {
+      transition: theme.transitions.create(["box-shadow"], {
         duration: 400,
         easing: "ease-in-out"
       }),
@@ -244,12 +245,12 @@ const styles: any = (theme: ThemeCustom) =>
       }
     },
     price: {
-      [theme!.breakpoints!.only!("xs")]: {
+      [theme.breakpoints.only("xs")]: {
         marginTop: "2vh"
       }
     },
     btBook: {
-      [theme!.breakpoints!.only!("md")]: {
+      [theme.breakpoints.only("md")]: {
         fontSize: 12,
         padding: 5,
         width: "100%"
@@ -260,7 +261,7 @@ const styles: any = (theme: ThemeCustom) =>
       }
     },
     btInstantBook: {
-      [theme!.breakpoints!.only!("md")]: {
+      [theme.breakpoints.only("md")]: {
         fontSize: 12,
         padding: 5,
         width: "100%"
@@ -281,13 +282,8 @@ const styles: any = (theme: ThemeCustom) =>
     roomAmenitiesTitle: {
       margin: "0 5px",
       fontSize: 13,
-      [theme!.breakpoints!.down!("xs")]: {
+      [theme.breakpoints.down("xs")]: {
         fontSize: "0.800rem"
-        // fontWeight: 700
-
-        // color: #999;
-        // fontsi: 0.875rem;
-        // font-weight: 700;
       }
     },
     collectionAmenities: {
@@ -318,7 +314,7 @@ const styles: any = (theme: ThemeCustom) =>
       fontSize: "1.1rem",
       fontWeight: 700,
       color: "#393939f2",
-      [theme!.breakpoints!.only!("xs")]: {
+      [theme.breakpoints.only("xs")]: {
         fontWeight: "bold",
         fontSize: "1rem"
       }
@@ -350,11 +346,12 @@ const styles: any = (theme: ThemeCustom) =>
       fontWeight: 600,
       color: Orange[400],
       fontSize: "1.4rem",
-      [theme!.breakpoints!.only!("xs")]: {
+      [theme.breakpoints.only("xs")]: {
         fontSize: "1.2rem"
       }
     }
-  });
+  })
+);
 
 interface IProps {
   classes?: any;
@@ -363,7 +360,8 @@ interface IProps {
 
 // @ts-ignore
 const RoomCard: ComponentType<IProps> = (props: IProps) => {
-  const { classes, room } = props;
+  const classes = useStyles(props);
+  const { room } = props;
   const [paperHover, setPaperHover] = useState<boolean>(false);
   const { width, history } = useContext<IGlobalContext>(GlobalContext);
   const typoVariant: ThemeStyle =
@@ -619,7 +617,7 @@ const RoomCard: ComponentType<IProps> = (props: IProps) => {
                     {room.total_review > 3 ? (
                       <Grid
                         container
-                        spacing={8}
+                        spacing={1}
                         alignItems="center"
                         justify="center"
                         direction="column"
@@ -661,7 +659,7 @@ const RoomCard: ComponentType<IProps> = (props: IProps) => {
                       )}
                     <Grid
                       container
-                      spacing={8}
+                      spacing={1}
                       alignItems="flex-end"
                       justify="center"
                       direction="column"
@@ -686,7 +684,7 @@ const RoomCard: ComponentType<IProps> = (props: IProps) => {
                     <Grid
                       container
                       item
-                      spacing={24}
+                      spacing={3}
                       className={classes.price}
                       justify="flex-end"
                     >
@@ -806,7 +804,7 @@ const RoomCard: ComponentType<IProps> = (props: IProps) => {
               <Grid item lg={12} sm={12}>
                 <Grid container className={classes.maxHeight}>
                   <Grid item lg={12} sm={12} className={classes.contentHeight}>
-                    <Grid container spacing={8} alignItems='center' justify='center' direction='column'>
+                    <Grid container spacing={1} alignItems='center' justify='center' direction='column'>
                       {room.total_review > 0 ? (
                         <Fragment>
                           <Hidden xsDown>
@@ -841,7 +839,7 @@ const RoomCard: ComponentType<IProps> = (props: IProps) => {
                 <Grid item lg={4} sm={4} className={classes.borderSection}>
                   <Grid container className={classes.maxHeight}>
                     <Grid item lg={12} sm={12} className={classes.contentHeight}>
-                      <Grid container spacing={8} alignItems='center' justify='center' direction='column'>
+                      <Grid container spacing={1} alignItems='center' justify='center' direction='column'>
                         {room.total_review > 3 ? (
                           <Fragment>
                             <Hidden xsDown>
@@ -907,6 +905,5 @@ const RoomCard: ComponentType<IProps> = (props: IProps) => {
 };
 
 export default compose<IProps, any>(
-  withStyles(styles),
   memo
 )(RoomCard);

@@ -8,7 +8,7 @@ import CircularProgress from "@material-ui/core/CircularProgress/CircularProgres
 import Gray from "@material-ui/core/colors/grey";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import { createStyles, withStyles } from "@material-ui/core/styles";
+import { createStyles, withStyles, Theme } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import People from "@material-ui/icons/People";
 import SearchIcon from "@material-ui/icons/Search";
@@ -48,6 +48,7 @@ import HomeIcon from "@material-ui/icons/HomeRounded";
 import LocationIcon from "@material-ui/icons/LocationOnRounded";
 import WhatshotIcon from "@material-ui/icons/WhatshotRounded";
 import Downshift from "downshift";
+import { makeStyles } from "@material-ui/styles";
 
 interface IProps extends RouteProps, RouterProps {
   classes?: any;
@@ -60,10 +61,10 @@ interface IProps extends RouteProps, RouterProps {
   inputValue: string;
 }
 
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
   createStyles({
     searchWrapper: {
-      [theme!.breakpoints!.up!("md")]: {
+      [theme.breakpoints.up("md")]: {
         background: "#fffffff7",
         padding: "32px !important",
         boxShadow: "0 16px 40px rgba(0,0,0,0.25)",
@@ -75,7 +76,7 @@ const styles: any = (theme: ThemeCustom) =>
       width: "441px"
     },
     searchTitle: {
-      [theme!.breakpoints!.down!("md")]: {
+      [theme.breakpoints.down("md")]: {
         color: "#fff"
       },
       fontSize: "30px",
@@ -92,7 +93,7 @@ const styles: any = (theme: ThemeCustom) =>
       fontSize: "1.1rem"
     },
     button: {
-      margin: theme.spacing!.unit
+      margin: 8
     },
     modal: {
       marginLeft: "auto",
@@ -111,7 +112,7 @@ const styles: any = (theme: ThemeCustom) =>
       outline: "none"
     },
     paperSize: {
-      [theme!.breakpoints!.up!("md")]: {
+      [theme.breakpoints.up("md")]: {
         border: "1px solid #EBEBEB !important",
         boxShadow: "none"
       },
@@ -144,10 +145,10 @@ const styles: any = (theme: ThemeCustom) =>
       height: "30px !important"
     },
     iconSearch: {
-      [theme!.breakpoints!.down!("md")]: {
+      [theme.breakpoints.down("md")]: {
         padding: "0px 13px 0 13px"
       },
-      [theme!.breakpoints!.up!("md")]: {
+      [theme.breakpoints.up("md")]: {
         padding: "0 23px"
       }
     },
@@ -158,7 +159,7 @@ const styles: any = (theme: ThemeCustom) =>
       backgroundColor: "#fffffff0"
     },
     menu: {
-      [theme!.breakpoints!.down!("md")]: {
+      [theme.breakpoints.down("md")]: {
         width: "calc(100% + 50px)",
         marginLeft: "-50px"
       },
@@ -199,10 +200,12 @@ const styles: any = (theme: ThemeCustom) =>
       width: "20px",
       height: "20px"
     }
-  });
+  })
+  );
 
 const SearchBox: FunctionComponent<IProps | any> = (props: IProps) => {
-  const { classes, setSearchValue, onSearch, searchData, initialInputValue, onInputKeyDown, onOuterClick, inputValue } = props;
+  const classes = useStyles(props);
+  const {setSearchValue, onSearch, searchData, initialInputValue, onInputKeyDown, onOuterClick, inputValue } = props;
   // console.log('Input Value: '+inputValue);
   return (
     <Downshift
@@ -297,8 +300,5 @@ const SearchBox: FunctionComponent<IProps | any> = (props: IProps) => {
 
 export default compose<IProps, any>(
   withRouter,
-  withStyles(styles),
   memo
 )(SearchBox);
-
-export const style = styles;

@@ -17,6 +17,8 @@ import { RoomUrlParams } from '@/types/Requests/Rooms/RoomRequests';
 import { newRoomLocation } from "@/store/context/Room/RoomIndexContext";
 import { IGlobalContext, GlobalContext } from "@/store/context/GlobalContext";
 import Button from '@material-ui/core/Button/Button';
+import { makeStyles } from '@material-ui/styles';
+import { Theme } from '@material-ui/core';
 
 interface IProps {
   classes?: any,
@@ -34,7 +36,7 @@ interface BookingType {
   label: string
 }
 
-const styles: any = (theme: ThemeCustom) => createStyles({
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({
   blockStyle: {
     display: 'block'
   },
@@ -55,7 +57,8 @@ const styles: any = (theme: ThemeCustom) => createStyles({
     fontSize: "16px",
     padding: "2px 11px"
   }
-});
+})
+);
 
 // const bookingTypeList: BookingType[] = [
 //   {id: 2, label: 'Đặt theo ngày'},
@@ -115,7 +118,7 @@ const BookingTypeSelectBar: ComponentType<IProps> = (props: LocalProps) => {
 
   return (
     <Fragment>
-      <Grid container spacing={8} justify="center" alignItems="center">
+      <Grid container spacing={1} justify="center" alignItems="center">
         
         <Grid container item xs={12} justify="center">
 
@@ -184,6 +187,5 @@ const mapDispatchToProps = (dispatch: Dispatch<SearchFilterAction>) => {
 
 export default compose<IProps, any>(
   connect(mapStateToProps, mapDispatchToProps),
-  withStyles(styles),
   memo,
 )(BookingTypeSelectBar);

@@ -28,7 +28,7 @@ interface IProps {
   classes?: any;
 }
 
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
   createStyles({
     listRoomNew: {
       width: "100%",
@@ -40,7 +40,7 @@ const styles: any = (theme: ThemeCustom) =>
   });
 // @ts-ignore
 const ListRoomNew: ComponentType<IProps> = (props: IProps) => {
-  const { classes } = props;
+  const classes = useStyles(props);
 
   const { state, dispatch } = useContext<IRoomHomepageContext>(
     RoomHomepageContext

@@ -7,7 +7,7 @@ import BoxReviews from '@/views/DetailsPage/BoxReviews';
 import BoxBooking from '@/views/DetailsPage/BoxBooking';
 import SliderSuggest from '@/views/DetailsPage/SliderSuggest';
 import NavBottomBook from '@/views/DetailsPage/NavBottomBook';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles, Theme } from '@material-ui/core/styles';
 import createStyles from '@material-ui/core/styles/createStyles';
 import React, { ComponentType, useContext, useEffect, useReducer, useState, useMemo, memo, Dispatch } from 'react';
 import { compose } from 'recompose';
@@ -37,6 +37,7 @@ import LocationHomeMap from "@/views/DetailsPage/LocationHomeMap";
 import Footer from '@/layouts/Main/Footer';
 import { Helmet } from 'react-helmet';
 import BoxRoomDetail from './BoxRoomDetail/index';
+import { makeStyles } from '@material-ui/styles';
 interface IProps extends RouteChildrenProps {
   classes?: any,
   match: match<any>
@@ -47,12 +48,12 @@ interface LocalProps extends IProps {
   updateRoomRecently(list: number[]): void
 }
 
-const styles: any = (theme: ThemeCustom) => createStyles({
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({
   boxGridImage: {
     width: '100%',
     height: 'auto',
     maxHeight: 440,
-    [theme!.breakpoints!.down!('sm')]: {
+    [theme.breakpoints.down('sm')]: {
       maxHeight: 335,
     },
     overflow: 'hidden',
@@ -82,20 +83,20 @@ const styles: any = (theme: ThemeCustom) => createStyles({
     width: '100%',
     paddingTop: 15,
     backgroundColor: '#fafafa',
-    [theme!.breakpoints!.down!('sm')]: {
+    [theme.breakpoints.down('sm')]: {
       paddingTop: 0,
     },
   },
   boxPadding: {
     padding: 16,
-    [theme!.breakpoints!.down!('xs')]: {
+    [theme.breakpoints.down('xs')]: {
       padding: '10px 0',
     },
   },
   boxSuggest: {
     margin: '10px 0',
     padding: '16px 0',
-    [theme!.breakpoints!.down!('xs')]: {
+    [theme.breakpoints.down('xs')]: {
       padding: '0px 10px',
     },
   },
@@ -111,7 +112,7 @@ const styles: any = (theme: ThemeCustom) => createStyles({
   },
   paperDetail: {
     border: '1px solid #e4e4e4',
-    [theme!.breakpoints!.down!('xs')]: {
+    [theme.breakpoints.down('xs')]: {
       border: 'none',
     },
   },
@@ -131,7 +132,7 @@ const styles: any = (theme: ThemeCustom) => createStyles({
   rowMargin: {
     margin: '10px 0',
     padding: '12px 10px',
-    [theme!.breakpoints!.down!('xs')]: {
+    [theme.breakpoints.down('xs')]: {
       padding: '10px 0px',
     },
     borderTop: '1px solid #e0e0e0',
@@ -144,16 +145,18 @@ const styles: any = (theme: ThemeCustom) => createStyles({
     border: '1px solid #e0e0e0',
   },
   paddingXS: {
-    [theme!.breakpoints!.down!('xs')]: {
+    [theme.breakpoints.down('xs')]: {
       width: '95%',
       margin: '0 auto',
     },
   },
-});
+})
+);
 
 // @ts-ignore
 const DetailsPage: ComponentType<IProps> = (props: LocalProps) => {
-  const { classes, match, roomRecently, updateRoomRecently } = props;
+  const classes = useStyles(props);
+  const { match, roomRecently, updateRoomRecently } = props;
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [state, dispatch] = useReducer<RoomDetailsState, RoomDetailsAction>(RoomDetailsReducer, RoomDetailsStateInit);
@@ -299,6 +302,5 @@ const mapDispatchToProps = (dispatch: Dispatch<SearchFilterAction>) => {
 
 export default compose<IProps, any>(
   connect(mapStateToProps, mapDispatchToProps),
-  withStyles(styles),
   memo,
 )(DetailsPage);

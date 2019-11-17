@@ -33,7 +33,7 @@ interface IProps {
   handleToggleDrawer(openDrawer: boolean): void;
 }
 
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
   createStyles({
     root: {
       position: "fixed",

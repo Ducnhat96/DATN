@@ -16,7 +16,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import MenuList from "@material-ui/core/MenuList";
 import Paper from "@material-ui/core/Paper";
 import Popper from "@material-ui/core/Popper";
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles, Theme } from "@material-ui/core/styles";
 import createStyles from "@material-ui/core/styles/createStyles";
 import Toolbar from "@material-ui/core/Toolbar";
 import React, {
@@ -49,6 +49,7 @@ import { SearchNavAction, SearchNavState } from "@/store/reducers/searchNav";
 import * as types from "@/store/actions/types";
 import ForgetPasswordForm from "../Forms/ForgetPasswordForm";
 import IconMenu from "@material-ui/icons/Menu";
+import { makeStyles } from "@material-ui/styles";
 
 interface IProps {
   classes: any;
@@ -67,7 +68,7 @@ interface ILocalProps extends IProps {
   handleToggleDrawer(openDrawer: boolean): void;
 }
 
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
   createStyles({
     root: {
       flexGrow: 1
@@ -79,7 +80,7 @@ const styles: any = (theme: ThemeCustom) =>
     grow: {
       flexGrow: 1,
       marginLeft: "20px",
-      [theme!.breakpoints!.only!("xs")]: {
+      [theme.breakpoints.only("xs")]: {
         marginLeft: 0
       }
     },
@@ -87,7 +88,7 @@ const styles: any = (theme: ThemeCustom) =>
       justifyContent: "center"
     },
     button: {
-      height: theme!.palette!.button.nav,
+      // height: theme.palette.button.nav,
       borderRadius: "0px",
       fontWeight: 700,
       textTransform: "capitalize",
@@ -131,7 +132,7 @@ const styles: any = (theme: ThemeCustom) =>
       marginRight: 20
     },
     drawer: {
-      [theme!.breakpoints!.only!("xs")]: {
+      [theme.breakpoints.only("xs")]: {
         width: "80%"
       },
       width: "60%"
@@ -158,17 +159,18 @@ const styles: any = (theme: ThemeCustom) =>
       textAlign: "center"
     },
     fab: {
-      margin: theme!.spacing!.unit
+      margin: 8
     },
     rightIcon: {
-      marginLeft: theme!.spacing!.unit
+      marginLeft: 8
     },
     textSpan: {
       display: "flex",
       justifyContent: "center",
       alignItems: "center"
     }
-  });
+  })
+);
 
 const LoginForm = Loadable({
   loader: (): Promise<any> => import("@/components/Forms/LoginForm"),
@@ -189,8 +191,8 @@ const SideDrawer = Loadable<ISideDrawerProps, any>({
 
 // @ts-ignore
 const NavTop: FunctionComponent<IProps> = (props: ILocalProps) => {
+  const classes = useStyles(props);
   const {
-    classes,
     cookies,
     filter,
     handleOpenSearchMobile,
@@ -261,7 +263,9 @@ const NavTop: FunctionComponent<IProps> = (props: ILocalProps) => {
           color="secondary"
           style={{ backgroundColor: "#fffffff0" }}
         >
-          <Toolbar className={hiddenListCitySearch ? classes.centerLogo : null}>
+          <Toolbar 
+          // className={hiddenListCitySearch ? classes.centerLogo : ''}
+          >
             <Hidden smDown>
               <Logo />
               <div className={classes.grow} />
@@ -300,8 +304,7 @@ const NavTop: FunctionComponent<IProps> = (props: ILocalProps) => {
                   <Paper>
                     <MenuList>
                       <MenuItem
-                        name="contact-phone1"
-                        component="li"
+                        // name="contact-phone1"
                         onClick={() => Hotline("tel:0916374057")}
                       >
                         <ListItemIcon>
@@ -311,7 +314,7 @@ const NavTop: FunctionComponent<IProps> = (props: ILocalProps) => {
                       </MenuItem>
                       <Divider />
                       <MenuItem
-                        name="contact-email"
+                        // name="contact-email"
                         onClick={() => Hotline("mailto:phamducnhat96bkhn@gmail.com")}
                       >
                         <ListItemIcon>
@@ -368,7 +371,7 @@ const NavTop: FunctionComponent<IProps> = (props: ILocalProps) => {
                                 Thông tin cá nhân
                               </MenuItem>
                               <Divider />
-                              <MenuItem name="sign-out" onClick={logoutTrigger}>
+                              <MenuItem onClick={logoutTrigger}>
                                 <ListItemIcon>
                                   <PowerSettingsNewRounded />
                                 </ListItemIcon>
@@ -480,5 +483,4 @@ export default compose<IProps, any>(
     mapDispatchToProps
   ),
   withCookies,
-  withStyles(styles)
 )(NavTop);

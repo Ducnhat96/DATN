@@ -8,7 +8,7 @@ import CircularProgress from "@material-ui/core/CircularProgress/CircularProgres
 import Gray from "@material-ui/core/colors/grey";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import { createStyles, withStyles } from "@material-ui/core/styles";
+import { createStyles, withStyles, Theme } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import People from "@material-ui/icons/People";
 import { Formik, FormikActions } from "formik";
@@ -24,6 +24,7 @@ import { StylesConfig } from "react-select/lib/styles";
 import AutoSuggestSearch from "@/components/Utils/AutosuggestSearch";
 import { RoomUrlParams } from "@/types/Requests/Rooms/RoomRequests";
 import { newRoomLocation } from "@/store/context/Room/RoomIndexContext";
+import { makeStyles } from "@material-ui/styles";
 
 export const DatePicker = Loadable<any, any>({
   loader: (): Promise<any> => import("@/components/Utils/DateRange"),
@@ -49,7 +50,7 @@ const FormValidationSchema = Yup.object().shape({
   name: Yup.string()
 });
 
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
   createStyles({
     searchWrapper: {
       background: "#fffffff7",
@@ -60,10 +61,10 @@ const styles: any = (theme: ThemeCustom) =>
       boxShadow: "0 16px 40px rgba(0,0,0,0.25)"
     },
     searchTitle: {
-      [theme!.breakpoints!.only!("xs")]: {
+      [theme.breakpoints.only("xs")]: {
         fontSize: "20px"
       },
-      [theme!.breakpoints!.only!("sm")]: {
+      [theme.breakpoints.only("sm")]: {
         fontSize: 28
       },
       fontSize: "30px",
@@ -80,7 +81,7 @@ const styles: any = (theme: ThemeCustom) =>
       fontSize: "1.1rem"
     },
     button: {
-      margin: theme.spacing!.unit
+      margin: 8
     },
     modal: {
       marginLeft: "auto",
@@ -90,22 +91,22 @@ const styles: any = (theme: ThemeCustom) =>
       padding: 40
     },
     inputSearch: {
-      [theme!.breakpoints!.only!("xs")]: {
+      [theme.breakpoints.only("xs")]: {
         width: "100%",
         maxWidth: "247px"
       },
-      [theme!.breakpoints!.only!("xl")]: {
+      [theme.breakpoints.only("xl")]: {
         width: "100%"
       },
-      [theme!.breakpoints!.only!("lg")]: {
+      [theme.breakpoints.only("lg")]: {
         width: "100%",
         maxWidth: "389px"
       },
-      [theme!.breakpoints!.only!("sm")]: {
+      [theme.breakpoints.only("sm")]: {
         width: "100%",
         maxWidth: "560px"
       },
-      [theme!.breakpoints!.only!("md")]: {
+      [theme.breakpoints.only("md")]: {
         width: "100%",
         maxWidth: "560px"
       },
@@ -153,7 +154,8 @@ const styles: any = (theme: ThemeCustom) =>
       borderRadius: 4,
       backgroundColor: "#fffffff0"
     }
-  });
+  })
+);
 
 export const searchStylesHome: StylesConfig = {
   control: styles => ({
@@ -192,7 +194,8 @@ export const searchStylesHome: StylesConfig = {
 };
 
 const SearchHomeNew: FC<IProps | any> = (props: IProps) => {
-  const { classes, filter, history } = props;
+  const classes = useStyles(props);
+  const { filter, history } = props;
   const { bookingType } = filter;
   const [isOpen, setMenuOpen] = useState<boolean>(false);
   const [city_id, setCityId] = useState("");
@@ -241,7 +244,7 @@ const SearchHomeNew: FC<IProps | any> = (props: IProps) => {
         }: FormikProps<FormikValues>) => {
           return (
             <form onSubmit={handleSubmit}>
-              <Grid container spacing={16}>
+              <Grid container spacing={2}>
                 <Grid item md={12} xs={12} onClick={() => setMenuOpen(!isOpen)}>
                   <Paper elevation={2} className={classes.paperSize}>
                     <AutoSuggestSearch
@@ -276,7 +279,7 @@ const SearchHomeNew: FC<IProps | any> = (props: IProps) => {
                       className={classes.marginSearch}
                       fontSize="default"
                     />
-                    <Grid container spacing={8}>
+                    <Grid container spacing={1}>
                       <Grid item lg={12}>
                         <div className={appC["ml-20"]}>
                           <Typography variant="body2">
@@ -334,8 +337,5 @@ const mapStateToProps = (state: ReducersType) => {
 export default compose(
   withRouter,
   connect(mapStateToProps),
-  withStyles(styles),
   memo
 )(SearchHomeNew);
-
-export const style = styles;

@@ -5,11 +5,7 @@ import React, { ComponentType, Fragment, useState, ChangeEvent, useEffect, useCo
 import { compose } from 'recompose';
 import Paper from '@material-ui/core/Paper';
 import StarRatings from 'react-star-ratings';
-import { SnackbarContent, Snackbar } from '@material-ui/core';
-import Card from '@material-ui/core/es/Card';
-import CardActionArea from '@material-ui/core/es/CardActionArea';
-import CardContent from '@material-ui/core/es/CardContent';
-import CardMedia from '@material-ui/core/es/CardMedia';
+import { SnackbarContent, Snackbar, Theme, CardActionArea, CardContent } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import { SentimentVeryDissatisfied, SentimentVerySatisfied } from '@material-ui/icons';
 import Button from '@material-ui/core/Button';
@@ -34,13 +30,15 @@ import { RouteChildrenProps, match } from 'react-router';
 import Typography from '@material-ui/core/Typography';
 import Grid from "@material-ui/core/Grid";
 import qs from 'query-string'
+import { makeStyles } from '@material-ui/styles';
+import { Card, CardMedia } from 'material-ui';
 
 interface IProps extends RouteChildrenProps {
   classes?: any,
   match: match<any>
 }
 
-const styles: any = (theme: ThemeCustom) => createStyles({
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({
   card: {
     padding: '0 5px',
     backgroundColor: 'transparent',
@@ -137,7 +135,7 @@ const styles: any = (theme: ThemeCustom) => createStyles({
   },
   iconSnackContent: {
     opacity: 0.9,
-    marginRight: theme!.spacing!.unit,
+    marginRight: 8,
     fontSize: 20,
   },
   message: {
@@ -147,11 +145,13 @@ const styles: any = (theme: ThemeCustom) => createStyles({
   button: {
     color: '#fff',
   },
-});
+})
+);
 
 // @ts-ignore
 const ReviewRoom: ComponentType<IProps> = (props: IProps) => {
-  const { classes, match } = props;
+  const classes = useStyles(props);
+  const { match } = props;
   const { history, location } = useContext<IGlobalContext>(GlobalContext);
   const [rating_cleanliness, setRating_cleanliness] = useState<number>(3);
   const [rating_quality, setRating_quality] = useState<number>(3);
@@ -230,7 +230,7 @@ const ReviewRoom: ComponentType<IProps> = (props: IProps) => {
         <Fragment>
           <NavTop />
           <Paper square className={classes.boxPadding}>
-            <Grid container spacing={32} justify='center' alignContent='center'>
+            <Grid container spacing={4} justify='center' alignContent='center'>
               <Grid item xs={12} sm={12} md={4}>
                 <Typography variant='h6' className={classes.review}>
                   Đánh giá và nhận xét
@@ -427,8 +427,6 @@ const ReviewRoom: ComponentType<IProps> = (props: IProps) => {
   );
 };
 
-export default compose<IProps, any>(
-  withStyles(styles),
-)(ReviewRoom);
+export default ReviewRoom;
 
 

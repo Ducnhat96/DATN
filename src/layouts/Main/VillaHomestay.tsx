@@ -2,19 +2,21 @@ import React, { Fragment, ComponentType, useContext } from "react";
 import Grid from "@material-ui/core/Grid/Grid";
 import CardDetail from "@/layouts/Main/CardDetail";
 import { ThemeCustom } from "@/components/Theme/Theme";
-import { createStyles } from "@material-ui/core";
+import { createStyles, Theme } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import { IGlobalContext, GlobalContext } from "@/store/context/GlobalContext";
 import Slider, { Settings } from "react-slick";
 import NextArrowSlider from "@/views/DetailsPage/NextArrowSlider";
 import PrevArrowSlider from "@/views/DetailsPage/PrevArrowSlider";
+import { makeStyles } from "@material-ui/styles";
 
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
   createStyles({
     villaHomestay: {
       marginTop: "42px"
     }
-  });
+  })
+);
 
 interface IProps {
   classes?: any;
@@ -82,12 +84,12 @@ const setting: Settings = {
 };
 
 const VillaHomestay: ComponentType<IProps> = props => {
-  const { classes } = props;
+  const classes = useStyles(props);
   const { width } = useContext<IGlobalContext>(GlobalContext);
 
   return (
     <Fragment>
-      <Grid className={classes.villaHomestay} container spacing={8}>
+      <Grid className={classes.villaHomestay} container spacing={1}>
         {width === "xs" || width === "sm" ? (
           <Slider {...setting}>
             {data.map((item, index) => (
@@ -108,4 +110,4 @@ const VillaHomestay: ComponentType<IProps> = props => {
   );
 };
 
-export default withStyles(styles)(VillaHomestay);
+export default VillaHomestay;

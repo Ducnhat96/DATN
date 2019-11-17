@@ -20,17 +20,17 @@ interface IProps {
   classes?: any;
 }
 
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
   createStyles({
     paper: {
       boxShadow: "none",
       padding: "0 32px 0 8px",
-      [theme!.breakpoints!.down!("md")]: {
+      [theme.breakpoints.down("md")]: {
         padding: "0 8px"
       }
     },
     hostInfo: {
-      [theme!.breakpoints!.down!("xs")]: {
+      [theme.breakpoints.down("xs")]: {
         marginTop: 24
       }
     },
@@ -40,7 +40,7 @@ const styles: any = (theme: ThemeCustom) =>
   });
 
 const BoxRoomDetail: ComponentType<IProps> = (props: IProps) => {
-  const { classes } = props;
+  const classes = useStyles(props);
   const { state } = useContext<IRoomDetailsContext>(RoomDetailsContext);
   const { room } = state;
   console.log("room", room);
@@ -56,7 +56,7 @@ const BoxRoomDetail: ComponentType<IProps> = (props: IProps) => {
        <Paper className={classes.paper}>
         <Grid container>
           <Grid item md={12} lg={12}>
-            <Grid container spacing={8} justify="center">
+            <Grid container spacing={1} justify="center">
               <Grid item xs={11} sm={8} md={9} lg={12} xl={12}>
                 <RoomBasic
                   isPreviewPage={isPreviewPage}
@@ -89,7 +89,7 @@ const BoxRoomDetail: ComponentType<IProps> = (props: IProps) => {
                 /> */}
               </Grid>
             </Grid>
-            <Grid container spacing={8}>
+            <Grid container spacing={1}>
               <Grid item xs={12} sm={12} md={12} lg={10} xl={9}>
                 <div className={classes.rowMargin}>
                   <RoomDescription

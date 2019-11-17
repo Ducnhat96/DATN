@@ -18,7 +18,7 @@ interface IProps extends OptionProps<any> {
   data: SearchSuggestRes;
 }
 
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
   createStyles({
     grow: {
       flexGrow: 1

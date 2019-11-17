@@ -31,12 +31,14 @@ import { useExpandableList } from "@/store/hooks/filterHooks";
 import Button from "@material-ui/core/Button/Button";
 import { RoomUrlParams } from "@/types/Requests/Rooms/RoomRequests";
 import qs from "query-string";
+import { makeStyles } from "@material-ui/styles";
+import { Theme } from "@material-ui/core";
 
 interface IProps {
   classes?: any;
 }
 
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
   createStyles({
     sortMargin: {
       marginTop: 12
@@ -73,7 +75,7 @@ const styles: any = (theme: ThemeCustom) =>
       right: 0
     },
     dialog: {
-      [theme!.breakpoints!.only!("xs")]: {
+      [theme.breakpoints.only("xs")]: {
         padding: "0 20px"
       }
     },
@@ -96,10 +98,11 @@ const styles: any = (theme: ThemeCustom) =>
       fontSize: '16px',
       padding: '2px 11px'
     }
-  });
+  })
+);
 
 const RoomTypes: ComponentType<IProps> = (props: IProps) => {
-  const { classes } = props;
+  const classes = useStyles(props);
 
   const { location, history } = useContext<IGlobalContext>(GlobalContext);
   const { state, dispatch } = useContext<IRoomIndexContext>(RoomIndexContext);
@@ -184,6 +187,5 @@ const RoomTypes: ComponentType<IProps> = (props: IProps) => {
 };
 
 export default compose<IProps, any>(
-  withStyles(styles),
   memo
 )(RoomTypes);

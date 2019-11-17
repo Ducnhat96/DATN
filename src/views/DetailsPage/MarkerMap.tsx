@@ -14,7 +14,7 @@ interface IProps {
   lng:number,
 }
 
-const styles: any = (theme: ThemeCustom) => createStyles({
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({
 
 });
 

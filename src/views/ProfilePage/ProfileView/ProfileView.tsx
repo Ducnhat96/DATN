@@ -22,7 +22,7 @@ interface IProps extends RouteChildrenProps {
   match: match<any>
 }
 
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
   createStyles({
     
   });

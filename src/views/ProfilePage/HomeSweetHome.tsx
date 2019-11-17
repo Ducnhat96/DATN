@@ -20,7 +20,7 @@ import {ThemeCustom} from '@/components/Theme/Theme';
 
 const styles:any        = (theme:ThemeCustom) => createStyles ({
   boxSweetHome: {
-    [theme!.breakpoints!.down!('xs')]: {
+    [theme.breakpoints.down('xs')]: {
       paddingBottom: 80,
     },
   },
@@ -35,8 +35,8 @@ const styles:any        = (theme:ThemeCustom) => createStyles ({
   },
   lightTooltip: {
     background: '#EEEEEE',
-    color: theme.palette!.text!.primary,
-    boxShadow: theme.shadows![1],
+    color: theme.palette.text!.primary,
+    boxShadow: theme.shadows[1],
     fontSize: 11,
   },
   arrowPopper: {

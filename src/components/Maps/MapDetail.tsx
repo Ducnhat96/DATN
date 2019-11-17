@@ -21,7 +21,7 @@ interface IProps {
   setRooms(rooms: RoomIndexRes[]): void
 }
 
-const styles: any = (theme: ThemeCustom) => createStyles({});
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({});
 
 // @ts-ignore
 const MapDetail: ComponentType<IProps> = (props: IProps) => {

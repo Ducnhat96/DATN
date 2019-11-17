@@ -39,12 +39,14 @@ import Grid from "@material-ui/core/Grid/Grid";
 import Orange from "@material-ui/core/colors/orange";
 import RoomTypes from "@/views/Rooms/Filter/RoomTypes.tsx";
 import ComfortTypes from "@/views/Rooms/Filter/ComfortTypes.tsx";
+import { makeStyles } from "@material-ui/styles";
+import { Theme } from "@material-ui/core";
 
 interface IProps {
   classes?: any;
 }
 
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
   createStyles({
     ul: {
       listStyleType: "none",
@@ -85,11 +87,12 @@ const styles: any = (theme: ThemeCustom) =>
     filterTitle: {
       fontWeight: 700
     }
-  });
+  })
+);
 
 // @ts-ignore
 const FilterLeftBar: ComponentType<IProps> = (props: IProps) => {
-  const { classes } = props;
+  const classes = useStyles(props);
 
   const { location, history } = useContext<IGlobalContext>(GlobalContext);
   const { state, dispatch } = useContext<IRoomIndexContext>(RoomIndexContext);
@@ -169,7 +172,7 @@ const FilterLeftBar: ComponentType<IProps> = (props: IProps) => {
       {/* Price Range */}
       {roomTypes.length > 0 ? (
         <Fragment>
-          <Grid container spacing={16}>
+          <Grid container spacing={2}>
             <Grid item xs={12}>
               <Typography variant="subtitle2">Khoảng giá</Typography>
             </Grid>
@@ -227,7 +230,7 @@ const FilterLeftBar: ComponentType<IProps> = (props: IProps) => {
       {/* Chất lượng */}
 
       {roomTypes.length > 0 ? (
-        <Grid container spacing={8}>
+        <Grid container spacing={1}>
           <Grid item xs={12}>
             <Typography variant="subtitle2">Đánh Giá</Typography>
           </Grid>
@@ -290,6 +293,5 @@ const FilterLeftBar: ComponentType<IProps> = (props: IProps) => {
 };
 
 export default compose<IProps, any>(
-  withStyles(styles),
   memo
 )(FilterLeftBar);

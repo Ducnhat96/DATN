@@ -13,18 +13,21 @@ import {IGlobalContext, GlobalContext} from '@/store/context/GlobalContext';
 import InfiniteScroll from 'react-infinite-scroller';
 import classNames from 'classnames';
 import RoomCard from '@/components/Rooms/RoomCard';
+import { makeStyles } from '@material-ui/styles';
+import { Theme } from '@material-ui/core';
 
 interface IProps {
   classes?: any
 }
 
-const styles: any = (theme: ThemeCustom) => createStyles({
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({
   root: {
-    [theme!.breakpoints!.between!('xs', 'sm')]: {
+    [theme.breakpoints.between('xs', 'sm')]: {
       marginBottom: '10vh',
     },
   },
-});
+})
+);
 
 // @ts-ignore
 const RoomListingDetails: ComponentType<IProps> = (props: IProps) => {
@@ -80,7 +83,7 @@ const RoomListingDetails: ComponentType<IProps> = (props: IProps) => {
         threshold = {1400}
         loader = {<SimpleLoader key = {1} height = {200} width = {300} />}
       >
-        <Grid container spacing = {16} justify = 'center' className = {classNames({
+        <Grid container spacing = {2} justify = 'center' className = {classNames({
           [classes.root]: !isLoadMore,
         })}>
           {rooms.length !== 0 ? _.map(rooms, (room) => (
@@ -97,6 +100,4 @@ const RoomListingDetails: ComponentType<IProps> = (props: IProps) => {
   );
 };
 
-export default compose<IProps, any>(
-  withStyles(styles),
-)(RoomListingDetails);
+export default RoomListingDetails;

@@ -14,14 +14,15 @@ import Paper from "@material-ui/core/Paper/Paper";
 import BookingList from "@/views/ProfilePage/BookingList";
 import InsertDriveFileOutlined from "@material-ui/icons/InsertDriveFileOutlined";
 import { ThemeCustom } from "@/components/Theme/Theme";
-import { Typography } from "@material-ui/core";
+import { Typography, Theme } from "@material-ui/core";
 import { GlobalContext, IGlobalContext } from "@/store/context/GlobalContext";
+import { makeStyles } from "@material-ui/styles";
 
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme>((theme: Theme) =>
   createStyles({
     boxBookingProfile: {
       position: "relative",
-      [theme!.breakpoints!.down!("xs")]: {
+      [theme.breakpoints.down("xs")]: {
         paddingBottom: 50
       }
     },
@@ -35,7 +36,7 @@ const styles: any = (theme: ThemeCustom) =>
       textTransform: "initial",
       minWidth: 72,
       fontWeight: theme.typography!.fontWeightRegular,
-      marginRight: theme.spacing!.unit! * 4,
+      marginRight: theme.spacing.unit * 4,
       fontFamily: ["-apple-system", "Roboto"].join(","),
       "&:hover": {
         color: "#ff9800",
@@ -65,11 +66,12 @@ const styles: any = (theme: ThemeCustom) =>
       WebkitTransform: "translateX(-50%) translateY(0)",
       MozTransform: "translateX(-50%) translateY(0)",
       transform: "translateX(-50%) translateY(0)",
-      [theme!.breakpoints!.down!("xs")]: {
+      [theme.breakpoints.down("xs")]: {
         paddingBottom: 75
       }
     }
-  });
+  })
+);
 
 interface ITabContainer {
   children: any;
@@ -90,7 +92,7 @@ function TabContainer(props: any) {
 const BookingProfile: ComponentType<IBookingProfile> = (
   props: IBookingProfile
 ) => {
-  const { classes } = props;
+  const classes = useStyles(props);
   const [val, setVal] = useState<number>(0);
   const { width } = useContext<IGlobalContext>(GlobalContext);
 
@@ -158,6 +160,4 @@ const BookingProfile: ComponentType<IBookingProfile> = (
   );
 };
 
-export default compose<IBookingProfile, any>(withStyles(styles))(
-  BookingProfile
-);
+export default BookingProfile;

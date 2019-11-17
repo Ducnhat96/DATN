@@ -16,7 +16,8 @@ import { axios } from '@/utils/axiosInstance';
 import { AxiosRes } from '@/types/Requests/ResponseTemplate';
 import { AxiosError } from 'axios';
 import RoomCardMapXs from '@/components/Rooms/RoomCardMapXs';
-import { Hidden } from '@material-ui/core';
+import { Hidden, Theme } from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
 
 interface IProps {
   classes?: any
@@ -34,17 +35,20 @@ interface IProps {
   defaultRoom: RoomIndexRes
 }
 
-const styles: any = (theme: ThemeCustom) => createStyles({
-  roomList: {
-    [theme!.breakpoints!.only!('xs')]: {
-      maxWidth: '100%',
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
+  createStyles({
+    roomList: {
+      [theme.breakpoints.only('xs')]: {
+        maxWidth: '100%',
+      },
     },
-  },
-});
+  })
+);
 
 // @ts-ignore
 const MapRooms: ComponentType<IProps> = (props: IProps) => {
-  const { classes, rooms, hoverId, hoverAction, focusRoomLocation, pageChange, page } = props;
+  const classes = useStyles(props);
+  const { rooms, hoverId, hoverAction, focusRoomLocation, pageChange, page } = props;
   const [showRoom, setShowRoom] = useState<RoomIndexRes | null>(null);
   const [defaultRoom, setdefaultRoom] = useState<RoomIndexRes | null>(null);
   const { state } = useContext<IRoomIndexContext>(RoomIndexContext);
@@ -151,6 +155,5 @@ const MapRooms: ComponentType<IProps> = (props: IProps) => {
 };
 
 export default compose<IProps, any>(
-  withStyles(styles),
   memo,
 )(MapRooms);

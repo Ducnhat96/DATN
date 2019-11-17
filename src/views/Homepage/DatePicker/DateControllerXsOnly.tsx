@@ -26,7 +26,7 @@ interface LocalProps extends IProps {
   filter: SearchFilterState
 }
 
-const styles: any = (theme: ThemeCustom) => createStyles({
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({
   closeButton: {
     position: 'absolute',
     top: 0,

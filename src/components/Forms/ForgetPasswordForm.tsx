@@ -1,6 +1,4 @@
-import { ThemeCustom } from "@/components/Theme/Theme";
 import createStyles from "@material-ui/core/styles/createStyles";
-import withStyles from "@material-ui/core/styles/withStyles";
 import React, {
   ComponentType,
   Fragment,
@@ -8,7 +6,6 @@ import React, {
   useState,
   FunctionComponent,
   useContext,
-  useEffect
 } from "react";
 import { compose } from "recompose";
 import { Formik, FormikActions } from "formik";
@@ -27,23 +24,15 @@ import FormControl from "@material-ui/core/FormControl/FormControl";
 import InputLabel from "@material-ui/core/InputLabel/InputLabel";
 import Input from "@material-ui/core/Input/Input";
 import FormHelperText from "@material-ui/core/FormHelperText/FormHelperText";
-import borderC from "@/styles/Styling/border.module.scss";
 import {
   EmailInputAdornment,
-  PasswordInputAdornment
 } from "@/components/Forms/LoginForm";
 import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
 import Button from "@material-ui/core/Button/Button";
-import Dialog from "@material-ui/core/Dialog/Dialog";
 import IconButton from "@material-ui/core/IconButton/IconButton";
-import { TransitionZoom } from "@/views/Rooms/BottomNav";
-import DialogTitle from "@material-ui/core/DialogTitle/DialogTitle";
-import DialogContent from "@material-ui/core/DialogContent/DialogContent";
 import InputAdornment from "@material-ui/core/InputAdornment/InputAdornment";
 import PhoneIcon from "@material-ui/icons/Phone";
 import UserIcon from "@material-ui/icons/Person";
-import FormControlLabel from "@material-ui/core/FormControlLabel/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox/Checkbox";
 import { ForgetPasswordReq } from "@/types/Requests/Account/AccountRequests";
 import { axios } from "@/utils/axiosInstance";
 import {
@@ -52,21 +41,19 @@ import {
 } from "@/types/Requests/ResponseTemplate";
 import { ForgetPasswordRes } from "@/types/Requests/Account/AccountResponses";
 import { AxiosResponse } from "axios";
-import Cookies from "universal-cookie";
 import Blue from "@material-ui/core/colors/blue";
 import AlignS from "@/styles/Position/align.module.scss";
 import { IGlobalContext, GlobalContext } from "@/store/context/GlobalContext";
-import CloseIcon from "@material-ui/icons/Close";
 import Snackbar from "@material-ui/core/Snackbar/Snackbar";
 import SnackbarContent from "@material-ui/core/SnackbarContent/SnackbarContent";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import Green from "@material-ui/core/colors/green";
-import { Link } from "react-router-dom";
-import { Modal, Divider } from "@material-ui/core";
+import { Modal, Divider, Theme } from "@material-ui/core";
 import Zoom from "@material-ui/core/Zoom";
 import Paper from "@material-ui/core/Paper";
 import BG from "@/assets/loginform.jpeg";
 import Grid from "@material-ui/core/Grid";
+import { makeStyles } from "@material-ui/styles";
 
 interface IProps {
   classes?: any;
@@ -109,13 +96,13 @@ export const UserInputAdornment: FunctionComponent<{}> = props => {
   );
 };
 
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
   createStyles({
     paper: {
-      width: theme!.spacing!.unit! * 50,
-      backgroundColor: theme!.palette!.background!.paper,
-      boxShadow: theme!.shadows![5],
-      padding: theme!.spacing!.unit! * 2
+      width: 400,
+      backgroundColor: theme.palette.background.paper,
+      boxShadow: theme.shadows[5],
+      padding: 16
     },
     spaceTop: {
       marginTop: 10
@@ -155,15 +142,15 @@ const styles: any = (theme: ThemeCustom) =>
       "&:focus": {
         outline: "none"
       },
-      [theme!.breakpoints!.only!("xs")]: {
+      [theme.breakpoints.only("xs")]: {
         width: "90%",
         marginTop: "10vh"
       },
-      [theme!.breakpoints!.only!("sm")]: {
+      [theme.breakpoints.only("sm")]: {
         width: "80%",
         marginTop: "15vh"
       },
-      [theme!.breakpoints!.only!("md")]: {
+      [theme.breakpoints.only("md")]: {
         width: "70%",
         marginTop: "20vh"
       }
@@ -192,12 +179,13 @@ const styles: any = (theme: ThemeCustom) =>
     contentRight: {
       padding: 16
     }
-  });
+  })
+);
 
 // @ts-ignore
 const ForgetPasswordForm: ComponentType<IProps> = (props: ForgetPasswordLocalProps) => {
+  const classes = useStyles(props);
   const {
-    classes,
     animation,
     handleForgetPassword,
     handleLoginButton
@@ -417,5 +405,4 @@ export default compose<IProps, any>(
     mapStateToProps,
     mapDispatchToProps
   ),
-  withStyles(styles)
 )(ForgetPasswordForm);

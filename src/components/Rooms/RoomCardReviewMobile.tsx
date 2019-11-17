@@ -1,18 +1,17 @@
 import React, { ComponentType, memo } from "react";
-import { Grid, createStyles } from "@material-ui/core/es";
+import { Grid, Theme, createStyles } from "@material-ui/core";
 import { formatMoney } from "@/utils/mixins";
 import { RoomIndexRes } from "@/types/Requests/Rooms/RoomResponses";
-import { ThemeCustom } from "../Theme/Theme";
 import { compose } from "recompose";
-import { withStyles } from "@material-ui/core";
 import { Star } from "@material-ui/icons";
+import { makeStyles } from "@material-ui/styles";
 
 interface IProps {
   classes?: any;
   room: RoomIndexRes;
 }
 
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
   createStyles({
     review: {
       backgroundColor: "#D1D7E2",
@@ -21,13 +20,6 @@ const styles: any = (theme: ThemeCustom) =>
       borderRadius: "25px"
     },
     benchmark: {
-      //   backgroundColor: "#488BF8",
-      //   padding: 6,
-      //   fontSize: 25,
-      //   borderRadius: 5,
-      //   color: "#ffffff",
-      //   textAlign: "center",
-      //   marginLeft: 8
       color: " #999",
       fontWeight: 700,
       fontSize: "0.875rem"
@@ -48,17 +40,19 @@ const styles: any = (theme: ThemeCustom) =>
     roomAmenitiesTitle: {
       //   margin: "0 5px"
       //   fontSize: 13,
-      //   [theme!.breakpoints!.down!("xs")]: {
+      //   [theme.breakpoints.down("xs")]: {
       //     fontSize: 11
       //   }
     },
     rating: {
       color: "rgb(255, 167, 38)"
     }
-  });
+  })
+);
 
 const RoomCardReviewMobile: ComponentType<IProps> = props => {
-  const { classes, room } = props;
+  const classes = useStyles(props);
+  const { room } = props;
 
   return (
     <Grid container>
@@ -100,6 +94,5 @@ const RoomCardReviewMobile: ComponentType<IProps> = props => {
 };
 
 export default compose<IProps, any>(
-  withStyles(styles),
   memo
 )(RoomCardReviewMobile);

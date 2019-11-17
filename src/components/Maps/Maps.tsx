@@ -36,31 +36,32 @@ import { animateScroll as scroll } from "react-scroll";
 import { ReactScrollLinkProps } from "react-scroll/modules/components/Link";
 import { IGlobalContext, GlobalContext } from "@/store/context/GlobalContext";
 
-import { Hidden } from "@material-ui/core";
+import { Hidden, Theme } from "@material-ui/core";
 import MapDetail from "@/components/Maps/MapDetail";
 import MapRooms from "@/components/Maps/MapRooms";
 import MapFilter from "@/components/Maps/MapFilter";
 import FilterDrawerM from "@/views/Rooms/Filter/FilterDrawerM";
+import { makeStyles } from "@material-ui/styles";
 
 interface IProps {
   classes?: any;
 }
 
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
   createStyles({
     closeButton: {
-      [theme!.breakpoints!.only!("xs")]: {},
+      [theme.breakpoints.only("xs")]: {},
       position: "absolute",
       top: 0,
       right: 0
     },
     closeButtonRoot: {
-      [theme!.breakpoints!.only!("xs")]: {
+      [theme.breakpoints.only("xs")]: {
         position: "absolute"
       }
     },
     label: {
-      [theme!.breakpoints!.only!("xs")]: {
+      [theme.breakpoints.only("xs")]: {
         textAlign: "center",
         backgroundColor: "#fff",
         width: "1.6em",
@@ -75,15 +76,15 @@ const styles: any = (theme: ThemeCustom) =>
       zIndex: 999
     },
     list: {
-      [theme!.breakpoints!.up!("lg")]: {
+      [theme.breakpoints.up("lg")]: {
         maxHeight: "83vh"
       },
-      [theme!.breakpoints!.between!("sm", "md")]: {
+      [theme.breakpoints.between("sm", "md")]: {
         maxHeight: "43vh",
         order: 1,
         marginTop: 10
       },
-      [theme!.breakpoints!.only!("xs")]: {
+      [theme.breakpoints.only("xs")]: {
         maxHeight: "47vh",
         order: 1,
         position: "absolute",
@@ -93,25 +94,25 @@ const styles: any = (theme: ThemeCustom) =>
       overflow: "auto"
     },
     mapContainer: {
-      [theme!.breakpoints!.up!("lg")]: {
+      [theme.breakpoints.up("lg")]: {
         minHeight: "82vh"
       },
-      [theme!.breakpoints!.between!("sm", "md")]: {
+      [theme.breakpoints.between("sm", "md")]: {
         minHeight: "46vh"
       },
-      [theme!.breakpoints!.only!("xs")]: {
+      [theme.breakpoints.only("xs")]: {
         minHeight: "100vh"
       }
     },
     dialogContent: {
-      [theme!.breakpoints!.only!("xs")]: {
+      [theme.breakpoints.only("xs")]: {
         padding: 0
       }
     },
     dialogTitle: {
       display: "flex",
       justifyContent: "space-between",
-      [theme!.breakpoints!.only!("xs")]: {
+      [theme.breakpoints.only("xs")]: {
         textAlign: "center",
         position: "absolute",
         zIndex: 9999,
@@ -119,11 +120,12 @@ const styles: any = (theme: ThemeCustom) =>
         left: 9
       }
     }
-  });
+  })
+);
 
 // @ts-ignore
 const Maps: ComponentType<IProps> = (props: IProps) => {
-  const { classes } = props;
+  const classes = useStyles(props);
   const [page, setPage] = useState<number>(1);
   const [index, setIndex] = useState<number>(TAB_LIST);
   const [hoverId, setHoverId] = useState<number>(-1);
@@ -222,7 +224,7 @@ const Maps: ComponentType<IProps> = (props: IProps) => {
       >
         <DialogTitle disableTypography className={classes.dialogTitle}>
           <Hidden xsDown>
-            <Typography variant="h6" inline={true}>
+            <Typography variant="h6">
               Bản đồ
             </Typography>
             <MapFilter />
@@ -267,7 +269,7 @@ const Maps: ComponentType<IProps> = (props: IProps) => {
               item
               xs={12}
               lg={5}
-              spacing={xsMode ? 0 : 16}
+              spacing={xsMode ? 0 : 2}
               className={classes.list}
               id="room-map-list"
               justify="center"
@@ -298,6 +300,5 @@ const Maps: ComponentType<IProps> = (props: IProps) => {
 };
 
 export default compose<IProps, any>(
-  withStyles(styles),
   memo
 )(Maps);

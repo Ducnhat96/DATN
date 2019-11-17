@@ -31,17 +31,18 @@ import {
   IProfileViewContext,
   ProfileViewContext
 } from "@/store/context/Profile/ProfileViewContext";
-import { Hidden } from "@material-ui/core/es";
+import { Hidden, Theme } from "@material-ui/core";
+import { makeStyles } from "@material-ui/styles";
 
 interface IProps {
   classes?: any;
 }
 
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
   createStyles({
     boxPadding: {
       height: "100%",
-      [theme!.breakpoints!.up!("md")]: {
+      [theme.breakpoints.up("md")]: {
         padding: "24px !important",
         border: "1px solid #e4e4e4 !important"
       },
@@ -55,7 +56,7 @@ const styles: any = (theme: ThemeCustom) =>
       position: "relative",
       width: 90,
       height: 90,
-      [theme!.breakpoints!.down!("xs")]: {
+      [theme.breakpoints.down("xs")]: {
         width: 70,
         height: 70
       },
@@ -69,10 +70,10 @@ const styles: any = (theme: ThemeCustom) =>
     },
     userName: {
       fontSize: 24,
-      [theme!.breakpoints!.down!("sm")]: {
+      [theme.breakpoints.down("sm")]: {
         fontSize: 20
       },
-      [theme!.breakpoints!.down!("xs")]: {
+      [theme.breakpoints.down("xs")]: {
         fontSize: 16
       },
       fontWeight: 700,
@@ -87,7 +88,7 @@ const styles: any = (theme: ThemeCustom) =>
       width: 30,
       height: 30,
       marginRight: 8,
-      [theme!.breakpoints!.down!("xs")]: {
+      [theme.breakpoints.down("xs")]: {
         width: 24,
         height: 24
       }
@@ -97,7 +98,7 @@ const styles: any = (theme: ThemeCustom) =>
       width: 30,
       height: 30,
       marginRight: 8,
-      [theme!.breakpoints!.down!("xs")]: {
+      [theme.breakpoints.down("xs")]: {
         width: 24,
         height: 24
       }
@@ -118,10 +119,11 @@ const styles: any = (theme: ThemeCustom) =>
     text: {
       fontSize: "16px"
     }
-  });
+  })
+);
 
 const UserBox: ComponentType<IProps> = (props: IProps) => {
-  const { classes } = props;
+  const classes = useStyles(props);
   const { state, dispatch } = useContext<IProfileViewContext>(
     ProfileViewContext
   );
@@ -195,6 +197,5 @@ const UserBox: ComponentType<IProps> = (props: IProps) => {
 };
 
 export default compose<IProps, any>(
-  withStyles(styles),
   memo
 )(UserBox);

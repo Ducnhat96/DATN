@@ -39,7 +39,8 @@ import {
   ListItemIcon,
   ListItemText,
   Divider,
-  Paper
+  Paper,
+  Theme
 } from "@material-ui/core";
 import IconMenu from "@material-ui/icons/Menu";
 
@@ -58,6 +59,7 @@ import classNames from "classnames";
 import Loadable from "react-loadable";
 import "@/styles/profileEdit.scss";
 import BookingProfile from "@/views/ProfilePage/BookingProfile";
+import { makeStyles } from "@material-ui/styles";
 
 // const BookingProfile = Loadable({
 //   loader: (): Promise<any> => import("@/views/ProfilePage/BookingProfile"),
@@ -71,14 +73,14 @@ interface ITabContainer {
   children: any;
 }
 
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme>((theme: Theme) =>
   createStyles({
     wrapper: {
-      [theme!.breakpoints!.up!("md")]: {
+      [theme.breakpoints.up("md")]: {
         maxWidth: "1280px !important",
         marginTop: "24px !important"
       },
-      [theme!.breakpoints!.down!("md")]: {
+      [theme.breakpoints.down("md")]: {
         maxWidth: "960px !important"
       },
 
@@ -90,7 +92,7 @@ const styles: any = (theme: ThemeCustom) =>
     },
     boxPadding: {
       padding: 16,
-      [theme!.breakpoints!.down!("xs")]: {
+      [theme.breakpoints.down("xs")]: {
         padding: "10px 0"
       }
     },
@@ -128,7 +130,8 @@ const styles: any = (theme: ThemeCustom) =>
       flexGrow: 1,
       paddingLeft: 300
     }
-  });
+  })
+);
 
 interface IMenuProfile {
   classes?: any;
@@ -136,7 +139,8 @@ interface IMenuProfile {
 }
 
 const ProfileEdit: ComponentType<IMenuProfile> = (props: IMenuProfile) => {
-  const { classes, handleToggleDrawer } = props;
+  const classes = useStyles(props);
+  const { handleToggleDrawer } = props;
   const { width } = useContext<IGlobalContext>(GlobalContext);
 
   const { state, dispatch } = useContext<IProfileContext>(ProfileContext);
@@ -305,7 +309,6 @@ const mapDispatchToProps = (dispatch: Dispatch<SearchNavAction>) => {
 };
 
 export default compose<IMenuProfile, any>(
-  withStyles(styles),
   connect(
     null,
     mapDispatchToProps

@@ -20,15 +20,15 @@ interface IProps {
 }
 
 // @ts-ignore
-const styles: any = (theme: ThemeCustom) => createStyles({
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({
    root: {
       backgroundColor: '#333',
       margin: 0,
       width: '100%',
    },
    firstItem: {
-      paddingTop: theme!.spacing!.unit! * 5,
-      paddingBottom: theme!.spacing!.unit! * 5,
+      paddingTop: theme.spacing.unit * 5,
+      paddingBottom: theme.spacing.unit * 5,
       width: '100%',
       backgroundColor: '#444953',
    },
@@ -36,7 +36,7 @@ const styles: any = (theme: ThemeCustom) => createStyles({
       paddingTop: 30,
       color: '#999',
       backgroundColor: '#333',
-      [theme!.breakpoints!.only!('sm')]: {
+      [theme.breakpoints.only('sm')]: {
          fontSize: '14px',
       },
    },
@@ -52,7 +52,7 @@ const styles: any = (theme: ThemeCustom) => createStyles({
    textLeft: {
       textAlign: 'left',
       paddingBottom: 15,
-      [theme!.breakpoints!.only!('xs')]: {
+      [theme.breakpoints.only('xs')]: {
          textAlign: 'center',
          fontSize: '14px',
       },
@@ -60,7 +60,7 @@ const styles: any = (theme: ThemeCustom) => createStyles({
    textRight: {
       textAlign: 'right',
       paddingBottom: 15,
-      [theme!.breakpoints!.only!('xs')]: {
+      [theme.breakpoints.only('xs')]: {
          textAlign: 'center',
          fontSize: '14px',
       },
@@ -69,7 +69,7 @@ const styles: any = (theme: ThemeCustom) => createStyles({
       fontSize: 32,
    },
    linksListGroupTitle: {
-      [theme!.breakpoints!.only!('sm')]: {
+      [theme.breakpoints.only('sm')]: {
          fontSize: '14px',
       },
       color: 'white',
@@ -77,7 +77,7 @@ const styles: any = (theme: ThemeCustom) => createStyles({
       marginBottom: '0.5em',
    },
    linksListGroupList: {
-      [theme!.breakpoints!.only!('sm')]: {
+      [theme.breakpoints.only('sm')]: {
          fontSize: '13px',
       },
       display: 'inline-block',
@@ -105,7 +105,7 @@ const styles: any = (theme: ThemeCustom) => createStyles({
       textDecoration: 'none',
    },
    socialNetwork: {
-      [theme!.breakpoints!.only!('sm')]: {
+      [theme.breakpoints.only('sm')]: {
          fontSize: '13px',
       },
       display: '-webkit-inline-box',
@@ -123,11 +123,12 @@ const styles: any = (theme: ThemeCustom) => createStyles({
    li: {
       cursor: 'pointer',
    },
-});
+})
+);
 
 // @ts-ignore
 const Footer: ComponentType<IProps> = (props: IProps) => {
-   const { classes } = props;
+   const classes = useStyles(props);
    const { history } = useContext<IGlobalContext>(GlobalContext);
 
    const locationRoom = (values: number) => {
@@ -246,8 +247,4 @@ const Footer: ComponentType<IProps> = (props: IProps) => {
    );
 };
 
-export default compose<IProps, any>(
-   withStyles(styles),
-)(Footer);
-
-export const style = styles;
+export default  Footer;

@@ -35,7 +35,7 @@ interface IProps {
   classes?: any;
 }
 
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
   createStyles({
     ul: {
       listStyleType: "none",
@@ -88,7 +88,7 @@ const styles: any = (theme: ThemeCustom) =>
   });
 
 const RoomTypes: ComponentType<IProps> = (props: IProps) => {
-  const { classes } = props;
+  const classes = useStyles(props);
 
   const { location, history } = useContext<IGlobalContext>(GlobalContext);
   const { state, dispatch } = useContext<IRoomIndexContext>(RoomIndexContext);

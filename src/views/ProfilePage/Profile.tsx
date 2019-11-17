@@ -25,7 +25,7 @@ interface ILocalProps extends IProfileProps {
   cookies?: Cookies;
 }
 
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
   createStyles({
     bgColor: {
       backgroundColor: "#fcfcfc"

@@ -44,8 +44,9 @@ import { withRouter, RouteChildrenProps } from "react-router";
 import AlignS from "@/styles/Position/align.module.scss";
 import Blue from "@material-ui/core/colors/blue";
 import BG from "@/assets/loginform.jpeg";
-import { Divider } from "@material-ui/core";
+import { Divider, Theme } from "@material-ui/core";
 import Loadable from "react-loadable";
+import { makeStyles } from "@material-ui/styles";
 
 interface IPasswordInput {
   isShown: boolean;
@@ -82,13 +83,13 @@ const ForgetPasswordForm = Loadable({
   loading: () => null
 });
 
-const styles: any = (theme: ThemeCustom) => {
-  return createStyles({
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
+  createStyles({
     paper: {
-      width: theme!.spacing!.unit! * 50,
-      backgroundColor: theme!.palette!.background!.paper,
-      boxShadow: theme!.shadows![5],
-      padding: theme!.spacing!.unit! * 2
+      width: 400,
+      backgroundColor: theme.palette.background.paper,
+      boxShadow: theme.shadows[5],
+      padding: 16
     },
     modal: {
       marginLeft: "auto",
@@ -100,15 +101,15 @@ const styles: any = (theme: ThemeCustom) => {
       "&:focus": {
         outline: "none"
       },
-      [theme!.breakpoints!.only!("xs")]: {
+      [theme.breakpoints.only("xs")]: {
         width: "90%",
         marginTop: "10vh"
       },
-      [theme!.breakpoints!.only!("sm")]: {
+      [theme.breakpoints.only("sm")]: {
         width: "80%",
         marginTop: "15vh"
       },
-      [theme!.breakpoints!.only!("md")]: {
+      [theme.breakpoints.only("md")]: {
         width: "60%",
         marginTop: "22vh"
       }
@@ -157,8 +158,8 @@ const styles: any = (theme: ThemeCustom) => {
         color: "#ffffff",
       },
     }
-  });
-};
+  })
+);
 
 export const EmailInputAdornment: FunctionComponent<{}> = props => {
   return (
@@ -183,8 +184,8 @@ export const PasswordInputAdornment: FunctionComponent<
 };
 
 const LoginForm: FunctionComponent<IProps> = props => {
+  const classes = useStyles(props);
   const {
-    classes,
     values,
     touched,
     errors,
@@ -226,7 +227,7 @@ const LoginForm: FunctionComponent<IProps> = props => {
                   <Paper className={classes.errorBag} elevation={1}>
                     <Grid
                       container
-                      spacing={16}
+                      spacing={2}
                       alignContent="center"
                       alignItems="center"
                     >
@@ -456,5 +457,4 @@ export default compose<IProps, any>(
   withRouter,
   withCookies,
   FormMilk,
-  withStyles(styles)
 )(LoginForm);

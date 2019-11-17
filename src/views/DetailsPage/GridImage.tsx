@@ -35,7 +35,7 @@ interface IProps {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
   createStyles({
     imageBig: {
       display: "block",
@@ -44,10 +44,10 @@ const styles: any = (theme: ThemeCustom) =>
       lineHeight: 0,
       overflow: "hidden",
       width: "50%",
-      [theme!.breakpoints!.down!("sm")]: {
+      [theme.breakpoints.down("sm")]: {
         width: "67%"
       },
-      [theme!.breakpoints!.down!("xs")]: {
+      [theme.breakpoints.down("xs")]: {
         width: "100%"
       },
       height: "auto",
@@ -67,7 +67,7 @@ const styles: any = (theme: ThemeCustom) =>
       width: "100%",
       height: "50%",
       maxHeight: 220,
-      [theme!.breakpoints!.down!("sm")]: {
+      [theme.breakpoints.down("sm")]: {
         maxHeight: 167.5
       },
       MozBoxSizing: "border-box",
@@ -96,7 +96,7 @@ const styles: any = (theme: ThemeCustom) =>
     },
     boxImgSmall: {
       width: "25%",
-      [theme!.breakpoints!.down!("sm")]: {
+      [theme.breakpoints.down("sm")]: {
         width: "33%"
       },
       float: "left"
@@ -137,7 +137,7 @@ const styles: any = (theme: ThemeCustom) =>
   });
 
 const GridImage: ComponentType<IProps> = (props: IProps) => {
-  const { classes } = props;
+  const classes = useStyles(props);
   const [currentImage, setCurrentImage] = useState<number>(0);
   const { state } = useContext<IRoomDetailsContext>(RoomDetailsContext);
   const { history } = useContext<IGlobalContext>(GlobalContext);

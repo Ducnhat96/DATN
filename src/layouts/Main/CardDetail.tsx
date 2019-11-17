@@ -1,17 +1,17 @@
 import React, { Fragment, ComponentType, useContext } from "react";
 import { withStyles } from "@material-ui/core/styles";
-import { createStyles, GridListTile } from "@material-ui/core/es";
 import { windowExist } from "@/index";
 import LazyLoad from "react-lazyload";
 import { ThemeCustom } from "@/components/Theme/Theme";
-import { GridListTileBar } from "@material-ui/core";
+import { GridListTileBar, Theme, createStyles, GridListTile } from "@material-ui/core";
 import GridList from "@material-ui/core/GridList";
+import { makeStyles } from "@material-ui/styles";
 
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
   createStyles({
     root: {
       paddingTop: "0.2em",
-      backgroundColor: theme!.palette!.background!.paper!
+      backgroundColor: theme.palette.background.paper
     },
     gridList: {
       width: "100%",
@@ -51,7 +51,8 @@ const styles: any = (theme: ThemeCustom) =>
       background:
         "linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)"
     }
-  });
+  })
+);
 
 interface IProps {
   classes?: any;
@@ -61,7 +62,8 @@ interface IProps {
 }
 
 const CardDetail: ComponentType<IProps> = props => {
-  const { classes, url, content, onClick } = props;
+  const classes = useStyles(props);
+  const { url, content, onClick } = props;
 
   return (
     <Fragment>
@@ -95,4 +97,4 @@ const CardDetail: ComponentType<IProps> = props => {
   );
 };
 
-export default withStyles(styles)(CardDetail);
+export default CardDetail;

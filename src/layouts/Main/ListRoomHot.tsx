@@ -35,7 +35,7 @@ interface IProps {
 }
 // const RoomHot = lazy(() => import('@/layouts/Main/RoomHot'));
 
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
   createStyles({
     listRoomHot: {
       width: '100%',
@@ -49,7 +49,7 @@ const styles: any = (theme: ThemeCustom) =>
 
 // @ts-ignore
 const ListRoomHot: ComponentType<IProps> = (props: IProps) => {
-  const { classes } = props;
+  const classes = useStyles(props);
 
   const { state, dispatch } = useContext<IRoomHomepageContext>(
     RoomHomepageContext

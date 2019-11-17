@@ -25,15 +25,17 @@ import {
   IRoomHomepageContext,
   getRoomCity
 } from "@/store/context/Room/RoomHomepageContext";
+import { makeStyles } from "@material-ui/styles";
+import { Theme } from "@material-ui/core";
 
 interface IProps {
   classes?: any;
 }
 
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
   createStyles({
     listRoomCity: {
-      [theme!.breakpoints!.down!("sm")]: {
+      [theme.breakpoints.down("sm")]: {
         width: "100%",
         display: "block"
       }
@@ -41,11 +43,12 @@ const styles: any = (theme: ThemeCustom) =>
     titleRoom: {
       color: "rgb(72, 72, 72)"
     }
-  });
+  })
+);
 
 // @ts-ignore
 const ListRoomCity: ComponentType<IProps> = (props: IProps) => {
-  const { classes } = props;
+  const classes = useStyles(props);
 
   const { state, dispatch } = useContext<IRoomHomepageContext>(
     RoomHomepageContext
@@ -114,7 +117,7 @@ const ListRoomCity: ComponentType<IProps> = (props: IProps) => {
   return (
     <Fragment>
       <h2 className={classes.titleRoom}>Điểm đến nổi bật</h2>
-      <Grid container className={classes.listRoomCity} spacing={8}>
+      <Grid container className={classes.listRoomCity} spacing={1}>
         {width === "lg" ? (
           roomsCity.map((room, index) => {
             return (
@@ -137,4 +140,4 @@ const ListRoomCity: ComponentType<IProps> = (props: IProps) => {
   );
 };
 
-export default compose<IProps, any>(withStyles(styles))(ListRoomCity);
+export default ListRoomCity;

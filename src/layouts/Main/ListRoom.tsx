@@ -19,23 +19,26 @@ import {
   RoomHomepageContext
 } from "@/store/context/Room/RoomHomepageContext";
 import VillaHomestay from "@/layouts/Main/VillaHomestay";
+import { makeStyles } from "@material-ui/styles";
+import { Theme } from "@material-ui/core";
 
 interface IProps {
   classes?: any;
 }
 
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
   createStyles({
     boxListRoom: {
       width: "100%",
-      paddingTop: theme!.spacing!.unit! * 1,
-      paddingBottom: theme!.spacing!.unit! * 5
+      paddingTop: 8,
+      paddingBottom: 40
     }
-  });
+  })
+);
 
 // @ts-ignore
 const ListRoom: ComponentType<IProps> = (props: IProps) => {
-  const { classes } = props;
+  const classes = useStyles(props);
 
   const [state, dispatch] = useReducer<RoomHomepageState, RoomHomepageAction>(
     RoomHotReducer,
@@ -57,4 +60,4 @@ const ListRoom: ComponentType<IProps> = (props: IProps) => {
   );
 };
 
-export default compose<IProps, any>(withStyles(styles))(ListRoom);
+export default ListRoom;

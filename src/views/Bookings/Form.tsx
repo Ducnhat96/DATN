@@ -27,7 +27,7 @@ interface IProps extends RouteProps, RouterProps {
   classes: any;
 }
 
-const styles: any = (theme: ThemeCustom) => createStyles({
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({
   marginContainer: {
     marginTop: 20,
   },

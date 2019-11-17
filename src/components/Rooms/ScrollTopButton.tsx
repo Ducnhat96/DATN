@@ -16,24 +16,25 @@ import Zoom from "@material-ui/core/Zoom/Zoom";
 import { ReactScrollLinkProps } from "react-scroll/modules/components/Link";
 import { animateScroll as scroll } from "react-scroll/modules";
 import { IGlobalContext, GlobalContext } from "@/store/context/GlobalContext";
+import { makeStyles } from "@material-ui/styles";
+import { Theme } from "@material-ui/core";
 
 interface IProps {
   classes?: any;
 }
 
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme>((theme: Theme) =>
   createStyles({
     toTop: {
       textTransform: 'inherit',
       position: "fixed",
       zIndex: 9,
-      right: theme!.spacing!.unit! * 2,
-      bottom: theme!.spacing!.unit! * 12,
-      [theme!.breakpoints!.only!("xs")]: {
+      right: 2,
+      bottom: 12,
+      [theme.breakpoints.only("xs")]: {
         left: "35%",
         zIndex: 1,
         bottom: '64px',
-        //transform: "translate(-50%, -50%) !important"
       },
       color: "#fff",
       fontSize: "1rem"
@@ -43,11 +44,12 @@ const styles: any = (theme: ThemeCustom) =>
       height: 48,
 
     }
-  });
+  })
+);
 
 // @ts-ignore
 const ScrollTopButton: ComponentType<IProps> = (props: IProps) => {
-  const { classes } = props;
+  const classes = useStyles(props);
   const [toTop, setToTop] = useState<boolean>(false);
   const { width } = useContext<IGlobalContext>(GlobalContext);
 
@@ -99,6 +101,5 @@ const ScrollTopButton: ComponentType<IProps> = (props: IProps) => {
 };
 
 export default compose<IProps, any>(
-  withStyles(styles),
   memo
 )(ScrollTopButton);

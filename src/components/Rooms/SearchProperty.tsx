@@ -21,8 +21,6 @@ interface IProps {
   classes?: any
 }
 
-const styles: any = (theme: ThemeCustom) => createStyles({});
-
 const searchStylesHome: StylesConfig = {
   menuList: base => ({
     ...base,
@@ -31,7 +29,6 @@ const searchStylesHome: StylesConfig = {
 };
 
 const SearchProperty: ComponentType<IProps> = (props: IProps) => {
-  const { classes } = props;
   const [searchText, setSearchText] = useState('');
   const [nameBefore, setNameBefore] = useState<string | undefined>('');
 
@@ -89,7 +86,7 @@ const SearchProperty: ComponentType<IProps> = (props: IProps) => {
   const optionSearchLabel = (option: RoomIndexRes) => option.details.data[0].name;
 
   return (
-    <Grid container spacing={8}>
+    <Grid container spacing={1}>
       <Grid item xs={12}>
         <Typography variant='subtitle2' style={{ fontWeight: 700 }}>Tìm kiếm phòng</Typography>
       </Grid>
@@ -114,6 +111,5 @@ const SearchProperty: ComponentType<IProps> = (props: IProps) => {
 };
 
 export default compose<IProps, any>(
-  withStyles(styles),
   memo,
 )(SearchProperty);

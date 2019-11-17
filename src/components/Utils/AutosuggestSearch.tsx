@@ -58,7 +58,7 @@ interface Iprops extends RouteProps, RouterProps {
   updateSearchDistrict(district_id: number | undefined): void;
 }
 
-const styles: any = (theme: ThemeCustom) =>
+const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
   createStyles({
     container: {
       position: "relative",
