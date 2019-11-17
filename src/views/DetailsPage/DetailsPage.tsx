@@ -2,7 +2,7 @@ import { ThemeCustom } from '@/components/Theme/Theme';
 import NavSearch from '@/components/ToolBar/NavSearch';
 import NavTop from '@/components/ToolBar/NavTop';
 import GridImage from '@/views/DetailsPage/GridImage';
-import BoxDetails from '@/views/DetailsPage/BoxDetails';
+// import BoxDetails from '@/views/DetailsPage/BoxDetails';
 import BoxReviews from '@/views/DetailsPage/BoxReviews';
 import BoxBooking from '@/views/DetailsPage/BoxBooking';
 import SliderSuggest from '@/views/DetailsPage/SliderSuggest';
@@ -36,6 +36,7 @@ import { connect } from 'react-redux';
 import LocationHomeMap from "@/views/DetailsPage/LocationHomeMap";
 import Footer from '@/layouts/Main/Footer';
 import { Helmet } from 'react-helmet';
+import BoxRoomDetail from './BoxRoomDetail/index';
 interface IProps extends RouteChildrenProps {
   classes?: any,
   match: match<any>
@@ -220,7 +221,8 @@ const DetailsPage: ComponentType<IProps> = (props: LocalProps) => {
             <Grid item sm={12} md={11} lg={8} xl={8} className={classes.boxPadding}>
               <Paper elevation={0}>
                 <div className={classes.boxPadding}>
-                  <BoxDetails />
+                  {/* <BoxDetails /> */}
+                  <BoxRoomDetail />
                   {room ? (
                     <DatePickerRoomDetail
                       minNights={bookingType === BOOKING_TYPE_DAY ? 1 : 0}

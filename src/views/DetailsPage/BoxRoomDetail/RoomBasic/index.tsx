@@ -29,7 +29,8 @@ const useStyles = makeStyles((theme: ThemeCustom) =>
       fontWeight: 700
     },
     roomId: {
-      marginTop: '-10px',
+      fontWeight: 700,
+      marginBottom: 5,
       fontSize: '0.80rem'
     },
     iconHeartBlue: {

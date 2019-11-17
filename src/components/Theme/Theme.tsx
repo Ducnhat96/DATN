@@ -5,6 +5,7 @@ import { FontStyleOptions, TypographyOptions } from '@material-ui/core/styles/cr
 import Blue from '@material-ui/core/colors/blue';
 import Red from '@material-ui/core/colors/red';
 import Orange from '@material-ui/core/colors/orange';
+import { BreakpointsOptions } from '@material-ui/core/styles/createBreakpoints';
 
 interface PaletteExtra extends PaletteOptions {
   button: any;
@@ -12,7 +13,8 @@ interface PaletteExtra extends PaletteOptions {
 
 export interface ThemeCustom extends ThemeOptions {
   palette?: PaletteExtra;
-  typography?: TypographyOptions | FontStyleOptions
+  typography?: TypographyOptions | FontStyleOptions;
+  breakpoints?: BreakpointsOptions;
 }
 
 const options: ThemeCustom = {
@@ -28,8 +30,7 @@ const options: ThemeCustom = {
   },
   palette: {
     primary: {
-      // main: Blue[600],
-      main: "#ff9800",
+      main: "#25858a",
 
     },
     secondary: {

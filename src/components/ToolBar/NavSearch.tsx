@@ -97,9 +97,6 @@ const styles: any = (theme: ThemeCustom) =>
       height: '100%',
       minWidth: '100%',
       color: '#FFFFFF',
-      '&:hover': {
-        background: Orange[700]
-      }
     },
     dayHour: {
       fontSize: '1rem'

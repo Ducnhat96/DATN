@@ -97,6 +97,7 @@ export interface NumberRoomCity {
 export interface Merchant {
   id: any;
   name: string,
+  avatar: string,
   avatar_url: string,
   vip_txt: string,
 }

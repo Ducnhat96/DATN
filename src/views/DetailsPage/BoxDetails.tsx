@@ -311,13 +311,11 @@ const BoxDetails: ComponentType<IProps> = (props: IProps) => {
   const { classes } = props;
   const [arrowRef] = useState<any>(null);
   const { state } = useContext<IRoomDetailsContext>(RoomDetailsContext);
-
   const { room } = state;
   
   if (room == null) {
     return <ContentPlaceHolder />;
   }
-  console.log(room)
   const description = room!.details.data[0].description;
   const space = room!.details.data[0].space;
   const note = room!.details.data[0].note;
