@@ -14,6 +14,7 @@ import HostInfo from "@/components/HostInfo";
 import RoomBasic from "./RoomBasic";
 import { GlobalContext } from "@/store/context/GlobalContext";
 import { Paper } from "@material-ui/core";
+import RoomDescription from "./RoomDescription";
 
 interface IProps {
   classes?: any;
@@ -80,12 +81,24 @@ const BoxRoomDetail: ComponentType<IProps> = (props: IProps) => {
                 lg={4}
                 xl={3}
               >
-                <HostInfo
+                {/* <HostInfo
                   id={room!.merchant.data.id}
                   name={room!.merchant.data.name}
                   avatar={room!.merchant.data.avatar}
                   avatar_url={room!.merchant.data.avatar_url}
-                />
+                /> */}
+              </Grid>
+            </Grid>
+            <Grid container spacing={8}>
+              <Grid item xs={12} sm={12} md={12} lg={10} xl={9}>
+                <div className={classes.rowMargin}>
+                  <RoomDescription
+                    description={room.details.data[0].description}
+                    note={room.details.data[0].note}
+                    space={room.details.data[0].space}
+                    isPreviewPage={isPreviewPage}
+                  />
+                </div>
               </Grid>
             </Grid>
           </Grid>
