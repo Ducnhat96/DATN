@@ -201,7 +201,7 @@ function (_React$Component) {
   return Agenda;
 }(_react.default.Component);
 
-Agenda.propTypes = {
+Agenda.propTypes = process.env.NODE_ENV !== "production" ? {
   events: _propTypes.default.array,
   date: _propTypes.default.instanceOf(Date),
   length: _propTypes.default.number.isRequired,
@@ -210,7 +210,7 @@ Agenda.propTypes = {
   components: _propTypes.default.object.isRequired,
   getters: _propTypes.default.object.isRequired,
   localizer: _propTypes.default.object.isRequired
-};
+} : {};
 Agenda.defaultProps = {
   length: 30
 };

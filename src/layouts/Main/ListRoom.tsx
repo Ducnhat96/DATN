@@ -40,10 +40,7 @@ const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
 const ListRoom: ComponentType<IProps> = (props: IProps) => {
   const classes = useStyles(props);
 
-  const [state, dispatch] = useReducer<RoomHomepageState, RoomHomepageAction>(
-    RoomHotReducer,
-    RoomHotStateInit
-  );
+  const [state, dispatch] = useReducer(RoomHotReducer, RoomHotStateInit);
   return (
     <Fragment>
       <div className={classes.boxListRoom}>

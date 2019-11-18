@@ -180,7 +180,7 @@ EventWrapper.contextTypes = {
     dragAndDropAction: _propTypes.default.object
   })
 };
-EventWrapper.propTypes = {
+EventWrapper.propTypes = process.env.NODE_ENV !== "production" ? {
   type: _propTypes.default.oneOf(['date', 'time']),
   event: _propTypes.default.object.isRequired,
   draggable: _propTypes.default.bool,
@@ -190,7 +190,7 @@ EventWrapper.propTypes = {
   continuesAfter: _propTypes.default.bool,
   isDragging: _propTypes.default.bool,
   isResizing: _propTypes.default.bool
-};
+} : {};
 var _default = EventWrapper;
 exports.default = _default;
 module.exports = exports["default"];

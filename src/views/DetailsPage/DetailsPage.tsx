@@ -9,7 +9,7 @@ import SliderSuggest from '@/views/DetailsPage/SliderSuggest';
 import NavBottomBook from '@/views/DetailsPage/NavBottomBook';
 import { withStyles, Theme } from '@material-ui/core/styles';
 import createStyles from '@material-ui/core/styles/createStyles';
-import React, { ComponentType, useContext, useEffect, useReducer, useState, useMemo, memo, Dispatch } from 'react';
+import React, { ComponentType, useContext, useEffect, useReducer, useState, useMemo, memo, Dispatch, FC } from 'react';
 import { compose } from 'recompose';
 import Button from '@material-ui/core/Button/Button';
 import GridContainer from '@/layouts/Grid/Container';
@@ -154,12 +154,13 @@ const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({
 );
 
 // @ts-ignore
-const DetailsPage: ComponentType<IProps> = (props: LocalProps) => {
+const DetailsPage: FC<IProps> = (props: LocalProps) => {
   const classes = useStyles(props);
   const { match, roomRecently, updateRoomRecently } = props;
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [state, dispatch] = useReducer<RoomDetailsState, RoomDetailsAction>(RoomDetailsReducer, RoomDetailsStateInit);
+
+  const [state, dispatch] = useReducer(RoomDetailsReducer, RoomDetailsStateInit);
   const { history } = useContext<IGlobalContext>(GlobalContext);
 
   const { bookingType, room } = state;

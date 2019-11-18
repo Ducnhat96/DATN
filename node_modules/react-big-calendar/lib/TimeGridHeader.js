@@ -21,6 +21,8 @@ var _DateContentRow = _interopRequireDefault(require("./DateContentRow"));
 
 var _Header = _interopRequireDefault(require("./Header"));
 
+var _ResourceHeader = _interopRequireDefault(require("./ResourceHeader"));
+
 var _helpers = require("./utils/helpers");
 
 var TimeGridHeader =
@@ -139,7 +141,10 @@ function (_React$Component) {
         scrollRef = _this$props3.scrollRef,
         localizer = _this$props3.localizer,
         isOverflowing = _this$props3.isOverflowing,
-        TimeGutterHeader = _this$props3.components.timeGutterHeader;
+        _this$props3$componen = _this$props3.components,
+        TimeGutterHeader = _this$props3$componen.timeGutterHeader,
+        _this$props3$componen2 = _this$props3$componen.resourceHeader,
+        ResourceHeaderComponent = _this$props3$componen2 === void 0 ? _ResourceHeader.default : _this$props3$componen2;
     var style = {};
 
     if (isOverflowing) {
@@ -165,11 +170,15 @@ function (_React$Component) {
         className: "rbc-time-header-content",
         key: id || idx
       }, resource && _react.default.createElement("div", {
-        className: "rbc-row rbc-row-resource"
+        className: "rbc-row rbc-row-resource",
+        key: "resource_" + idx
       }, _react.default.createElement("div", {
-        key: "resource_" + idx,
         className: "rbc-header"
-      }, accessors.resourceTitle(resource))), _react.default.createElement("div", {
+      }, _react.default.createElement(ResourceHeaderComponent, {
+        index: idx,
+        label: accessors.resourceTitle(resource),
+        resource: resource
+      }))), _react.default.createElement("div", {
         className: "rbc-row rbc-time-header-cell" + (range.length <= 1 ? ' rbc-time-header-cell-single-day' : '')
       }, _this3.renderHeaderCells(range)), _react.default.createElement(_DateContentRow.default, {
         isAllDay: true,
@@ -197,7 +206,7 @@ function (_React$Component) {
   return TimeGridHeader;
 }(_react.default.Component);
 
-TimeGridHeader.propTypes = {
+TimeGridHeader.propTypes = process.env.NODE_ENV !== "production" ? {
   range: _propTypes.default.array.isRequired,
   events: _propTypes.default.array.isRequired,
   resources: _propTypes.default.object,
@@ -218,7 +227,7 @@ TimeGridHeader.propTypes = {
   onDrillDown: _propTypes.default.func,
   getDrilldownView: _propTypes.default.func.isRequired,
   scrollRef: _propTypes.default.any
-};
+} : {};
 var _default = TimeGridHeader;
 exports.default = _default;
 module.exports = exports["default"];

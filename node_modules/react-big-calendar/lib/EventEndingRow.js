@@ -123,11 +123,11 @@ function (_React$Component) {
   return EventEndingRow;
 }(_react.default.Component);
 
-EventEndingRow.propTypes = (0, _extends2.default)({
+EventEndingRow.propTypes = process.env.NODE_ENV !== "production" ? (0, _extends2.default)({
   segments: _propTypes.default.array,
   slots: _propTypes.default.number,
   onShowMore: _propTypes.default.func
-}, _EventRowMixin.default.propTypes);
+}, _EventRowMixin.default.propTypes) : {};
 EventEndingRow.defaultProps = (0, _extends2.default)({}, _EventRowMixin.default.defaultProps);
 var _default = EventEndingRow;
 exports.default = _default;

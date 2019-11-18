@@ -272,7 +272,6 @@ const AutosuggestSearch: ComponentType<Iprops> = (props: Iprops) => {
         {...autosuggestProps}
         // alwaysRenderSuggestions={true}
         inputProps={{
-          classes,
           id: "search-autosuggest-simple",
           placeholder: "Bạn muốn tới đâu?",
           value: searchText,

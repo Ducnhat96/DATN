@@ -60,12 +60,12 @@ const RoomIndex: ComponentType<IProps> = (props: IProps) => {
   const classes = useStyles(props);
   const {roomStateInit, mapStateInit} = props;
 
-  const [state, dispatch] = useReducer<RoomIndexState, RoomIndexAction>(
+  const [state, dispatch] = useReducer(
     RoomIndexReducer,
     roomStateInit ? roomStateInit : RoomIndexStateInit,
   );
 
-  const [mapState, mapDispatch] = useReducer<RoomMapState, RoomMapAction>(RoomMapReducer, RoomMapStateInit);
+  const [mapState, mapDispatch] = useReducer(RoomMapReducer, RoomMapStateInit);
 
   useEffect(() => {
     const params: RoomUrlParams = qs.parse(location.search!);

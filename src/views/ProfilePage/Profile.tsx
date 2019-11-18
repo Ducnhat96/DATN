@@ -43,10 +43,7 @@ const useStyles = makeStyles<Theme>((theme: Theme) =>
 const Profile: ComponentType<IProfileProps> = (props: ILocalProps) => {
   const classes = useStyles(props);
   const { cookies } = props;
-  const [state, dispatch] = useReducer<ProfileState, ProfileAction>(
-    ProfileReducer,
-    ProfileStateInit
-  );
+  const [state, dispatch] = useReducer(ProfileReducer, ProfileStateInit);
   const isLogin = !!cookies!.get("_token");
 
   useEffect(() => {

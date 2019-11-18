@@ -28,7 +28,7 @@ const ProfileView: ComponentType<IProps> = (props: IProps) => {
   const {history}           = useContext<IGlobalContext>(GlobalContext);
 
 
-  const [state, dispatch] = useReducer<ProfileViewState, ProfileViewAction>(
+  const [state, dispatch] = useReducer(
     ProfileViewReducer,
     ProfileViewStateInit
   );

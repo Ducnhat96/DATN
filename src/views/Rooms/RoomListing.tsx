@@ -199,8 +199,8 @@ const RoomListing: ComponentType<IProps> = (props: LocalProps) => {
                         variant="subtitle2"
                         style={{ fontSize: "0.725rem", fontWeight: 700 }}
                       >
-                        {moment(param.check_in).format("DD/MM/YYYY")} -{" "}
-                        {moment(param.check_out).format("DD/MM/YYYY")}
+                        {/* {moment(param ? param.check_in:'').format("DD/MM/YYYY")} -{" "}
+                        {moment(param ? param.check_out:'').format("DD/MM/YYYY")} */}
                       </Typography>
                       <Typography
                         variant="subtitle2"

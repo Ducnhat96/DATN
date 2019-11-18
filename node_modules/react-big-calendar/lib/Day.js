@@ -46,9 +46,9 @@ function (_React$Component) {
   return Day;
 }(_react.default.Component);
 
-Day.propTypes = {
+Day.propTypes = process.env.NODE_ENV !== "production" ? {
   date: _propTypes.default.instanceOf(Date).isRequired
-};
+} : {};
 
 Day.range = function (date) {
   return [_dates.default.startOf(date, 'day')];

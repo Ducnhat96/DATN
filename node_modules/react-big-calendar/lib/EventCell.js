@@ -19,22 +19,6 @@ var _classnames = _interopRequireDefault(require("classnames"));
 
 var _dates = _interopRequireDefault(require("./utils/dates"));
 
-var propTypes = {
-  event: _propTypes.default.object.isRequired,
-  slotStart: _propTypes.default.instanceOf(Date),
-  slotEnd: _propTypes.default.instanceOf(Date),
-  selected: _propTypes.default.bool,
-  isAllDay: _propTypes.default.bool,
-  continuesPrior: _propTypes.default.bool,
-  continuesAfter: _propTypes.default.bool,
-  accessors: _propTypes.default.object.isRequired,
-  components: _propTypes.default.object.isRequired,
-  getters: _propTypes.default.object.isRequired,
-  localizer: _propTypes.default.object,
-  onSelect: _propTypes.default.func,
-  onDoubleClick: _propTypes.default.func
-};
-
 var EventCell =
 /*#__PURE__*/
 function (_React$Component) {
@@ -85,7 +69,8 @@ function (_React$Component) {
 
     return _react.default.createElement(EventWrapper, (0, _extends2.default)({}, this.props, {
       type: "date"
-    }), _react.default.createElement("button", (0, _extends2.default)({}, props, {
+    }), _react.default.createElement("div", (0, _extends2.default)({}, props, {
+      tabIndex: 0,
       style: (0, _extends2.default)({}, userProps.style, style),
       className: (0, _classnames.default)('rbc-event', className, userProps.className, {
         'rbc-selected': selected,
@@ -105,7 +90,21 @@ function (_React$Component) {
   return EventCell;
 }(_react.default.Component);
 
-EventCell.propTypes = propTypes;
+EventCell.propTypes = process.env.NODE_ENV !== "production" ? {
+  event: _propTypes.default.object.isRequired,
+  slotStart: _propTypes.default.instanceOf(Date),
+  slotEnd: _propTypes.default.instanceOf(Date),
+  selected: _propTypes.default.bool,
+  isAllDay: _propTypes.default.bool,
+  continuesPrior: _propTypes.default.bool,
+  continuesAfter: _propTypes.default.bool,
+  accessors: _propTypes.default.object.isRequired,
+  components: _propTypes.default.object.isRequired,
+  getters: _propTypes.default.object.isRequired,
+  localizer: _propTypes.default.object,
+  onSelect: _propTypes.default.func,
+  onDoubleClick: _propTypes.default.func
+} : {};
 var _default = EventCell;
 exports.default = _default;
 module.exports = exports["default"];

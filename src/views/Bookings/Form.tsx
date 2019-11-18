@@ -10,21 +10,21 @@ import React, {
   Fragment,
   FunctionComponent,
   useEffect,
-  useReducer,
-  useContext
+  useContext,
+  useReducer
 } from "react";
 import { RouteProps, RouterProps } from "react-router";
 import { compose } from "recompose";
 import {
   BookingFormContext,
-  BookingFormState,
-  BookingFormAction,
   BookingFormReducer,
-  BookingFormStateInit,
   IBookingFormParams,
   priceCalculate,
   getRoomBookingForm,
-  getProfile
+  getProfile,
+  BookingFormState,
+  BookingFormAction,
+  BookingFormStateInit
 } from "@/store/context/Booking/BookingFormContext";
 import { IGlobalContext, GlobalContext } from "@/store/context/GlobalContext";
 import Grey from "@material-ui/core/colors/grey";
@@ -51,7 +51,7 @@ const Form: FunctionComponent<IProps> = props => {
   const { location } = props;
 
   const params: IBookingFormParams | any = qs.parse(location!.search);
-  const [state, dispatch] = useReducer<BookingFormState, BookingFormAction>(
+  const [state, dispatch] = useReducer(
     BookingFormReducer,
     BookingFormStateInit
   );

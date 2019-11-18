@@ -98,7 +98,7 @@ function (_Component) {
 }(_react.Component);
 
 exports.default = TimeGutter;
-TimeGutter.propTypes = {
+TimeGutter.propTypes = process.env.NODE_ENV !== "production" ? {
   min: _propTypes.default.instanceOf(Date).isRequired,
   max: _propTypes.default.instanceOf(Date).isRequired,
   timeslots: _propTypes.default.number.isRequired,
@@ -107,5 +107,5 @@ TimeGutter.propTypes = {
   components: _propTypes.default.object.isRequired,
   localizer: _propTypes.default.object.isRequired,
   resource: _propTypes.default.string
-};
+} : {};
 module.exports = exports["default"];

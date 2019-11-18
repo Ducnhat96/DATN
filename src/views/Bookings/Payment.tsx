@@ -50,7 +50,7 @@ const useStyles = makeStyles<Theme, IProps>((theme: Theme) => createStyles({
 const Payment: ComponentType<IProps> = (props: IProps) => {
   const classes = useStyles(props);
   const { match } = props;
-  const [state, dispatch] = useReducer<PaymentState, PaymentAction>(PaymentReducer, PaymentStateInit);
+  const [state, dispatch] = useReducer(PaymentReducer, PaymentStateInit);
   const { history } = useContext<IGlobalContext>(GlobalContext);
 
   useEffect(() => {

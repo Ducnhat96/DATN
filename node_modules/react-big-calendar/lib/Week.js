@@ -46,9 +46,9 @@ function (_React$Component) {
   return Week;
 }(_react.default.Component);
 
-Week.propTypes = {
+Week.propTypes = process.env.NODE_ENV !== "production" ? {
   date: _propTypes.default.instanceOf(Date).isRequired
-};
+} : {};
 Week.defaultProps = _TimeGrid.default.defaultProps;
 
 Week.navigate = function (date, action) {

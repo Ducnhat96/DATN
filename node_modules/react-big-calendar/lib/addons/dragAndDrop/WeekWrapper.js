@@ -31,7 +31,7 @@ var _EventRow = _interopRequireDefault(require("../../EventRow"));
 
 var _common = require("./common");
 
-var propTypes = {};
+var propTypes = process.env.NODE_ENV !== "production" ? {} : {};
 
 var eventTimes = function eventTimes(event, accessors) {
   var start = accessors.start(event);
@@ -243,14 +243,6 @@ function (_React$Component) {
   return WeekWrapper;
 }(_react.default.Component);
 
-WeekWrapper.propTypes = {
-  isAllDay: _propTypes.default.bool,
-  slotMetrics: _propTypes.default.object.isRequired,
-  accessors: _propTypes.default.object.isRequired,
-  getters: _propTypes.default.object.isRequired,
-  components: _propTypes.default.object.isRequired,
-  resourceId: _propTypes.default.any
-};
 WeekWrapper.contextTypes = {
   draggable: _propTypes.default.shape({
     onStart: _propTypes.default.func,
@@ -259,7 +251,15 @@ WeekWrapper.contextTypes = {
     onBeginAction: _propTypes.default.func
   })
 };
-WeekWrapper.propTypes = propTypes;
+WeekWrapper.propTypes = process.env.NODE_ENV !== "production" ? {
+  isAllDay: _propTypes.default.bool,
+  slotMetrics: _propTypes.default.object.isRequired,
+  accessors: _propTypes.default.object.isRequired,
+  getters: _propTypes.default.object.isRequired,
+  components: _propTypes.default.object.isRequired,
+  resourceId: _propTypes.default.any
+} : {};
+WeekWrapper.propTypes = process.env.NODE_ENV !== "production" ? propTypes : {};
 var _default = WeekWrapper;
 exports.default = _default;
 module.exports = exports["default"];

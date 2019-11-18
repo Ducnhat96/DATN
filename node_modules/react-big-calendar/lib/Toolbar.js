@@ -89,14 +89,14 @@ function (_React$Component) {
   return Toolbar;
 }(_react.default.Component);
 
-Toolbar.propTypes = {
+Toolbar.propTypes = process.env.NODE_ENV !== "production" ? {
   view: _propTypes.default.string.isRequired,
   views: _propTypes.default.arrayOf(_propTypes.default.string).isRequired,
   label: _propTypes.default.node.isRequired,
   localizer: _propTypes.default.object,
   onNavigate: _propTypes.default.func.isRequired,
   onView: _propTypes.default.func.isRequired
-};
+} : {};
 var _default = Toolbar;
 exports.default = _default;
 module.exports = exports["default"];
