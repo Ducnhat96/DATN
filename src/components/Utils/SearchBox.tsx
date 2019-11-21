@@ -67,9 +67,8 @@ const styles: any = (theme: ThemeCustom) =>
         background: "#fffffff7",
         padding: "32px !important",
         boxShadow: "0 16px 40px rgba(0,0,0,0.25)",
-        borderRadius: "4px"
+        borderRadius: "25px"
       },
-
       zIndex: 2,
       paddingBottom: "24px",
       width: "441px"

@@ -33,6 +33,7 @@ import { searchSuggest } from "@/store/context/searchSuggestion";
 import { SearchSuggestRes } from "@/types/Requests/Search/SearchResponse";
 import axiosBase from "axios";
 import { newRoomLocation } from "@/store/context/Room/RoomIndexContext";
+// import '@/styles/searchHome.scss';
 import Collapse from "@material-ui/core/Collapse";
 import Orange from "@material-ui/core/colors/orange";
 import SelectSearch from "react-select";
@@ -47,6 +48,7 @@ export const DatePicker = Loadable<any, any>({
 interface IProps extends RouteProps, RouterProps {
   classes?: any;
   filter: SearchFilterState;
+
 }
 
 type FormikValues = {
@@ -67,7 +69,7 @@ const styles: any = (theme: ThemeCustom) =>
   createStyles({
     searchWrapper: {
       background: "#fffffff7",
-      borderRadius: "4px",
+      borderRadius: "25px",
       padding: "32px !important",
       paddingBottom: "24px",
       width: "441px",
@@ -75,16 +77,16 @@ const styles: any = (theme: ThemeCustom) =>
     },
     searchTitle: {
       [theme!.breakpoints!.only!("xs")]: {
-        fontSize: "20px"
+        fontSize: '20px',
       },
       [theme!.breakpoints!.only!("sm")]: {
-        fontSize: 28
+        fontSize: 28,
       },
-      fontSize: "30px",
-      lineHeight: "32px",
-      letterSpacing: "normal",
-      color: "#484848",
-      marginBottom: "20px",
+      fontSize: '30px',
+      lineHeight: '32px',
+      letterSpacing: 'normal',
+      color: '#484848',
+      marginBottom: '20px',
       fontWeight: 700
     },
     heading: {
@@ -147,11 +149,11 @@ const styles: any = (theme: ThemeCustom) =>
       width: "100%",
       fontSize: "0.9rem",
       color: "#FFFFFF",
-      background: "linear-gradient(to right, #FFC54D, #FFA712)",
-      boxShadow: "none",
+      background: 'linear-gradient(to right, #FFC54D, #FFA712)',
+      boxShadow: 'none',
       fontWeight: 800,
       "&:hover": {
-        background: "linear-gradient(to right, #ff890f, #fc6b09)"
+        background: 'linear-gradient(to right, #ff890f, #fc6b09)'
       }
     },
     grayLighten1: {
@@ -209,6 +211,7 @@ export const searchStylesHome: StylesConfig = {
   })
 };
 
+
 const SearchHome: FunctionComponent<IProps | any> = (props: IProps) => {
   const { classes, filter, history } = props;
   const { bookingType } = filter;
@@ -221,18 +224,19 @@ const SearchHome: FunctionComponent<IProps | any> = (props: IProps) => {
   return (
     <Grid className={classes.searchWrapper} item lg={5} md={6} xs={12}>
       <Typography className={classes.searchTitle} variant="h1">
-        Đặt phòng Homestay ngay hôm nay để tận hưởng ưu đãi.
+        Đặt phòng Homestay ngay hôm nay để tận hưởng.
       </Typography>
       <Formik
         initialValues={FormikInit}
         validationSchema={() => FormValidationSchema}
         validateOnChange={false}
+        // validateOnBlur = {false}
         onSubmit={(
           values: FormikValues,
           actions: FormikActions<FormikValues>
         ) => {
           const pushQuery: RoomUrlParams = {
-            name: city_id === "" && district_id === "" ? searchText : "",
+            name: city_id === "" && district_id === "" ? searchText : '',
             number_of_rooms: filter.roomsCount,
             check_in: filter.startDate,
             check_out: filter.endDate,
@@ -256,20 +260,23 @@ const SearchHome: FunctionComponent<IProps | any> = (props: IProps) => {
           isSubmitting,
           setFieldValue
         }: FormikProps<FormikValues>) => {
+
           return (
             <form onSubmit={handleSubmit}>
               <Grid container spacing={16}>
-                <Grid item md={12} xs={12} onClick={() => setMenuOpen(!isOpen)}>
+
+                <Grid
+                  item
+                  md={12}
+                  xs={12}
+                  onClick={() => setMenuOpen(!isOpen)}
+                >
                   <Paper elevation={2} className={classes.paperSize}>
-                    <AutoSuggestSearch
-                      isNav={false}
-                      searchText={searchText}
-                      setSearchText={setSearchText}
-                      setCityId={setCityId}
-                      setDistrictId={setDistrictId}
-                    />
+
+                    <AutoSuggestSearch isNav={false} searchText={searchText} setSearchText={setSearchText} setCityId={setCityId} setDistrictId={setDistrictId} />
                   </Paper>
                 </Grid>
+
 
                 <Grid item md={12} xs={12}>
                   <Paper elevation={2} className={classes.paperSize}>
@@ -311,8 +318,8 @@ const SearchHome: FunctionComponent<IProps | any> = (props: IProps) => {
                             {bookingType === 2
                               ? "Theo ngày"
                               : bookingType === 1
-                              ? "Theo giờ"
-                              : "Theo ngày và giờ"}
+                                ? "Theo giờ"
+                                : "Theo ngày và giờ"}
                           </Typography>
                         </div>
                       </Grid>
@@ -332,8 +339,8 @@ const SearchHome: FunctionComponent<IProps | any> = (props: IProps) => {
                       {isSubmitting ? (
                         <CircularProgress className={classes.spinner} />
                       ) : (
-                        "Tìm kiếm"
-                      )}
+                          "Tìm kiếm"
+                        )}
                     </Button>
                   </Paper>
                 </Grid>
@@ -358,9 +365,12 @@ const mapStateToProps = (state: ReducersType) => {
   };
 };
 
+
 export default compose(
   withRouter,
-  connect(mapStateToProps),
+  connect(
+    mapStateToProps
+  ),
   withStyles(styles),
   memo
 )(SearchHome);

@@ -13,7 +13,7 @@ const PRODUCTION_URL = 'https://dev.westay.vn/';
 
 const ENV_DOMAIN = process.env.REACT_APP_DOMAIN;
 const DOMAIN     = ((process.env.NODE_ENV == 'production') && !ENV_DOMAIN) ? PRODUCTION_URL : ENV_DOMAIN;
-
+console.log(DOMAIN);
 const ADMIN_URL           = DOMAIN + 'api/';
 export const CUSTOMER_URL = DOMAIN + 'customer-api/';
 

@@ -285,9 +285,7 @@ interface IProps {
 // @ts-ignore
 const RoomCard: ComponentType<IProps> = (props: IProps) => {
   const { classes, room } = props;
-  const [paperHover, setPaperHover] = useState<boolean>(false);
   const { width, history } = useContext<IGlobalContext>(GlobalContext);
-
   const typoVariant: ThemeStyle =
     width === "sm" || width === "xs" ? "subtitle2" : "h6";
   const totalComfort = room.comforts.data.length - 4;
@@ -383,7 +381,7 @@ const RoomCard: ComponentType<IProps> = (props: IProps) => {
                     </Grid>
                     <Grid>
                       <ul className={classes.ul}>
-                        {_.filter(room.comforts.data, (o, i) => {
+                        {_.filter(room.comforts.data, (o, idx) => {
                           return (
                             o.id === 20 || // air conditioner
                             o.id === 9 || //wifi
@@ -394,7 +392,8 @@ const RoomCard: ComponentType<IProps> = (props: IProps) => {
                           .sort((a, b) => a.id - b.id)
                           .map((o, i) => (
                             <Tooltip
-                              title={o.details.data[0].name}
+                              key={i}
+                              title={o.details.data[0] ? o.details.data[0].name : ''}
                               placement="bottom"
                               classes={{
                                 tooltip: classes.tooltip

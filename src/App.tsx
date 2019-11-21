@@ -1,7 +1,7 @@
 import theme from '@/components/Theme/Theme';
 import RouteList from '@/routes/Main';
 import { MuiThemeProvider } from '@material-ui/core/styles';
-import React, { ComponentType } from 'react';
+import React, { ComponentType, FC } from 'react';
 import { withCookies } from 'react-cookie';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
@@ -41,7 +41,7 @@ const cookieRefresher = () => {
 };
 
 // @ts-ignore
-const App: ComponentType<{}> = (props: AppProps) => {
+const App: FC = (props: AppProps) => {
   const { history, location, width, match } = props;
   cookieRefresher();
   // initializeReactGA();
