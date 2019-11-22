@@ -135,7 +135,7 @@ const styles: any = (theme: ThemeCustom) =>
       border: "1px solid #c4c4c4",
       marginTop: 20,
       "&:hover": {
-        borderColor: "#ff9800"
+        borderColor: "#248489"
       }
     },
   });
@@ -181,15 +181,15 @@ const MenuProfile: ComponentType<IMenuProfile> = (props: IMenuProfile) => {
 
   const MyTab = withStyles(theme => ({
     selected: {
-      color: "#ff9800",
-      borderRight: "1px solid #ff9800",
+      color: "#248489",
+      borderRight: "1px solid #248489",
       fontWeight: "bold"
     },
     wrapper: {
       flexDirection: "initial",
       padding: "6px 0",
       "&:hover": {
-        color: "#ff9800",
+        color: "#248489",
         cursor: "pointer"
       }
     },

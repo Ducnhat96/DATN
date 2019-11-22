@@ -48,6 +48,7 @@ import HomeIcon from "@material-ui/icons/HomeRounded";
 import LocationIcon from "@material-ui/icons/LocationOnRounded";
 import WhatshotIcon from "@material-ui/icons/WhatshotRounded";
 import Downshift from "downshift";
+import mainColor from "@/styles/constants/colors";
 
 interface IProps extends RouteProps, RouterProps {
   classes?: any;
@@ -128,12 +129,9 @@ const styles: any = (theme: ThemeCustom) =>
       width: "100%",
       fontSize: "0.9rem",
       color: "#FFFFFF",
-      background: "linear-gradient(to right, #FFC54D, #FFA712)",
+      background: mainColor.primary,
       boxShadow: "none",
       fontWeight: 800,
-      "&:hover": {
-        background: "linear-gradient(to right, #ff890f, #fc6b09)"
-      }
     },
     grayLighten1: {
       color: Gray[600]

@@ -62,7 +62,7 @@ const styles: any = (theme: ThemeCustom) => createStyles({
   btBook: {
     fontWeight: 700,
     color: 'white',
-    background: '#ff9800',
+    background: '#248489',
     width: '100%',
     textTransformt: 'none',
     [theme!.breakpoints!.down!('xs')]: {

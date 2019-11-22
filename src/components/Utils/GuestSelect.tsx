@@ -25,7 +25,7 @@ const styles: any = (theme: Theme) => createStyles({
   },
   countNumber: {
     fontSize: '1.2rem',
-    color: '#ff9800',
+    color: '#248489',
   },
   textCount: {
     color: '#1f1f1f'

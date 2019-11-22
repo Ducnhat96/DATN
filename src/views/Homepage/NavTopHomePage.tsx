@@ -107,14 +107,14 @@ const styles: any = (theme: ThemeCustom) =>
       fontWeight: 700,
       textTransform: "capitalize",
       "&:hover": {
-        color: Orange[500],
+        color: '#248489',
         backgroundColor: "transparent",
-        borderTop: `2px solid ${Orange[500]}`
+        borderTop: `2px solid #248489`
       },
       "&:focus": {
-        color: Orange[500],
+        color: '#248489',
         backgroundColor: "transparent",
-        borderTop: `2px solid ${Orange[500]}`
+        borderTop: `2px solid #248489`
       }
     },
     link: {

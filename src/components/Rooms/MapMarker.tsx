@@ -12,6 +12,7 @@ import Blue from '@material-ui/core/colors/blue';
 import { scroller } from 'react-scroll';
 import { ReactScrollLinkProps } from 'react-scroll/modules/components/Link';
 import { IGlobalContext, GlobalContext } from '@/store/context/GlobalContext';
+import mainColor from '@/styles/constants/colors';
 
 interface IProps extends Required<Coords> {
   classes?: any
@@ -38,8 +39,9 @@ const styles: any = (theme: ThemeCustom) => createStyles({
   },
   hover: {
     zIndex: 1,
-    backgroundColor: '#ff9800',
-    border: `1px solid #ff9800`,
+    backgroundColor: mainColor.primary,
+    border: `1px solid`,
+    borderColor: mainColor.primary,
     cursor: 'pointer',
     color: 'white',
     transition: theme!.transitions!.create!(['all'], {
@@ -48,9 +50,9 @@ const styles: any = (theme: ThemeCustom) => createStyles({
     }),
   },
   arrowHover: {
-    borderColor: `#ff9800 transparent transparent transparent`,
+    borderColor: `#248489 transparent transparent transparent`,
     '&:after': {
-      borderColor: `#ff9800 transparent transparent transparent`,
+      borderColor: `#248489 transparent transparent transparent`,
     },
   },
   overBubble: {

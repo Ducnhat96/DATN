@@ -35,6 +35,7 @@ import { GlobalContext, IGlobalContext } from "@/store/context/GlobalContext";
 import _ from "lodash";
 import { LocationDescriptorObject, History } from "history";
 import Button from "@material-ui/core/Button/Button";
+import mainColor from "@/styles/constants/colors";
 
 interface IProps {
   classes?: any;
@@ -118,7 +119,7 @@ const styles: any = (theme: ThemeCustom) =>
     applyButton: {
       background: "transparent",
       boxShadow: "none",
-      color: "#ff9800",
+      color: mainColor.primary,
       fontWeight: 700,
       textTransform: "initial",
       fontSize: "16px",

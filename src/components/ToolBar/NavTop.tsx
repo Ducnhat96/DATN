@@ -100,20 +100,20 @@ const styles: any = (theme: ThemeCustom) =>
       fontWeight: 700,
       textTransform: "capitalize",
       "&:hover": {
-        color: Orange[500],
+        color: '#248489',
         backgroundColor: "transparent",
-        borderTop: `2px solid ${Orange[500]}`
+        borderTop: `2px solid #248489`
       },
       "&:focus": {
-        color: Orange[500],
+        color: '#248489',
         backgroundColor: "transparent",
-        borderTop: `2px solid ${Orange[500]}`
+        borderTop: `2px solid #248489`
       }
     },
     buttonMerchantSite: {
       height: "unset",
       textTransform: "capitalize",
-      color: Orange[500],
+      color: '#248489',
       borderRadius: 10,
       fontWeight: 700,
       boxShadow: "0 1px 5px rgba(0, 0, 0, 0.15)",
@@ -122,7 +122,7 @@ const styles: any = (theme: ThemeCustom) =>
       WebkitTransition: "all 0.5s",
       transition: "all 0.5s",
       "&:hover": {
-        color: Orange[500],
+        color: '#248489',
         backgroundColor: "#f9f9f9",
         boxShadow: "none"
       }

@@ -22,7 +22,7 @@ const styles: any = (theme: ThemeCustom) => createStyles({
     color:'#515b62',
     '&:hover': {
       // color:'#5392f9',
-      color:'#ff9800',
+      color:'#248489',
     },
   },
   paperOutlined: {

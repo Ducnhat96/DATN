@@ -113,7 +113,7 @@ const styles: any = (theme: ThemeCustom) =>
     },
     roomPropertiesIcon: {
       verticalAlign: "bottom",
-      color: Orange[500],
+      color: '#248489',
       width: 32,
       height: 32
     },

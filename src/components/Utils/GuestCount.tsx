@@ -24,7 +24,7 @@ const styles: any = (theme: Theme) =>
     },
     countNumber: {
       fontSize: "1.2rem",
-      color: "#ff9800"
+      color: "#248489"
     },
     textCount: {
       color: "#1f1f1f"
@@ -32,7 +32,7 @@ const styles: any = (theme: Theme) =>
     applyButton: {
       background: "transparent",
       boxShadow: "none",
-      color: "#ff9800",
+      color: "#248489",
       fontWeight: 700,
       textTransform: "initial",
       fontSize: "16px",

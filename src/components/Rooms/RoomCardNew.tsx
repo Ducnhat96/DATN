@@ -135,7 +135,7 @@ const styles: any = (theme: ThemeCustom) =>
       textTransform: "uppercase",
       fontSize: 12,
       fontWeight: 500,
-      color: "#ff9800",
+      color: '#248489',
       fontFamily:
         "Circular, -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif",
       display: "inline-block",
@@ -160,7 +160,7 @@ const styles: any = (theme: ThemeCustom) =>
       fontSize: "0.8rem",
       maxWidth: 200,
       padding: 5,
-      backgroundColor: "#ff9800"
+      backgroundColor: "#248489"
     },
     borderBlue: {
       border: "1px solid #7676768a"
@@ -187,7 +187,7 @@ const styles: any = (theme: ThemeCustom) =>
     },
     totalReviewText: {
       marginLeft: 10,
-      color: "#ff9800",
+      color: "#248489",
       fontWeight: 500
     },
     avgRating: {
@@ -197,7 +197,7 @@ const styles: any = (theme: ThemeCustom) =>
     // Price Box
     discountBox: {
       color: "#fff",
-      backgroundColor: "#ff9800",
+      backgroundColor: "#248489",
       padding: "4px 10px 4px 8px",
       fontSize: 14,
       fontWeight: 700,
@@ -242,7 +242,7 @@ const styles: any = (theme: ThemeCustom) =>
     priceText: {
       fontSize: 17,
       marginLeft: 20,
-      color: "#ff9800",
+      color: "#248489",
       fontWeight: 700
     },
     discountPriceText: {
@@ -285,6 +285,7 @@ interface IProps {
 // @ts-ignore
 const RoomCard: ComponentType<IProps> = (props: IProps) => {
   const { classes, room } = props;
+  console.log(room.media.data)
   const { width, history } = useContext<IGlobalContext>(GlobalContext);
   const typoVariant: ThemeStyle =
     width === "sm" || width === "xs" ? "subtitle2" : "h6";

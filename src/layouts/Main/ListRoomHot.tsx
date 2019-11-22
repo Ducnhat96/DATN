@@ -106,6 +106,7 @@ const ListRoomHot: ComponentType<IProps> = (props: IProps) => {
     getRoomHot()
       .then(data => {
         const roomData = data.data;
+        console.log(data.data)
         dispatch({
           type: 'setRoomHot',
           rooms: roomData

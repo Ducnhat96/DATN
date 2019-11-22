@@ -39,6 +39,7 @@ import Orange from "@material-ui/core/colors/orange";
 import SelectSearch from "react-select";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import AutoSuggestSearch from "@/components/Utils/AutosuggestSearch";
+import mainColor from "@/styles/constants/colors";
 
 export const DatePicker = Loadable<any, any>({
   loader: (): Promise<any> => import("@/components/Utils/DateRange"),
@@ -138,7 +139,6 @@ const styles: any = (theme: ThemeCustom) =>
       display: "flex",
       justifyContent: "left",
       alignItems: "center",
-      // border: '1px solid #e0e0e0 !important',
       border: "1px solid #EBEBEB !important",
       boxShadow: "none",
       borderRadius: "4px !important",
@@ -149,12 +149,9 @@ const styles: any = (theme: ThemeCustom) =>
       width: "100%",
       fontSize: "0.9rem",
       color: "#FFFFFF",
-      background: 'linear-gradient(to right, #FFC54D, #FFA712)',
+      background: mainColor.primary,
       boxShadow: 'none',
       fontWeight: 800,
-      "&:hover": {
-        background: 'linear-gradient(to right, #ff890f, #fc6b09)'
-      }
     },
     grayLighten1: {
       color: Gray[600]

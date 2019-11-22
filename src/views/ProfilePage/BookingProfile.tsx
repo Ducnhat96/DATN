@@ -29,7 +29,7 @@ const styles: any = (theme: ThemeCustom) =>
       borderBottom: "1px solid #e8e8e8"
     },
     tabsIndicator: {
-      backgroundColor: "#ff9800"
+      backgroundColor: "#248489"
     },
     tabRoot: {
       textTransform: "initial",
@@ -38,16 +38,16 @@ const styles: any = (theme: ThemeCustom) =>
       marginRight: theme.spacing!.unit! * 4,
       fontFamily: ["-apple-system", "Roboto"].join(","),
       "&:hover": {
-        color: "#ff9800",
+        color: "#248489",
         opacity: 1
       },
       
       "&:focus": {
-        color: "#ff9800"
+        color: "#248489"
       }
     },
     tabSelected: {
-      color: "#ff9800",
+      color: "#248489",
       fontWeight: theme.typography!.fontWeightMedium
     },
     myBooking: {

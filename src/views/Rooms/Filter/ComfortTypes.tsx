@@ -44,7 +44,7 @@ const styles: any = (theme: ThemeCustom) =>
     expandText: {
       fontSize: "0.9rem",
       // color: Blue[400],
-      color: Orange[500],
+      color: '#248489',
       fontWeight: 500,
       cursor: "pointer",
       "&:hover": {
@@ -90,7 +90,7 @@ const styles: any = (theme: ThemeCustom) =>
     applyButton: {
       background: 'transparent',
       boxShadow: 'none',
-      color: '#ff9800',
+      color: '#248489',
       fontWeight: 700,
       textTransform: 'initial',
       fontSize: '16px',

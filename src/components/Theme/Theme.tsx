@@ -5,6 +5,7 @@ import { FontStyleOptions, TypographyOptions } from '@material-ui/core/styles/cr
 import Blue from '@material-ui/core/colors/blue';
 import Red from '@material-ui/core/colors/red';
 import Orange from '@material-ui/core/colors/orange';
+import mainColor from '@/styles/constants/colors';
 
 interface PaletteExtra extends PaletteOptions {
   button: any;
@@ -28,8 +29,7 @@ const options: ThemeCustom = {
   },
   palette: {
     primary: {
-      // main: Blue[600],
-      main: "#ff9800",
+      main: mainColor.primary,
 
     },
     secondary: {

@@ -27,6 +27,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import '@/styles/PageProfile/StylePageProfile.scss';
 import FavoriteAnimation from '@/components/IntroHomestay/FavoriteAnimation';
 import {ThemeCustom} from '@/components/Theme/Theme';
+import mainColor from '@/styles/constants/colors';
 
 const styles: any = (theme: ThemeCustom) => createStyles({
   root: {
@@ -100,7 +101,7 @@ const styles: any = (theme: ThemeCustom) => createStyles({
     textTransform: 'none',
     backgroundColor: '#ffb74d',
     '&:hover': {
-      backgroundColor: '#ff9800',
+      backgroundColor: mainColor.primary,
     },
   },
   boxBook: {

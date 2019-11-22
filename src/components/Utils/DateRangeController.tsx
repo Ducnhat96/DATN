@@ -32,7 +32,7 @@ const styles: any = (theme: ThemeCustom) =>
     applyButton: {
       background: 'transparent',
       boxShadow: 'none',
-      color: '#ff9800',
+      color: '#248489',
       fontWeight: 700,
       textTransform: 'initial',
       fontSize: '16px',

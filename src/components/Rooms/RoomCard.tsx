@@ -483,7 +483,7 @@ const RoomCard: ComponentType<IProps> = (props: IProps) => {
                                   numberOfStars={room.standard_point}
                                   starDimension={`15px`}
                                   starSpacing={`1px`}
-                                  starEmptyColor={"#ff9800"}
+                                  starEmptyColor={"#248489"}
                                 />
                               </span>
                             </Hidden>

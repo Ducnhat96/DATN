@@ -56,6 +56,7 @@ import MenuItemSelectWithIcon from "@/components/Custom/MenuItemSelectWithIcon";
 import { StylesConfig } from "react-select/lib/styles";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import '@/styles/filtersearchmobile.scss'
+import mainColor from "@/styles/constants/colors";
 
 interface PropsFilterCity {
   setOpen(value: boolean): void;
@@ -148,7 +149,6 @@ const styles: any = (theme: ThemeCustom) =>
       display: "flex",
       justifyContent: "left",
       alignItems: "center",
-      // border: '1px solid #e0e0e0 !important',
       borderRadius: "4px !important",
       backgroundColor: "#fff"
     },
@@ -164,7 +164,7 @@ const styles: any = (theme: ThemeCustom) =>
       fontSize: "0.9rem",
       color: "#FFFFFF",
       "&:hover": {
-        background: Orange[700]
+        background: mainColor.primary
       }
     },
     spinner: {

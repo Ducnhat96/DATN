@@ -61,7 +61,7 @@ const styles: any = (theme: ThemeCustom) =>
     expandText: {
       fontSize: "0.9rem",
       // color: Blue[400],
-      color: Orange[500],
+      color: '#248489',
       fontWeight: 500,
       cursor: "pointer",
       "&:hover": {

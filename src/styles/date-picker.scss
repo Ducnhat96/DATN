@@ -1,7 +1,7 @@
 @import "mixins";
 
-$selected-color: #ff9800;
-$selected-color-lighten-1: #ff9800;
+$selected-color: '#248489';
+$selected-color-lighten-1: #248489;
 $selected-color-lighten-2: #f9da7f;
 $white: #FFF;
 
@@ -341,7 +341,7 @@ $white: #FFF;
 }
 
 .CalendarDay__default:hover {
-  background: #ff9800;
+  background: #248489;
   border: 1px solid #e4e7e7;
   color: inherit
 }
@@ -398,7 +398,7 @@ $white: #FFF;
   background: $selected-color-lighten-1;
   border-bottom: 2px double $white;
   border-top: 2px double $white;
-  color: #fff
+  // color: #fff
 }
 
 .CalendarDay__last_in_range,
@@ -412,7 +412,7 @@ $white: #FFF;
   background: $selected-color;
   border-bottom: 2px double $white;
   border-top: 2px double $white;
-  color: #fff
+  // color: #fff
 }
 
 .CalendarDay__hovered_span,

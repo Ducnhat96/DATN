@@ -105,7 +105,6 @@ const ListRoomNew: ComponentType<IProps> = (props: IProps) => {
     getRoomNew()
       .then(data => {
         const roomData = data.data;
-        // console.log(data.data)
         dispatch({
           type: "setRoomNew",
           rooms: roomData

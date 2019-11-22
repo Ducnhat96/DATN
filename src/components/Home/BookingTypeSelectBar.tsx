@@ -17,6 +17,7 @@ import { RoomUrlParams } from '@/types/Requests/Rooms/RoomRequests';
 import { newRoomLocation } from "@/store/context/Room/RoomIndexContext";
 import { IGlobalContext, GlobalContext } from "@/store/context/GlobalContext";
 import Button from '@material-ui/core/Button/Button';
+import mainColor from '@/styles/constants/colors';
 
 interface IProps {
   classes?: any,
@@ -42,14 +43,15 @@ const styles: any = (theme: ThemeCustom) => createStyles({
     color: Gray[600],
   },
   'label-checkbox': {
-    border: '1.4px solid #ff9800',
+    border: '1.4px solid',
+    borderColor: mainColor.primary,
     boxShadow: 'none'
   },
   
   applyButton: {
     background: "transparent",
     boxShadow: "none",
-    color: "#ff9800",
+    color: mainColor.primary,
     fontWeight: 700,
     textTransform: "initial",
     fontSize: "16px",

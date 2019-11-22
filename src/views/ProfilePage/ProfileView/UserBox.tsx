@@ -93,7 +93,7 @@ const styles: any = (theme: ThemeCustom) =>
       }
     },
     homeCertified: {
-      color: "#FF9800",
+      color: "#248489",
       width: 30,
       height: 30,
       marginRight: 8,

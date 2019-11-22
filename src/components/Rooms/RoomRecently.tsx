@@ -66,7 +66,7 @@ const RoomRecently: ComponentType<IRoomRecentlyProps> = (props) => {
                 numberOfStars={room.standard_point}
                 starDimension={`15px`}
                 starSpacing={`1px`}
-                starEmptyColor={'#ff9800'}
+                starEmptyColor={'#248489'}
               />
             </Grid>
             <Grid container item xs={12} alignItems='flex-end' justify='flex-end'>
