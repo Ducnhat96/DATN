@@ -332,20 +332,7 @@ const BoxDetails: ComponentType<IProps> = (props: IProps) => {
   const openUpdateDetail = () => {
     window.open(updateDetailsUrl, "_blank");
   };
-  // const transformHtmlContent = (node: any, index: number) => {
-  //   // let validNodeIndex = index === 0 || index === 1;
-  //   // let validNodeTag = node.type === 'tag' || node.type === 'text';
-  //   // if (validNodeIndex && validNodeTag && node.parent === null) {
-  //   //   return null
-  //   // }
-  //   if (node.name === "p" || node.name === "image") {
-  //     node.attribs.class = classes.tagP_inHtmlPare;
-  //     return convertNodeToElement(node, index, transformHtmlContent);
-  //   }
-  // };
-
   const userEvent = () => {
-    // console.log(room!.merchant.data);
     if (windowExist) {
       let win = window.open(`/user/${room!.merchant.data.id}`, "_blank");
       win!.focus();
@@ -415,59 +402,6 @@ const BoxDetails: ComponentType<IProps> = (props: IProps) => {
             </Grid>
           </Grid>
         </Grid>
-        {/* <Grid item xs={3}>
-          <Grid
-            container
-            direction="column"
-            justify="flex-end"
-            alignItems="flex-end"
-          >
-            <Grid item xs={12}>
-              <Tooltip
-                interactive
-                placement="left"
-                title={
-                  <Fragment>
-                    <div>
-                      <Typography variant={"subtitle2"} align={"center"}>
-                        {room!.merchant.data.name}
-                      </Typography>
-                    </div>
-                    <span className={classes.arrowArrow} />
-                  </Fragment>
-                }
-                classes={{
-                  popper: classes.arrowPopper,
-                  tooltip: classes.lightTooltip
-                }}
-                PopperProps={{
-                  popperOptions: {
-                    modifiers: {
-                      arrow: {
-                        enabled: Boolean(arrowRef),
-                        element: arrowRef
-                      }
-                    }
-                  }
-                }}
-              >
-                <div className={classes.avatar} onClick={userEvent}>
-                  <img
-                    alt="Avatar"
-                    src={room!.merchant.data.avatar_url}
-                    className={classes.imgAvatar}
-                  />
-                  <div className={classes.infoHost}>
-                    <img
-                      src={medalCertified}
-                      className={classes.imgCertified}
-                    />
-                  </div>
-                </div>
-              </Tooltip>
-            </Grid>
-          </Grid>
-        </Grid> */}
       </Grid>
       <Divider />
       <Grid
@@ -578,35 +512,14 @@ const BoxDetails: ComponentType<IProps> = (props: IProps) => {
             >
               Thông tin căn hộ
             </Typography>
-            {/* <div className = {classes.des_6Line}>
-                {ReactHtmlParser(description, {
-                  transform: transformHtmlTitle
-                })}
-            </div> */}
+           
           </ExpansionPanelSummary>
           <ExpansionPanelDetails
             classes={{ root: classes.expansionPanelDetails }}
           >
             <Grid container className={classes.rowMargin}>
-              {/* {description ? (
-                ReactHtmlParser(description, {
-                  transform: transformHtmlContent
-                })
-              ) : (
-                <p>
-                  Thông tin căn hộ hiện tại chưa có, vui lòng cập nhật ngay.
-                </p>
-              )} */}
             </Grid>
-            {/*<Grid container className = {classes.rowMargin}>*/}
-            {/*<Grid item xs = {4}>*/}
-            {/*<Typography variant = {'subtitle2'}>Quyền hạn của khách: </Typography>*/}
-            {/*</Grid>*/}
-            {/*<Grid item xs = {8}>*/}
-            {/*<Typography variant = {'body2'}> - Guests have access to the entire property with the exception of the*/}
-            {/*main house that the owner occupies.</Typography>*/}
-            {/*</Grid>*/}
-            {/*</Grid>*/}
+           
           </ExpansionPanelDetails>
         </ExpansionPanel>
       </Grid>
@@ -633,15 +546,6 @@ const BoxDetails: ComponentType<IProps> = (props: IProps) => {
             classes={{ root: classes.expansionPanelDetails }}
           >
             <Grid container className={classes.rowMargin}>
-              {/* {space !== null && space.length > 10 ? (
-                ReactHtmlParser(space, {
-                  transform: transformHtmlContent
-                })
-              ) : (
-                <p>
-                  Không gian căn hộ hiện tại chưa có, vui lòng cập nhật ngay.
-                </p>
-              )} */}
             </Grid>
           </ExpansionPanelDetails>
         </ExpansionPanel>
@@ -668,13 +572,6 @@ const BoxDetails: ComponentType<IProps> = (props: IProps) => {
             classes={{ root: classes.expansionPanelDetails }}
           >
             <Grid container className={classes.rowMargin}>
-              {/* {note !== null && note.length > 10 ? (
-                ReactHtmlParser(note, {
-                  transform: transformHtmlContent
-                })
-              ) : (
-                <p>Nội quy căn hộ hiện tại chưa có, vui lòng cập nhật ngay.</p>
-              )} */}
             </Grid>
           </ExpansionPanelDetails>
         </ExpansionPanel>
@@ -771,17 +668,6 @@ const BoxDetails: ComponentType<IProps> = (props: IProps) => {
                           {o.details.data[0].name}
                         </Typography>
                       </Grid>
-
-                      {/* <Grid item xs={3} sm={3} style = {{marginBottom: 15}}>
-                    <div className={classes.collectionAmenities}>
-                      <img src = {o.icon}
-                         alt = {o.details.data[0].name}
-                         className = {classes.roomAmenitiesIcon} />
-                      <div className = {classes.roomAmenitiesTitle}>
-                        <span>{o.details.data[0].name}</span>
-                      </div>
-                    </div>
-                  </Grid> */}
                     </Fragment>
                   ) : (
                     ""

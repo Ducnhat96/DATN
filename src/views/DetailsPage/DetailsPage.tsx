@@ -36,6 +36,7 @@ import { connect } from 'react-redux';
 import LocationHomeMap from "@/views/DetailsPage/LocationHomeMap";
 import Footer from '@/layouts/Main/Footer';
 import { Helmet } from 'react-helmet';
+import BoxRoomDetails from './BoxRoomDetails';
 interface IProps extends RouteChildrenProps {
   classes?: any,
   match: match<any>
@@ -220,7 +221,8 @@ const DetailsPage: ComponentType<IProps> = (props: LocalProps) => {
             <Grid item sm={12} md={11} lg={8} xl={8} className={classes.boxPadding}>
               <Paper elevation={0}>
                 <div className={classes.boxPadding}>
-                  <BoxDetails />
+                  {/* <BoxDetails /> */}
+                  {room ? (<BoxRoomDetails room={room} />) : ''}
                   {room ? (
                     <DatePickerRoomDetail
                       minNights={bookingType === BOOKING_TYPE_DAY ? 1 : 0}
