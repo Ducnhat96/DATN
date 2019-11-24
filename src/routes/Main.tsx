@@ -96,6 +96,11 @@ const PrivacyPolicy = Loadable({
   loading: () => null,
 });
 
+const hostRoomList = Loadable({
+  loader: (): Promise<any> => import('@/views/Host/RoomList/index'),
+  loading: () => null,
+});
+
 const RouteList: FunctionComponent<{}> = props => {
   return (
     <Switch>
@@ -114,6 +119,7 @@ const RouteList: FunctionComponent<{}> = props => {
       <Route path = '/preview-room/:id' component = {pageDetails} />
       <Route path = '/reviews/:id' component = {pageReview} />
       <Route path = '/booking-cancel/:id' component = {pageCancelBooking} />
+      <Route path = '/host/room-list' component = {hostRoomList} />
 
       {/*Terms Router*/}
       <Route path = '/terms-and-conditions' component = {TermsOfConditions} />

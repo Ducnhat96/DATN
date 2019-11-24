@@ -218,7 +218,7 @@ const DetailsPage: ComponentType<IProps> = (props: LocalProps) => {
       <div className={classes.boxDetails}>
         <GridContainer xs={12} sm={12} md={11} lg={11} xl={10}>
           <Grid container justify='center'>
-            <Grid item sm={12} md={11} lg={8} xl={8} className={classes.boxPadding}>
+            <Grid item sm={12} md={11} lg={6} xl={6} className={classes.boxPadding}>
               <Paper elevation={0}>
                 <div className={classes.boxPadding}>
                   {/* <BoxDetails /> */}

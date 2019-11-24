@@ -35,7 +35,7 @@ const PaymentFailed: ComponentType<IProps> = (props: IProps) => {
         <GridContainer xs={11} className={classes.content}>
           <Grid container spacing = {0} className = {classes.content}>
             <h1 className={classes.textContent}>Thanh toán không thành công</h1>
-            <p className={classes.textContent}>Vui lòng liên hệ với chúng tôi theo Hotline: 0916.374.057 để được hỗ trợ.</p>
+            <p className={classes.textContent}>Vui lòng liên hệ với chúng tôi theo Hotline: 0396899593 để được hỗ trợ.</p>
             <Link to = '/' className={classes.textContent}>
               <p>Click vào đây để quay trở về trang chủ</p>
             </Link>

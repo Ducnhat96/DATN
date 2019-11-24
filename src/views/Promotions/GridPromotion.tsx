@@ -286,7 +286,7 @@ const GridPromotion: ComponentType<IPromotions> = (props: IPromotions) => {
               </div>
               {promotion.coupons.data[0].settings.bind.length == 0 ? (
                 <Typography component='p' className={classes.message}>
-                  Mã giảm giá giảm tối đa {formatMoney(promotion.coupons.data[0].max_discount)} cho đặt phòng tối thiểu từ {formatMoney(promotion.coupons.data[0].settings.min_price)} đồng. Chi tiết liên hệ : 0946 746 417
+                  Mã giảm giá giảm tối đa {formatMoney(promotion.coupons.data[0].max_discount)} cho đặt phòng tối thiểu từ {formatMoney(promotion.coupons.data[0].settings.min_price)} đồng. Chi tiết liên hệ : 0396899593
                 </Typography>
               ) : 
                 (_.map(promotion.coupons.data[0].settings.bind, (criteria) => (

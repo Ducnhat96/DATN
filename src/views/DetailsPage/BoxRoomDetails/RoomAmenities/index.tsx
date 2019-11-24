@@ -13,9 +13,10 @@ import { Button } from "@material-ui/core/es";
 import theme from "@/components/Theme/Theme";
 import { Hidden } from "@material-ui/core";
 import { RoomIndexRes } from "@/types/Requests/Rooms/RoomResponses";
-import Orange from '@material-ui/core/colors/orange';
-import AddIcon from '@material-ui/icons/Add';
-import _ from 'lodash';
+import Orange from "@material-ui/core/colors/orange";
+import AddIcon from "@material-ui/icons/Add";
+import _ from "lodash";
+import { IGlobalContext, GlobalContext } from "@/store/context/GlobalContext";
 interface IProps {
   classes?: any;
   room: RoomIndexRes;
@@ -94,7 +95,6 @@ const RoomAmenities: ComponentType<IProps> = (props: IProps) => {
   const { classes } = props;
   const { width } = useContext<IGlobalContext>(GlobalContext);
   const { room } = props;
-  const isPreviewPage = router.pathname.includes("preview-room");
 
   const MAX_ITEMS = width === "xs" ? 5 : 8;
   const MORE_ITEMS = !!room && room.comforts.data.length - MAX_ITEMS;
@@ -117,10 +117,12 @@ const RoomAmenities: ComponentType<IProps> = (props: IProps) => {
         <Typography variant="h5" className={classes.name}>
           Tiện nghi căn hộ
         </Typography>
-        {isPreviewPage && room.comforts.data.length === 0 ? (
-          <Typography variant="h6">{t("room:notFoundContent")}</Typography>
+        {room.comforts.data.length === 0 ? (
+          <Typography variant="h6">
+            Chưa có nội dung, vui lòng cập nhật đầy đủ thông tin phòng của bạn
+          </Typography>
         ) : (
-          <Grid container spacing={3} className={classes.rowMargin}>
+          <Grid container spacing={24} className={classes.rowMargin}>
             {_.map(getRenderedItems(), (o, i) => (
               <Fragment key={i}>
                 <Grid item xs={2} sm={1} md={1} lg={1}>
@@ -142,8 +144,8 @@ const RoomAmenities: ComponentType<IProps> = (props: IProps) => {
             {!isOpen ? (
               <Grid item xs={2} sm={3} className={classes.buttonLess}>
                 <Hidden
-                  xsUp={isPreviewPage && room.comforts.data.length < 5}
-                  xsDown={isPreviewPage && room.comforts.data.length < 5}
+                  xsUp={room.comforts.data.length < 5}
+                  xsDown={room.comforts.data.length < 5}
                 >
                   <Button
                     onClick={toggle}
@@ -151,8 +153,7 @@ const RoomAmenities: ComponentType<IProps> = (props: IProps) => {
                     size="small"
                   >
                     <AddIcon className={classes.iconPlus} />
-                    {MORE_ITEMS}{" "}
-                    <Hidden xsDown>tiện ích</Hidden>
+                    {MORE_ITEMS} <Hidden xsDown>tiện ích</Hidden>
                   </Button>
                 </Hidden>
               </Grid>

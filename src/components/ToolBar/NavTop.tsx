@@ -274,8 +274,7 @@ const NavTop: FunctionComponent<IProps> = (props: ILocalProps) => {
               <Logo />
               <div className={classes.grow} />
               <Button
-                href="https://merchant.westay.vn"
-                // color = 'inherit'
+                href="/host/room-list"
                 className={classes.buttonMerchantSite}
                 name="merchant-site"
                 size="large"

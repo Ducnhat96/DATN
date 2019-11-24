@@ -1,12 +1,12 @@
 import { RoomIndexRes } from "@/types/Requests/Rooms/RoomResponses";
 import { Grid, Paper } from "@material-ui/core";
 import { createStyles, withStyles } from "@material-ui/styles";
-import React, { FC, Fragment, ComponentType } from "react";
+import React, { Fragment, ComponentType } from "react";
 import RoomBasic from "./RoomBasic/index";
-import { ThemeCustom } from "@/components/Theme/Theme";
 import { compose } from "recompose";
 import theme from "@/components/Theme/Theme";
 import RoomDescription from "./RoomDescription";
+import RoomAmenities from "./RoomAmenities";
 
 const styles: any = () =>
   createStyles({
@@ -24,6 +24,10 @@ const styles: any = () =>
     },
     rowMargin: {
       marginTop: 32
+    },
+    wrapperBasic: {
+      display: "flex",
+      justifyContent: "start"
     }
   });
 
@@ -34,19 +38,19 @@ interface IProps {
 const BoxRoomDetail: ComponentType<IProps> = (props: IProps) => {
   const { classes } = props;
   const { room } = props;
-  //   const { state, dispatch } = useContext(RoomDetailsContext);
-  //   const { router } = useContext(GlobalContext);
-  //   const isPreviewPage = router.pathname.includes("preview-room");
-
   return (
     <Fragment>
       <Paper className={classes.paper}>
         <Grid container>
           <Grid item md={12} lg={12}>
-            <Grid container spacing={8} justify="center">
-              <Grid item xs={11} sm={8} md={9} lg={8} xl={9}>
+            <Grid
+              container
+              spacing={8}
+              justify="center"
+              className={classes.wrapperBasic}
+            >
+              <Grid item xs={11}>
                 <RoomBasic
-                  //   isPreviewPage={isPreviewPage}
                   name={room.details.data[0].name}
                   id={room.id}
                   bathroom={room.bathroom}
@@ -66,8 +70,10 @@ const BoxRoomDetail: ComponentType<IProps> = (props: IProps) => {
                       description={room.details.data[0].description}
                       note={room.details.data[0].note}
                       space={room.details.data[0].space}
-                    //   isPreviewPage={isPreviewPage}
                     />
+                  </Grid>
+                  <Grid className={classes.rowMargin}>
+                    <RoomAmenities room={room} />
                   </Grid>
                 </Grid>
               </Grid>

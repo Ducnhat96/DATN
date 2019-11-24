@@ -39,7 +39,7 @@ const reducers: ReducersType = {
   loginInfo: loginInfo,
   v_animate: V_animation,
   booking: bookingReducer,
-  searchNavMobile: reducerSearchNav
+  searchNavMobile: reducerSearchNav,
 };
 
 const rootReducer = combineReducers(reducers);

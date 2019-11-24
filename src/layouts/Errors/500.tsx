@@ -31,7 +31,7 @@ const Error500: FunctionComponent<IProps | any> = props => {
   const {classes} = props;
 
   useEffect(() => {
-    document.title = '500 Internal Server Error - Westay.org';
+    document.title = '500 Internal Server Error - VN-Homestay';
   }, []);
 
   const defaultOptions = {
@@ -63,7 +63,7 @@ const Error500: FunctionComponent<IProps | any> = props => {
               Có vẻ như đã có lỗi xảy ra.
             </Typography><br />
             <Typography variant = 'subtitle2' className = {classes.weightLow}>
-              Liên hệ ngay với chúng tôi thông qua số điện thoại: 0916 374 057 nếu bạn cần trợ giúp ngay lập tức
+              Liên hệ ngay với chúng tôi thông qua số điện thoại: 0396899593 nếu bạn cần trợ giúp ngay lập tức
             </Typography>
           </Grid>
           <Grid item xs = {12}>

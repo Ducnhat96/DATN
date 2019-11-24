@@ -4,8 +4,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import React, { ComponentType } from 'react';
 import { compose } from 'recompose';
 import { Link } from 'react-router-dom';
-import logo from '@/assets/Logo-westay.png';
-
+import logo from '@/assets/logo-main.svg';
 interface IProps {
   classes?: any
 }
