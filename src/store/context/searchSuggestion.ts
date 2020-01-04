@@ -28,9 +28,7 @@ export const makeRequestSingle = (method: AxiosRequestType = "GET") => {
 };
 
 const get = makeRequestSingle();
-
 export const searchSuggest = async (q: string) => {
-  // const res: AxiosRes<SearchSuggestRes[]> = await axios.get(`search-suggestions?key=${q}`);
   const res: AxiosRes<SearchSuggestRes[]> = await get(
     `search-suggestions-web?key=${q}`
   );

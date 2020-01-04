@@ -7,19 +7,12 @@ import React, {
   Dispatch,
   memo,
   useContext,
-  useEffect,
-  useState
 } from "react";
 import { compose } from "recompose";
 import ListItem from "@material-ui/core/ListItem/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon/ListItemIcon";
-import { AccountCircle, Home, VerifiedUser } from "@material-ui/icons";
-import { AccountQuestion } from "mdi-material-ui";
 import ListItemText from "@material-ui/core/ListItemText/ListItemText";
 import List from "@material-ui/core/List/List";
 import Divider from "@material-ui/core/Divider/Divider";
-import Typography from "@material-ui/core/Typography/Typography";
-import BG from "@/assets/adult-adventure-backlit-915972.jpg";
 import { ReducersList } from "@/store/reducers";
 import { AnimationAction } from "@/store/reducers/Visual/global-animation";
 import * as animation from "@/store/actions/animationTypes";
@@ -27,16 +20,7 @@ import { connect } from "react-redux";
 import { withCookies } from "react-cookie";
 import Cookies from "universal-cookie";
 import to from "@/components/Utils/to";
-import { Link } from "react-router-dom";
-
-import LazyLoad from "react-lazyload";
-import { windowExist } from "@/index";
 import { IGlobalContext, GlobalContext } from "@/store/context/GlobalContext";
-import Button from "@material-ui/core/Button";
-import {
-  IProfileContext,
-  ProfileContext
-} from "@/store/context/Profile/ProfileContext";
 
 export interface ISideDrawerProps {
   classes?: any;
@@ -142,19 +126,6 @@ const SideDrawer: ComponentType<ISideDrawerProps> = (props: ILocalProps) => {
               }}
             />
           </ListItem>
-
-          {/* <ListItem button {...to("/")} onClick={() => setOpen(false)}>
-          <ListItemIcon>
-            <Home />
-          </ListItemIcon>
-          <ListItemText
-            primary="Trang chủ"
-            classes={{
-              primary: classes.text
-            }}
-          />
-        </ListItem> */}
-
           {isLogin ? (
             <Fragment>
               <ListItem
@@ -181,9 +152,6 @@ const SideDrawer: ComponentType<ISideDrawerProps> = (props: ILocalProps) => {
                 onClick={() => setOpen(false)}
                 {...to("/profile")}
               >
-                {/* <ListItemIcon>
-                <AccountCircle />
-              </ListItemIcon> */}
                 <ListItemText
                   primary="Thông tin cá nhân"
                   classes={{
@@ -204,9 +172,6 @@ const SideDrawer: ComponentType<ISideDrawerProps> = (props: ILocalProps) => {
                     handleLoginButton(true);
                   }}
                 >
-                  {/* <ListItemIcon>
-              <AccountCircle />
-            </ListItemIcon> */}
                   <ListItemText
                     primary="Đăng nhập"
                     classes={{
@@ -224,9 +189,6 @@ const SideDrawer: ComponentType<ISideDrawerProps> = (props: ILocalProps) => {
                     handleRegisterButton(true);
                   }}
                 >
-                  {/* <ListItemIcon>
-              <AccountCircle />
-            </ListItemIcon> */}
                   <ListItemText
                     primary="Đăng ký"
                     classes={{

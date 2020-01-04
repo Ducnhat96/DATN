@@ -7,25 +7,15 @@ import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 import Cookies from 'universal-cookie';
 import withWidth from '@material-ui/core/withWidth/withWidth';
-import { LocationDescriptorObject, History } from 'history';
+import { History } from 'history';
 import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
 import { GlobalContext } from '@/store/context/GlobalContext';
 import { RouteChildrenProps, RouterProps } from 'react-router';
-import ReactGA from 'react-ga';
 
 interface AppProps extends RouterProps, RouteChildrenProps {
   history: History
   width: Breakpoint
 }
-
-// const initializeReactGA = () => {
-//   ReactGA.initialize('UA-134989606-1');
-//   ReactGA.pageview(
-//     `/${window.location.pathname} + ${
-//       window.location.search
-//     }`
-//   );
-// }
 
 const cookieRefresher = () => {
   const cookies = new Cookies();
@@ -44,7 +34,6 @@ const cookieRefresher = () => {
 const App: FC = (props: AppProps) => {
   const { history, location, width, match } = props;
   cookieRefresher();
-  // initializeReactGA();
   return (
     <MuiThemeProvider theme={theme}>
       <GlobalContext.Provider value={{ history, location, width, match }}>

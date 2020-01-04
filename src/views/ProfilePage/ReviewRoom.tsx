@@ -240,7 +240,7 @@ const ReviewRoom: ComponentType<IProps> = (props: IProps) => {
                     <CardMedia
                       className={classes.media}
                       image={`https://s3-ap-southeast-1.amazonaws.com/westay-img/lg/${roomReview.image}`}
-                      title = 'Westay-Homestay cho người Việt'
+                      title = 'VN-Homestay - Homestay cho mọi người'
                     />
                     <CardContent className={classes.cardContent}>
                       <Typography component='p' className={classes.nameCity}>

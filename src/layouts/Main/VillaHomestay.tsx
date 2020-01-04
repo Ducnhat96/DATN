@@ -1,4 +1,5 @@
 import React, { Fragment, ComponentType, useContext } from "react";
+import Typography from '@material-ui/core/Typography';
 import Grid from "@material-ui/core/Grid/Grid";
 import CardDetail from "@/layouts/Main/CardDetail";
 import { ThemeCustom } from "@/components/Theme/Theme";
@@ -13,6 +14,11 @@ const styles: any = (theme: ThemeCustom) =>
   createStyles({
     villaHomestay: {
       marginTop: "42px"
+    },
+    title: {
+      fontWeight: 700,
+      fontSize: 24,
+      color: '#484848'
     }
   });
 
@@ -87,6 +93,9 @@ const VillaHomestay: ComponentType<IProps> = props => {
 
   return (
     <Fragment>
+      <Grid>
+        <Typography variant="h4" className={classes.title}>Loại căn hộ</Typography>
+      </Grid>
       <Grid className={classes.villaHomestay} container spacing={8}>
         {width === "xs" || width === "sm" ? (
           <Slider {...setting}>

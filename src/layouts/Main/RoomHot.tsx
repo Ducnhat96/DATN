@@ -16,8 +16,6 @@ import StarRatings from 'react-star-ratings';
 // import imgRoomDemo2 from '@/assets/room_demo2.jpeg';
 import { RoomIndexRes } from '@/types/Requests/Rooms/RoomResponses';
 import { formatMoney } from '@/utils/mixins';
-
-// import mapMarker from '@/assets/SvgIcon/map-marker.svg';
 import classNames from 'classnames';
 import LazyLoad from 'react-lazyload';
 import { windowExist } from '@/index';
@@ -83,7 +81,6 @@ const styles: any = (theme: ThemeCustom) => createStyles({
     lineHeight: '18px !important',
     letterSpacing: 'normal !important',
     display: 'inline-block',
-    // color: 'rgb(72, 72, 72) !important',
     marginBottom: '4px !important',
   },
   totalReview: {
@@ -108,10 +105,6 @@ const styles: any = (theme: ThemeCustom) => createStyles({
     }
   },
 
-  // mapMarker: {
-  //   width: '0.8rem',
-  //   marginLeft: 3,
-  // },
   address: {
     fontSize: '0.8125rem',
     fontWeight: 500,
@@ -142,9 +135,8 @@ const RoomHot: ComponentType<IProps> = (props: IProps) => {
   return (
     <Fragment>
       <Card className={classes.card} elevation={0}>
-        {/* <CardActionArea> */}
         <LazyLoad height={200} offset={windowExist ? window.innerHeight : 0}>
-          <img onClick={cardEvent} src={room.media.data.length ? `https://s3-ap-southeast-1.amazonaws.com/westay-img/lg/${room.media.data[0].image}`: ''} className={classes.media} alt={`Westay - Homestay cho người việt`} />
+          <img onClick={cardEvent} src={room.media.data.length ? `https://s3-ap-southeast-1.amazonaws.com/VN-Homestay-img/lg/${room.media.data[0].image}`: ''} className={classes.media} alt={`VN-Homestay - Homestay cho mọi người`} />
         </LazyLoad>
         <CardContent className={classes.cardContent}>
           <Typography component='p' className={classes.nameCity}>
@@ -163,9 +155,6 @@ const RoomHot: ComponentType<IProps> = (props: IProps) => {
                 starEmptyColor={'#F5A623'}
               />
             </span>
-            {/*<p className={classes.totalReview}>
-					   		{room.total_review}
-					   	</p>*/}
           </div>
           {
             (room.rent_type != 1) ?
@@ -192,7 +181,6 @@ const RoomHot: ComponentType<IProps> = (props: IProps) => {
           </div>
 
         </CardContent>
-        {/* </CardActionArea> */}
       </Card>
     </Fragment>
   );

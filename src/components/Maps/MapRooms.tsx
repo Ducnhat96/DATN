@@ -65,6 +65,7 @@ const MapRooms: ComponentType<IProps> = (props: IProps) => {
     if (width === 'xs' && hoverId !== 0 && hoverId !== -1) {
       axios.get(`/rooms/${hoverId}?include=comforts,details,media,city,district,prices`)
         .then((res: AxiosRes<RoomIndexRes>) => {
+          console.log(res.data.data);
           setShowRoom(res.data.data)
         })
         .catch((err: AxiosError) => {

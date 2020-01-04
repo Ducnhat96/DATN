@@ -16,16 +16,11 @@ import Loadable from 'react-loadable';
 import { compose } from 'recompose';
 import { BookingFormContext, IBookingFormContext } from '@/store/context/Booking/BookingFormContext';
 import InfoHeader from '@/components/Bookings/InfoHeader';
-import { DEFAULT_DATE_FORMAT, DEFAULT_DATE_TIME_FORMAT } from '@/utils/store/global';
+import { DEFAULT_DATE_TIME_FORMAT } from '@/utils/store/global';
 
 export interface IProps {
   classes?: any;
 }
-
-const SimpleLoading = Loadable({
-  loader: (): Promise<any> => import('@/components/Loading/SimpleLoader'),
-  loading: () => null,
-});
 
 const styles: any = (theme: ThemeCustom) => createStyles({
   paperCustom: {
@@ -104,7 +99,6 @@ const BookingInfoDetail: ComponentType<IProps> = props => {
       type: 'removeCoupon',
     });
   };
-  // console.log(room);
   return (
     <Fragment>
       <Grid container spacing={24} className={classes.gridInfo}>
@@ -191,7 +185,6 @@ const BookingInfoDetail: ComponentType<IProps> = props => {
               <Divider className={classes.dividerMargin} />
               <Grid container spacing={16}>
                 <Grid container item xs={12} alignContent='center' alignItems='center'>
-                  {/*Coupon Section*/}
                   <Grid container item xs={12} justify='flex-end'>
                     {price
                       ? (!state.coupon
@@ -242,7 +235,6 @@ const BookingInfoDetail: ComponentType<IProps> = props => {
                   {
                     (price && moment.unix(price!.checkin).subtract(room!.settings.days, 'day').diff(moment.now(), 'days') <= room!.settings.days) ?
                       (<Grid item>
-                        {/* <InfoIcon style = {{color: '#ddd', fontSize: 20, marginTop: 15}}/>  */}
                         <Typography variant='subtitle2' style={{ padding: '10px' }}>
                           {`${room!.settings.booking_cancel_text}`}
                         </Typography>

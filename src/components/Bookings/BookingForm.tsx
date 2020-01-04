@@ -444,13 +444,13 @@ const BookingForm: ComponentType<IProps> = (props: ILocalProps) => {
                 </Collapse>
               </Grid>
 
-              <Grid item xs={12}>
+              {/* <Grid item xs={12}>
                 <Button name='addition-services' color='primary' style={{ paddingLeft: 0 }}
                   onClick={() => toggleRequest(!isRequest)}>
                   {isRequest ? <RemoveIcon /> : <AddIcon />}
                   Yêu cầu đặc biệt
                 </Button>
-              </Grid>
+              </Grid> */}
               <Grid item xs={12}>
                 <Collapse in={isRequest}>
                   <Grid container spacing={24}>
@@ -510,7 +510,7 @@ const BookingForm: ComponentType<IProps> = (props: ILocalProps) => {
               <Typography variant='body2' style={{ padding: '15px' }}>
                 Khi gửi yêu cầu đặt chỗ này, quý khách xác nhận rằng quý khách đã đọc và đồng ý với các
                 <Link to='/terms-and-conditions'> Điều khoản và điều kiện </Link>
-                và Chính sách quyền riêng tư của Westay.vn.
+                và Chính sách quyền riêng tư của VN-Homestay.vn.
               </Typography>
             </Grid>
           </Grid>
@@ -614,7 +614,8 @@ const FormMilk = withFormik({
         bags.props.handleDialog(true);
       } else {
         bags.props.handleDialog(true);
-        history.push(url);
+        alert('Chúc mừng Bạn đã đặt phòng thành công !')
+        // history.push(url);
       }
       bags.setSubmitting(false);
     }).catch(e => {

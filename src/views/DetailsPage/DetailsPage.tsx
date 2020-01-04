@@ -189,20 +189,6 @@ const DetailsPage: ComponentType<IProps> = (props: LocalProps) => {
 
   return (
     <RoomDetailsContext.Provider value={{ state, dispatch }}>
-      {/* <Helmet>
-        <meta charSet='utf-8' />
-        <title>{room ? room!.details.data[0].name : 'Homestay'}</title>
-        <meta property="og:image" content={room ? `https://s3-ap-southeast-1.amazonaws.com/westay-img/lg/${
-          room!.media.data[0].image
-          }` : 'asdf'} />
-        <meta property="og:title" content={room ? room!.details.data[0].name : 'Westay - Homestay cho người Việt'} />
-        <meta property="og:type" content="article" />
-        <meta property="og:locale" content="vi_VN" />
-        <meta property="og:url" content={`https://westay.vn/room/${room ? room!.id : ''}`} />
-        <meta property="og:site_name" content="Westay - Stay happy together" />
-        <meta property="og:description" content={`Westay - Đặt phòng Homestay giá rẻ, tiện lợi, nhanh chóng`} />
-      </Helmet> */}
-      {/* <div> */}
       <NavTop />
       <Hidden xsDown>
         <NavSearch />
@@ -221,16 +207,15 @@ const DetailsPage: ComponentType<IProps> = (props: LocalProps) => {
             <Grid item sm={12} md={11} lg={6} xl={6} className={classes.boxPadding}>
               <Paper elevation={0}>
                 <div className={classes.boxPadding}>
-                  {/* <BoxDetails /> */}
                   {room ? (<BoxRoomDetails room={room} />) : ''}
                   {room ? (
                     <DatePickerRoomDetail
                       minNights={bookingType === BOOKING_TYPE_DAY ? 1 : 0}
                     />
                   ) : ''}
-                  {
+                  {/* {
                     (room && room!.total_review > 0) ? <BoxReviews review={room.reviews.data} /> : ''
-                  }
+                  } */}
                   {room ?
                     <div className={classes.rowMargin}>
                       <div className={classes.paddingXS}>
@@ -259,7 +244,7 @@ const DetailsPage: ComponentType<IProps> = (props: LocalProps) => {
               </Grid>
             </Hidden>
           </Grid>
-          <Grid container className={classes.boxPadding}>
+          {/* <Grid container className={classes.boxPadding}>
             <Grid item xs={12}>
               <div className={classes.boxSuggest}>
                 <Typography className={classes.title}>
@@ -268,7 +253,7 @@ const DetailsPage: ComponentType<IProps> = (props: LocalProps) => {
                 <SliderSuggest />
               </div>
             </Grid>
-          </Grid>
+          </Grid> */}
           <Hidden lgUp>
             <Grid container className={classes.boxPadding}>
               <NavBottomBook />
@@ -276,7 +261,6 @@ const DetailsPage: ComponentType<IProps> = (props: LocalProps) => {
           </Hidden>
         </GridContainer>
       </div>
-      {/* </div> */}
       <Footer />
     </RoomDetailsContext.Provider>
   );

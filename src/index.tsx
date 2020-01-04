@@ -8,7 +8,6 @@ import storage from 'redux-persist/lib/storage';
 import { persistReducer, persistStore, PersistConfig, Persistor } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 import thunk from 'redux-thunk';
-       
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
@@ -31,7 +30,6 @@ const persistConfig: PersistConfig = {
 };
 
 const persistedReducer: Reducer = windowExist ? persistReducer(persistConfig, rootReducer) : rootReducer;
-// const persistedReducer: Reducer = rootReducer;
 
 export const store: Store = createStore(persistedReducer, composeEnhancers(
   applyMiddleware(thunk),
@@ -40,7 +38,6 @@ export const store: Store = createStore(persistedReducer, composeEnhancers(
 export const persistor: Persistor = persistStore(store);
 
 const initializeReactGA = () => {
-  // console.log(window.location.pathname);
   ReactGA.initialize('UA-134989606-1');
   ReactGA.pageview(
     `/${window.location.pathname} + ${

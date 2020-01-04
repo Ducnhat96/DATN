@@ -150,9 +150,6 @@ const Footer: ComponentType<IProps> = (props: IProps) => {
               <ul className={classes.linksListGroupList}>
                 <p>
                   <strong>Số điện thoại li&ecirc;n hệ:</strong> 0396899593
-                  <br />
-                  <strong>Lĩnh vực kinh doanh:</strong>&nbsp;S&agrave;n giao
-                  dịch TMĐT
                   <br /> <strong>Địa chỉ t&ecirc;n miền:</strong>
                   &nbsp;https://vn-homestay.vn
                   <br />
@@ -173,49 +170,6 @@ const Footer: ComponentType<IProps> = (props: IProps) => {
                 <Link to="/" className={classes.textTerms}>
                   <li>Chính sách quyền riêng tư</li>
                 </Link>
-              </ul>
-
-              <h5 className={classes.linksListGroupTitle}>
-                <Link
-                  style={{ textDecoration: "none", color: "white" }}
-                  to="https://blog.vn-homestay.vn"
-                >
-                  Kênh thông tin
-                </Link>
-              </h5>
-              <ul className={classes.linksListGroupList}>
-                <li>
-                  <a
-                    style={{ textDecoration: "none", color: "white" }}
-                    href="https://blog.vn-homestay.vn/o-dau"
-                  >
-                    Ở đâu
-                  </a>
-                </li>
-                <li>
-                  <a
-                    style={{ textDecoration: "none", color: "white" }}
-                    href="https://blog.vn-homestay/choi-gi"
-                  >
-                    Chơi gì
-                  </a>
-                </li>
-                <li>
-                  <a
-                    style={{ textDecoration: "none", color: "white" }}
-                    href="https://blog.vn-homestay/an-gi"
-                  >
-                    Ăn gì
-                  </a>
-                </li>
-                <li>
-                  <a
-                    style={{ textDecoration: "none", color: "white" }}
-                    href="https://blog.vn-homestay/cam-nang-du-lich"
-                  >
-                    Cẩm nang du lịch
-                  </a>
-                </li>
               </ul>
             </Grid>
             <Grid item xs={12} sm={4} md={4} className={classes.linksList}>
@@ -251,15 +205,6 @@ const Footer: ComponentType<IProps> = (props: IProps) => {
                 <li style={{ marginBottom: 8 }}>
                   <PlaceIcon fontSize="default" className={classes.iconPhone} />
                   Số 1 Đại Cồ Việt, Giải Phóng, Hà Nội
-                </li>
-              </ul>
-
-              <h5 className={classes.linksListGroupTitle}>Mạng xã hội</h5>
-              <ul className={classes.socialNetwork}>
-                <li>
-                  <a href={facebookUrl} target="blank">
-                    <img src={facebook} className={classes.imgSocial} />
-                  </a>
                 </li>
               </ul>
             </Grid>

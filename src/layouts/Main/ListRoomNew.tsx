@@ -123,11 +123,7 @@ const ListRoomNew: ComponentType<IProps> = (props: IProps) => {
           <Slider {...settingRoomHot}>
             {_.map(roomsNew, (room, index) => (
               <div key={index}>
-                {/* <LazyLoad height={200} offset={windowExist ? window.innerHeight : 0}> */}
-                {/* <Suspense fallback={<SimpleLoader />}> */}
                 <RoomHot room={room} />
-                {/* </Suspense> */}
-                {/* </LazyLoad> */}
               </div>
             ))}
           </Slider>

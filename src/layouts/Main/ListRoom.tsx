@@ -48,7 +48,7 @@ const ListRoom: ComponentType<IProps> = (props: IProps) => {
           <RoomHomepageContext.Provider value={{ state, dispatch }}>
             {/* <ListRoomHot /> */}
             <VillaHomestay />
-            <ListRoomNew />
+            {/* <ListRoomNew /> */}
             <ListRoomCity />
           </RoomHomepageContext.Provider>
         </GridContainer>

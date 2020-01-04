@@ -402,7 +402,7 @@ const HomeSweetHome:ComponentType<IHomeSweetHome> = (props:IHomeSweetHome) => {
                             color='primary'
                         />
                       }
-                      label="I want to know if there are promotions and  deals from Westay."
+                      label="I want to know if there are promotions and  deals from VN-Homestay."
                   />
                 </FormGroup>
                 <FormGroup>
@@ -416,7 +416,7 @@ const HomeSweetHome:ComponentType<IHomeSweetHome> = (props:IHomeSweetHome) => {
                             color='primary'
                         />
                       }
-                      label="I've things to share with Westay, let's check it out on:"
+                      label="I've things to share with VN-Homestay, let's check it out on:"
                   />
                 </FormGroup>
                 <FormGroup>
@@ -424,14 +424,13 @@ const HomeSweetHome:ComponentType<IHomeSweetHome> = (props:IHomeSweetHome) => {
                       id="facebook"
                       variant="outlined"
                       className = {classes.textFieldSocial}
-                      value='https://facebook.com/weStay'
+                      value='https://facebook.com'
                       InputProps={{
                         startAdornment: (
                             <InputAdornment position="start">
                               <IconButton
                                   className = {classes.inputAdornment}
                                   aria-label="Toggle password visibility"
-                                  // onClick={}
                               >
                                 <img alt='fb' src={fb} className={classes.iconSocial}/>
                               </IconButton>
@@ -452,7 +451,6 @@ const HomeSweetHome:ComponentType<IHomeSweetHome> = (props:IHomeSweetHome) => {
                               <IconButton
                                   className = {classes.inputAdornment}
                                   aria-label="Toggle password visibility"
-                                  // onClick={}
                               >
                                 <img alt='twt' src={twt} className={classes.iconSocial}/>
                               </IconButton>
@@ -473,7 +471,6 @@ const HomeSweetHome:ComponentType<IHomeSweetHome> = (props:IHomeSweetHome) => {
                               <IconButton
                                   className = {classes.inputAdornment}
                                   aria-label="Toggle password visibility"
-                                  // onClick={}
                               >
                                 <img alt='gg' src={gg} className={classes.iconSocial}/>
                               </IconButton>

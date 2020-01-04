@@ -19,7 +19,6 @@ const styles: any = (theme: Theme) => createStyles({
     padding: 10,
     display: 'flex',
     justifyContent: 'center',
-    // backgroundColor: '#fffffff0',
     boxShadow: 'none',
     border: '2px solid #EBEBEB !important'
   },
@@ -37,7 +36,7 @@ const GuestSelect: FunctionComponent<IProps> = (props: IProps) => {
   const { classes } = props;
 
   return (
-    <Grid item md={12} xs={12} sm={12}>
+    <Grid item xs={12}>
       <Paper elevation={0} className={classes.paperSize}>
         <Grid container spacing={8} justify="center">
           <Grid item xs={12}>

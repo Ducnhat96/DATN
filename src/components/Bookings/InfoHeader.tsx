@@ -41,16 +41,11 @@ const styles: any = (theme: ThemeCustom) => createStyles({
 // @ts-ignore
 const InfoHeader: ComponentType<IProps> = (props: IProps) => {
   const { classes, room } = props;
-  // console.log(room);
   return (
     <Fragment>
-      {/* <Grid item xs = {12}>
-        <Typography variant = 'subtitle2'>THÔNG TIN ĐƠN ĐẶT PHÒNG</Typography>
-        <Divider />
-      </Grid> */}
       <Grid item xs={12}>
         <img src={`https://s3-ap-southeast-1.amazonaws.com/westay-img/lg/${room!.media.data[0].image}`}
-          className={classes.imgSize} alt={`Westay - Homestay cho người việt`} />
+          className={classes.imgSize} alt={`VN-Homestay`} />
       </Grid>
       <Grid item xs={12}>
         <Link style={{ textDecoration: 'none' }} to={`/room/${room!.id}`}><Typography variant='subtitle2'>{room!.details.data[0].name}</Typography></Link>

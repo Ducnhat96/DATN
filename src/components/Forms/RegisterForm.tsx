@@ -431,7 +431,7 @@ const RegisterForm: ComponentType<IProps> = (props: RegisterLocalProps) => {
                                 >
                                   điều khoản sử dụng
                                 </Link>
-                                <span>&nbsp; của Westay</span>
+                                <span>&nbsp; của VN-Homestay</span>
                               </div>
                             }
                           />

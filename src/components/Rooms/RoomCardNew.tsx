@@ -285,7 +285,6 @@ interface IProps {
 // @ts-ignore
 const RoomCard: ComponentType<IProps> = (props: IProps) => {
   const { classes, room } = props;
-  console.log(room.media.data)
   const { width, history } = useContext<IGlobalContext>(GlobalContext);
   const typoVariant: ThemeStyle =
     width === "sm" || width === "xs" ? "subtitle2" : "h6";
@@ -314,7 +313,7 @@ const RoomCard: ComponentType<IProps> = (props: IProps) => {
                         o.image
                         }`}
                       className={classes.imgSize}
-                      alt={`Westay - Homestay cho người việt`}
+                      alt={`VN-Homestay - Homestay cho người việt`}
                     />
                   ))
                 ) : (

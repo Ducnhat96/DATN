@@ -1,35 +1,20 @@
 import Autosuggest from "react-autosuggest";
 import match from "autosuggest-highlight/match";
 import parse from "autosuggest-highlight/parse";
-import VN_vi from "@/assets/vietnam84.png";
-import Button from "@material-ui/core/Button";
-import FormControl from "@material-ui/core/FormControl";
-import FormHelperText from "@material-ui/core/FormHelperText";
-import Grid from "@material-ui/core/Grid";
-import Input from "@material-ui/core/Input";
 import InputAdornment from "@material-ui/core/InputAdornment";
-import InputLabel from "@material-ui/core/InputLabel";
-import Select from "@material-ui/core/Select";
 import { createStyles, withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Paper from "@material-ui/core/Paper";
-import { SearchFilterState } from "@/store/reducers/searchFilter";
 import React, {
   ComponentType,
-  useContext,
-  useMemo,
   useState,
-  useEffect,
   memo
 } from "react";
 import { compose } from "recompose";
 import { ReducersType } from "@/store/reducers";
 import { ThemeCustom } from "@/components/Theme/Theme";
 import { connect } from "react-redux";
-import { axios } from "@/utils/axiosInstance";
 import { Dispatch } from "redux";
-import { IGlobalContext, GlobalContext } from "@/store/context/GlobalContext";
-import classNames from "classnames";
 import MenuItem from "@material-ui/core/MenuItem";
 import { RouterProps } from "react-router";
 import { withRouter, RouteProps } from "react-router-dom";
@@ -38,12 +23,10 @@ import {
   SearchSuggestRes,
   IS_SEARCH_CITY,
   IS_SEARCH_DISTRICT,
-  IS_SEARCH_ROOM
 } from "@/types/Requests/Search/SearchResponse";
 import SearchIcon from "@material-ui/icons/Search";
 import HomeIcon from "@material-ui/icons/HomeRounded";
 import LocationIcon from "@material-ui/icons/LocationOnRounded";
-import Popular from "@material-ui/icons/WhatshotRounded";
 import ErrorBoundary from "react-error-boundary";
 
 interface Iprops extends RouteProps, RouterProps {
@@ -135,15 +118,12 @@ const AutosuggestSearch: ComponentType<Iprops> = (props: Iprops) => {
   } = props;
   const [suggestions, setSuggestions] = useState<any>([]);
 
-  //const [inputValue, setInputValue] = useState<any>(filter.searchText);
-
   const renderSuggestion = (
     suggestion: SearchSuggestRes,
     { query, isHighlighted }: any
   ) => {
     const matches = match(suggestion.name, query);
     const parts = parse(suggestion.name, matches);
-    // console.log(parts, matches);
     return (
       <MenuItem
         selected={isHighlighted}
@@ -238,7 +218,6 @@ const AutosuggestSearch: ComponentType<Iprops> = (props: Iprops) => {
             <InputAdornment position="start">
               <SearchIcon
                 className={classes.marginSearch}
-              // fontSize="default"
               />
             </InputAdornment>
           ),
@@ -272,7 +251,6 @@ const AutosuggestSearch: ComponentType<Iprops> = (props: Iprops) => {
     <ErrorBoundary>
       <Autosuggest
         {...autosuggestProps}
-        // alwaysRenderSuggestions={true}
         inputProps={{
           classes,
           id: "search-autosuggest-simple",

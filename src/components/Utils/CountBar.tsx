@@ -13,17 +13,14 @@ import React, {
 } from "react";
 import { connect } from "react-redux";
 import { compose } from "recompose";
-import { RouterProps } from 'react-router';
+import { RouterProps } from "react-router";
 import { Dispatch } from "redux";
-import { withRouter, RouteProps } from 'react-router-dom';
-// import NavigateNext from '@material-ui/icons/NavigateNext';
-// import NavigateBefore from '@material-ui/icons/NavigateBefore';
+import { withRouter, RouteProps } from "react-router-dom";
 import NavigateNext from "@material-ui/icons/AddCircleOutline";
 import NavigateBefore from "@material-ui/icons/RemoveCircleOutline";
 import { RoomUrlParams } from "@/types/Requests/Rooms/RoomRequests";
 import { newRoomLocation } from "@/store/context/Room/RoomIndexContext";
 import { IGlobalContext, GlobalContext } from "@/store/context/GlobalContext";
-
 
 interface IProps extends RouteProps, RouterProps {
   "p-classes": any;
@@ -47,9 +44,8 @@ const CountBar: ComponentType<IProps> = (props: IPropsLocal) => {
   let pluralLowerCase = props.name.toLowerCase() + "Count";
   const [status, setStatus] = useState(true);
   const { history } = useContext<IGlobalContext>(GlobalContext);
-  const [city_id, setCityId] = useState('');
-  const [district_id, setDistrictId] = useState('');
-
+  const [city_id, setCityId] = useState("");
+  const [district_id, setDistrictId] = useState("");
 
   useEffect(() => {
     let count = props.filter[pluralLowerCase];
@@ -66,8 +62,6 @@ const CountBar: ComponentType<IProps> = (props: IPropsLocal) => {
     props.changeValue!(number, pluralLowerCase);
   };
 
-
-
   const applyFilter = () => {
     const pushQuery: RoomUrlParams = {
       number_of_rooms: filter.roomsCount,
@@ -76,9 +70,8 @@ const CountBar: ComponentType<IProps> = (props: IPropsLocal) => {
       number_of_guests: filter.guestsCount,
       most_popular: null,
       rent_type: filter.bookingType !== 0 ? filter.bookingType : undefined,
-      city_id: city_id ? city_id : '',
-      district_id: district_id ? district_id : ''
-
+      city_id: city_id ? city_id : "",
+      district_id: district_id ? district_id : ""
     };
     const location = newRoomLocation(pushQuery);
     history.push(location);
@@ -121,16 +114,16 @@ const CountBar: ComponentType<IProps> = (props: IPropsLocal) => {
             <Divider />
           </Grid>
         ) : (
-            ""
-          )}
+          ""
+        )}
       </Grid>
       {hasApplyButton ? (
         <Button className={classes.applyButton} onClick={applyFilter}>
           Áp dụng
         </Button>
       ) : (
-          ""
-        )}
+        ""
+      )}
     </Fragment>
   );
 };
@@ -153,8 +146,5 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
 };
 
 export default compose<IProps, any>(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )
+  connect(mapStateToProps, mapDispatchToProps)
 )(CountBar);

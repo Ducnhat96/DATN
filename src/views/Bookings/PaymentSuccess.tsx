@@ -39,7 +39,7 @@ const PaymentSuccess: ComponentType<IProps> = (props: IProps) => {
 	         <GridContainer xs={11} className={classes.content}>
 	         	<Grid container spacing = {0} className = {classes.content}>
 		         	<h1 className={classes.textContent}>Thanh toán thành công!</h1>
-		         	<p className={classes.textContent}>Cảm ơn bạn đã đặt phòng tại Westay, thông tin về đặt phòng của bạn sẽ được gửi vào địa chỉ E-Mail mà bạn đã cung cấp!</p>
+		         	<p className={classes.textContent}>Cảm ơn bạn đã đặt phòng tại VN-Homestay, thông tin về đặt phòng của bạn sẽ được gửi vào địa chỉ E-Mail mà bạn đã cung cấp!</p>
 		         	<Link to = '/' className={classes.textContent}>		         		
 		         		<p>Click vào đây để quay trở về trang chủ</p>
 		         	</Link>

@@ -116,7 +116,7 @@ const styles: any = (theme: ThemeCustom) =>
       fontWeight: 600,
       lineHeight: "1.28571em",
       color: "rgb(72, 72, 72)",
-      margin: 0
+      marginBottom: 5
     },
     iconHelp: {
       verticalAlign: "sub",
@@ -479,7 +479,6 @@ const BoxBooking: ComponentType<IProps> = (props: IProps) => {
                   Ngày nhận phòng
                 </Typography>
                 <Paper square elevation={0} className={classes.PaperDatePick}>
-                  {/* minNights={bookingType === BOOKING_TYPE_DAY ? 1 : 0} */}
                   <DateRangeSingle />{" "}
                 </Paper>
                 {(room!.rent_type === 1 ? (

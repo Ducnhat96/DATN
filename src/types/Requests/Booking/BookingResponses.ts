@@ -16,8 +16,10 @@ export interface BookingIndexRes {
   name_received: string
   phone_received: string;
   room_id: number
-  checkin: number
-  checkout: number
+  checkin: string
+  checkout: string
+  booking_type: number;
+  booking_type_txt: string;
   number_of_guests: number
   price_original: number
   price_discount: number
@@ -75,4 +77,9 @@ export interface CancelReasonRes {
   code: number
   code_txt: string
   note: string
+}
+
+export interface CancelListResponses {
+  id: number
+  value: string
 }

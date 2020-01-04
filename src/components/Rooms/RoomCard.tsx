@@ -404,7 +404,7 @@ const RoomCard: ComponentType<IProps> = (props: IProps) => {
                         o.image
                         }`}
                       className={classes.imgSize}
-                      alt={`Westay - Homestay cho người việt`}
+                      alt={`VN-Homestay - Homestay cho mọi người`}
                     />
                   ))
                 ) : (
@@ -457,10 +457,6 @@ const RoomCard: ComponentType<IProps> = (props: IProps) => {
                               )}
                             </div>
                           </Hidden>
-
-                          {/* <Tooltip title={`Đặt phòng nhanh`} placement="top">
-                              <FlashOn />
-                            </Tooltip> */}
 
                           <Grid item lg={12} sm={12} xs={12}>
                             <Typography
