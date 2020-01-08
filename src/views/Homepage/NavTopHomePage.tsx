@@ -255,7 +255,7 @@ const NavTopHomePage: FunctionComponent<IProps> = (props: ILocalProps) => {
             <Logo />
             <div className={classes.grow} />
             <Button
-              href="/host/room-list"
+              href="http://host-homestay.nhat/merchant/rooms/list"
               className={classes.button}
               name="merchant-site"
             >
@@ -311,15 +311,6 @@ const NavTopHomePage: FunctionComponent<IProps> = (props: ILocalProps) => {
                       Dành cho Chủ nhà: 0917 041 849
                     </MenuItem>
                     <Divider />
-                    <MenuItem
-                      name="contact-email"
-                      onClick={() => Hotline("mailto:info@westay.org")}
-                    >
-                      <ListItemIcon>
-                        <EmailIcon />
-                      </ListItemIcon>
-                      Email: info@westay.org
-                    </MenuItem>
                   </MenuList>
                 </Paper>
               </ClickAwayListener>

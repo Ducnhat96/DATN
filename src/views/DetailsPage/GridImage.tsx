@@ -156,7 +156,7 @@ const GridImage: ComponentType<IProps> = (props: IProps) => {
     setCurrentImage(0);
     props.setIsOpen(false);
   };
-  const updateImageUrl = `https://merchant.westay.vn/merchant/listings/${room.id}/detail`;
+  const updateImageUrl = `http://host-homestay.nhat/merchant/listings/${room.id}/detail`;
 
   const ROOM_IMAGES = room
     ? _.map(room.media.data, o => {

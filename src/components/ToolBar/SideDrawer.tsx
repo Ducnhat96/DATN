@@ -114,7 +114,7 @@ const SideDrawer: ComponentType<ISideDrawerProps> = (props: ILocalProps) => {
               gutters: classes.listItemGutters
             }}
             component="a"
-            href="https://merchant.westay.vn"
+            href="http://host-homestay.nhat/merchant/bookings/list"
             button
             onClick={() => setOpen(false)}
           >
@@ -205,7 +205,7 @@ const SideDrawer: ComponentType<ISideDrawerProps> = (props: ILocalProps) => {
             button
             onClick={() => setOpen(false)}
             component="a"
-            href="https://blog.westay.vn/"
+            href="http://host-homestay.nhat/merchant/bookings/list"
             classes={{
               gutters: classes.listItemGutters
             }}

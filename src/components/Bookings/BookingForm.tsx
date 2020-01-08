@@ -377,7 +377,7 @@ const BookingForm: ComponentType<IProps> = (props: ILocalProps) => {
                   <FormHelperText>{touched.phone ? errors.phone : ''}</FormHelperText>
                 </FormControl>
               </Grid>
-              <Grid item xs={6}>
+              {/* <Grid item xs={6}>
                 <FormControl>
                   <FormControlLabel
                     control={
@@ -393,8 +393,8 @@ const BookingForm: ComponentType<IProps> = (props: ILocalProps) => {
                     }
                     label='Tôi đi công tác' />
                 </FormControl>
-              </Grid>
-              <Grid item xs={6}>
+              </Grid> */}
+              {/* <Grid item xs={6}>
                 <FormControl>
                   <FormControlLabel
                     control={
@@ -410,7 +410,7 @@ const BookingForm: ComponentType<IProps> = (props: ILocalProps) => {
                     }
                     label='Tôi đặt phòng cho người khác' />
                 </FormControl>
-              </Grid>
+              </Grid> */}
               {/*Booking for another one section*/}
               <Grid item xs={12}>
                 <Collapse in={values.isSomeOneElse}>
@@ -612,15 +612,14 @@ const FormMilk = withFormik({
 
       if (room!.instant_book === 0) {
         bags.props.handleDialog(true);
+        alert('Chúc mừng Bạn đã đặt phòng thành công !')
       } else {
         bags.props.handleDialog(true);
         alert('Chúc mừng Bạn đã đặt phòng thành công !')
-        // history.push(url);
       }
       bags.setSubmitting(false);
     }).catch(e => {
       history.push(`/room/${data.room_id}`);
-      // alert('catch');
       bags.setSubmitting(false);
     });
   },

@@ -274,7 +274,7 @@ const NavTop: FunctionComponent<IProps> = (props: ILocalProps) => {
               <Logo />
               <div className={classes.grow} />
               <Button
-                href="/host/room-list"
+                href="http://host-homestay.nhat/merchant/rooms/list"
                 className={classes.buttonMerchantSite}
                 name="merchant-site"
                 size="large"

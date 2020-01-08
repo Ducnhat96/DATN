@@ -34,7 +34,6 @@ const Promotion: FunctionComponent<IProps> = props => {
         <Grid container spacing={16}>
           <Grid item lg={6} md={6} xs={6}>
             <Paper elevation={4} className={classes.paperSize} square>
-              {/* <img src = {'https://westay.vn/static/media/promotion-83.ad5bb3ae.png'}/> */}
             </Paper>
           </Grid>
           <Grid item lg={6} md={6} xs={6}>

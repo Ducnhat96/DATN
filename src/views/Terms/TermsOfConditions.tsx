@@ -73,7 +73,7 @@ const TermsOfConditions: ComponentType<IProps> = (props: IProps) => {
         style = {{backgroundColor: 'transparent', color: 'rgb(0, 0, 0)'}}>Quá trình thực hiện giao dịch:</strong></h4><p
         className = 'ql-align-justify'><span style = {{backgroundColor: 'transparent', color: 'rgb(0, 0, 0)'}}>Khi Khách hàng muốn thuê bất kỳ một căn hộ nào đó được đăng trên trang web, có một vài lưu ý như sau:</span>
       </p><p className = 'ql-align-justify'><span style = {{backgroundColor: 'transparent', color: 'rgb(0, 0, 0)'}}>- Tìm kiếm căn hộ phù hợp nhất trên trang web, sau đó cẩn thận đưa ra quyết định cuối cùng.</span>
-      </p><p className = 'ql-align-justify'><span style = {{backgroundColor: 'transparent', color: 'rgb(0, 0, 0)'}}>- Sau khi tìm thấy một căn homestay thích hợp, bạn có thể đặt phòng trực tiếp trên VN-Homestay.org hoặc gọi điện cho bộ phận chăm sóc khách hàng (bằng số hotline) để đặt qua điện thoại. Thông tin được ghi ở trên Website.</span>
+      </p><p className = 'ql-align-justify'><span style = {{backgroundColor: 'transparent', color: 'rgb(0, 0, 0)'}}>- Sau khi tìm thấy một căn homestay thích hợp, bạn có thể đặt phòng trực tiếp trên VN-Homestay.vn hoặc gọi điện cho bộ phận chăm sóc khách hàng (bằng số hotline) để đặt qua điện thoại. Thông tin được ghi ở trên Website.</span>
       </p><p className = 'ql-align-justify'><span style = {{backgroundColor: 'transparent', color: 'rgb(0, 0, 0)'}}>- Bạn sẽ phải hoàn thành thủ tục thanh toán ngay trong quá trình đặt phòng để có thể nhận được email xác nhận đặt phòng từ VN-Homestay.</span>
       </p><p className = 'ql-align-justify'><span style = {{backgroundColor: 'transparent', color: 'rgb(0, 0, 0)'}}>- Chúng tôi yêu cầu tất cả các đối tác của chúng tôi, các chủ sở hữu căn hộ, cung cấp thông tin một cách đầy đủ, chính xác, chi tiết và trung thực về căn hộ của mình.</span>
       </p><p className = 'ql-align-justify'><span style = {{backgroundColor: 'transparent', color: 'rgb(0, 0, 0)'}}>- Tất cả các hành vi lừa đảo, gian lận, lừa đảo trong quá trình giao dịch sẽ bị lên án và phải chịu hoàn toàn trách nhiệm theo pháp luật.</span>
@@ -176,7 +176,7 @@ const TermsOfConditions: ComponentType<IProps> = (props: IProps) => {
       </p><p className = 'ql-align-justify'><span
         style = {{backgroundColor: 'transparent', color: 'rgb(0, 0, 0)'}}>Email: </span><a
         href = 'mailto:info@VN-Homestay.org' target = '_blank'
-        style = {{backgroundColor: 'transparent', color: 'rgb(17, 85, 204)'}}>info@VN-Homestay.org</a></p><p
+        style = {{backgroundColor: 'transparent', color: 'rgb(17, 85, 204)'}}>phamducnhat96@gmail.com</a></p><p
         className = 'ql-align-justify'><br /></p><h3 className = 'ql-align-justify'><strong
         style = {{backgroundColor: 'transparent', color: 'rgb(0, 0, 0)'}}>4. Chỉnh sửa thông tin cá nhân </strong></h3>
         <p className = 'ql-align-justify'><span style = {{backgroundColor: 'transparent', color: 'rgb(0, 0, 0)'}}>Chủ nhà và Khách hàng có thể chỉnh sửa thông tin cá nhân của mình trong mục tài khoản ở trên trang web.</span>
@@ -207,10 +207,9 @@ const TermsOfConditions: ComponentType<IProps> = (props: IProps) => {
       </p><p className = 'ql-align-justify'><br /></p><h3 className = 'ql-align-justify'><strong
         style = {{backgroundColor: 'transparent', color: 'rgb(0, 0, 0)'}}>2. Khách hàng gửi khiếu nại tại địa
                                                                           chỉ:</strong></h3><p
-        className = 'ql-align-justify'><strong style = {{backgroundColor: 'transparent', color: 'rgb(0, 0, 0)'}}>Công ty Cổ phần VN-Homestay</strong>
-      </p><p className = 'ql-align-justify'><span style = {{backgroundColor: 'transparent', color: 'rgb(0, 0, 0)'}}>Địa chỉ: Tầng 3, Hà Thành Plaza, số 102 Thái Thịnh, Đống Đa, Hà Nội</span>
+        className = 'ql-align-justify'><strong style = {{backgroundColor: 'transparent', color: 'rgb(0, 0, 0)'}}>Đặt phòng trực tuyến VN-Homestay</strong>
       </p><p className = 'ql-align-justify'><span style = {{backgroundColor: 'transparent', color: 'rgb(0, 0, 0)'}}>Điện thoại: 0916 374 057</span>
-      </p><p className = 'ql-align-justify'><span style = {{backgroundColor: 'transparent', color: 'rgb(0, 0, 0)'}}>Email: info@VN-Homestay.org</span>
+      </p><p className = 'ql-align-justify'><span style = {{backgroundColor: 'transparent', color: 'rgb(0, 0, 0)'}}>Email: phamducnhat96@gmail.com</span>
       </p><p className = 'ql-align-justify'><span style = {{backgroundColor: 'transparent', color: 'rgb(0, 0, 0)'}}>Thời gian tiếp nhận và xử lý phản ánh là 3 (ba) ngày làm việc kể từ thời điểm VN-Homestay nhận được phản ánh từ phía khách hàng.</span>
       </p><p className = 'ql-align-justify'><br /></p><h3 className = 'ql-align-justify'><strong
         style = {{backgroundColor: 'transparent', color: 'rgb(0, 0, 0)'}}>3. Trách nhiệm của các bên liên quan:</strong>

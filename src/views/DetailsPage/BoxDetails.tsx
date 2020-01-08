@@ -326,7 +326,7 @@ const BoxDetails: ComponentType<IProps> = (props: IProps) => {
       return null;
     }
   };
-  const updateDetailsUrl = `https://merchant.westay.vn/merchant/listings/${
+  const updateDetailsUrl = `http://host-homestay.nhat/merchant/listings/${
     room!.id
   }/detail`;
   const openUpdateDetail = () => {
